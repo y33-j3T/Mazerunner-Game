@@ -1,13 +1,17 @@
 package maze;
 
+import static gamepack.Game.EXITMAP;
 import static gamepack.Game.HEIGHT;
 import static gamepack.Game.HORIZONTALWALLMAP;
+import static gamepack.Game.MAPHEIGHT;
+import static gamepack.Game.MAPWIDTH;
 import static gamepack.Game.PATHMAP;
 import static gamepack.Game.VERTICALWALLMAP;
 import static gamepack.Game.WIDTH;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Random;
  
 public final class MazeGenerator {
     
@@ -16,11 +20,11 @@ public final class MazeGenerator {
     public MazeGenerator(){
         makeMaze(WIDTH, HEIGHT);
         assignMazeToMAP();
+        assignExitToMAP();
     }
     
     public void assignMazeToMAP() {                                             // store generated maze into MAP array
         for (int i=0; i<HEIGHT; i++) {
-            
             for (int j=0; j<WIDTH; j++) {                                       // draw the north edge
                 if((maze[j][i] & 1) == 0){                                      // " | ---"
                     VERTICALWALLMAP[j*2][i*2] = true;
@@ -31,7 +35,6 @@ public final class MazeGenerator {
                 }
             }
             VERTICALWALLMAP[(WIDTH-1)*2+1+1][i*2] = true;                       // " | "
-
             for (int j=0; j<WIDTH; j++) {                                       // draw the west edge
                 if((maze[j][i] & 8) == 0){                                      // " |    "
                     VERTICALWALLMAP[j*2][i*2+1] = true;                         
@@ -43,12 +46,45 @@ public final class MazeGenerator {
             }
             VERTICALWALLMAP[(WIDTH-1)*2+1+1][i*2+1] = true;                     // " | "
         }
-       
         for (int j = 0; j < WIDTH; j++) {                                       // draw the bottom line
                 VERTICALWALLMAP[j*2][(HEIGHT-1)*2+1+1] = true;                  // " | ---"
                 HORIZONTALWALLMAP[j*2+1][(HEIGHT-1)*2+1+1] = true;
         }
         VERTICALWALLMAP[(WIDTH-1)*2+1+1][(HEIGHT-1)*2+1+1]= true;               // " | "
+    }
+    
+    public void assignExitToMAP(){
+        Random r = new Random();
+        int horizonVerticalDet = r.nextInt(2);
+        if(horizonVerticalDet==0){
+            int upDownDet = r.nextInt(2);
+            int a;
+            if(upDownDet==0){
+                do{
+                    a=r.nextInt(MAPWIDTH);
+                } while (a%2==0);
+                EXITMAP[a][0]=true;
+            } else {
+                do{
+                    a=r.nextInt(MAPWIDTH);
+                } while (a%2==0);
+                EXITMAP[a][MAPHEIGHT-1]=true;
+            }
+        } else {
+            int leftRightDet = r.nextInt(2);
+            int a;
+            if(leftRightDet==0){
+                do{
+                    a=r.nextInt(MAPHEIGHT);
+                } while (a%2==0);
+                EXITMAP[0][a]=true;
+            } else {
+                do{
+                    a=r.nextInt(MAPHEIGHT);
+                } while (a%2==0);
+                EXITMAP[MAPWIDTH-1][a]=true;
+            }
+        }
     }
     
     public void makeMaze(int WIDTH, int HEIGHT) {                                // initialize WIDTH and HEIGHT to generate maze path

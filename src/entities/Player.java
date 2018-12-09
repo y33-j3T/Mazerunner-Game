@@ -14,6 +14,7 @@ import static gamepack.Game.HPREGENMAP;
 import static gamepack.Game.LOSTITEM;
 import static gamepack.Game.LOSTITEMMAP;
 import static gamepack.Game.LOSTITEM_amount;
+import static gamepack.Game.LOSTITEM_totalAmount;
 import static gamepack.Game.PATH;
 import static gamepack.Game.VERTICALWALL;
 import static gamepack.Game.VERTICALWALLMAP;
@@ -83,7 +84,17 @@ public class Player extends Entity{
             this.subHP(ZOMBIE.getAttackDamage()-this.getArmor());
         }
         if(getCollidedBlock(input)==EXIT){
-            //exit sequence
+            if(LOSTITEM_amount<LOSTITEM_totalAmount){
+                System.out.println("You haven't collected all items, r u sure?");
+                // pause
+                // if yes
+                    //exitSeq(lost)
+                // else
+                    // unpause
+            } else {
+                // clear screen
+                // exitSeq(won)
+            }
         }
         else if(getCollidedBlock(input)==LOSTITEM){
             move(input);
@@ -183,38 +194,30 @@ public class Player extends Entity{
                     return HPREGEN;
                 else if(GOLDMAP[this.getX()+1][this.getY()])
                     return GOLD;
-            default:
-                break;
         }
         return PATH;
     }
     public void move(KeyEvent input){
         switch (input.getKeyCode()){
-            case KeyEvent.VK_UP:
             case KeyEvent.VK_W:
                 this.getOwnMap()[this.getX()][this.getY()]=false;
                 this.setY(this.getY()-1);
                 this.getOwnMap()[this.getX()][this.getY()]=true;
                 break;
-            case KeyEvent.VK_DOWN:
             case KeyEvent.VK_S:
                 this.getOwnMap()[this.getX()][this.getY()]=false;
                 this.setY(this.getY()+1);
                 this.getOwnMap()[this.getX()][this.getY()]=true;
                 break;
-            case KeyEvent.VK_LEFT:
             case KeyEvent.VK_A:
                 this.getOwnMap()[this.getX()][this.getY()]=false;
                 this.setX(this.getX()-1);
                 this.getOwnMap()[this.getX()][this.getY()]=true;
                 break;
-            case KeyEvent.VK_RIGHT:
             case KeyEvent.VK_D:
                 this.getOwnMap()[this.getX()][this.getY()]=false;
                 this.setX(this.getX()+1);
                 this.getOwnMap()[this.getX()][this.getY()]=true;
-                break;
-            default:
                 break;
         }
     }

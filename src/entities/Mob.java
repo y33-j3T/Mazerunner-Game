@@ -1,5 +1,6 @@
 package entities;
 
+import gamepack.Game;
 import static gamepack.Game.BULLET;
 import static gamepack.Game.EXIT;
 import static gamepack.Game.HORIZONTALWALL;
@@ -21,7 +22,7 @@ public class Mob extends Entity {
         SPEED = 500;
     }
     
-    public void startRandomAction(){
+    public void autoRun(){
         Random r = new Random();
         while(true){
             for(int i=0 ; i<MAPHEIGHT ; i++){
@@ -43,8 +44,13 @@ public class Mob extends Entity {
         if(getCollidedBlock(a)==HORIZONTALWALL)
         if(getCollidedBlock(a)==EXIT)
             move(r.nextInt());
-        else if(getCollidedBlock(a)==BULLET)
+        else if(getCollidedBlock(a)==BULLET){
             this.subHP(JOHNNY.getAttackDamage()-this.getArmor());
+            if(this.getHP()<=0){
+                this.getOwnMap()[this.getX()][this.getY()]=false;
+                Game.randomAllocateEntity(this);
+            }
+        }
         else
             move(a);
     }

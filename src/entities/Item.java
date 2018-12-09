@@ -4,6 +4,8 @@ import static gamepack.Game.BULLET;
 import static gamepack.Game.EXIT;
 import static gamepack.Game.HORIZONTALWALL;
 import static gamepack.Game.JOHNNY;
+import static gamepack.Game.MAPHEIGHT;
+import static gamepack.Game.MAPWIDTH;
 import static gamepack.Game.VERTICALWALL;
 import static gamepack.Game.ZOMBIE;
 import java.awt.event.KeyEvent;
@@ -22,16 +24,12 @@ public class Item extends Entity{
     public int giveShootDir(KeyEvent input){
         switch (input.getKeyCode()){
             case KeyEvent.VK_UP:
-            case KeyEvent.VK_W:
                 return 0;
             case KeyEvent.VK_DOWN:
-            case KeyEvent.VK_S:
                 return 1;
             case KeyEvent.VK_LEFT:
-            case KeyEvent.VK_A:
                 return 2;
             case KeyEvent.VK_RIGHT:
-            case KeyEvent.VK_D:
                 return 3;
         }
         return -1;
@@ -48,7 +46,33 @@ public class Item extends Entity{
             this.move(a);
     }
     
-    public void autoRun(){
-        
+    public void autoRun(KeyEvent input){
+        int a=-1;
+        switch (input.getKeyCode()){
+            case KeyEvent.VK_UP:
+                a=0;
+                break;
+            case KeyEvent.VK_DOWN:
+                a=1;
+                break;
+            case KeyEvent.VK_LEFT:
+                a=2;
+                break;
+            case KeyEvent.VK_RIGHT:
+                a=3;
+                break;
+        }
+        while(true){
+            for(int i=0 ; i<MAPHEIGHT ; i++){
+                for(int j=0 ; j<MAPWIDTH ; j++){
+                    if(this.getOwnMap()[j][i]){
+                        try{
+                            wait(500);
+                            this.executeCollisionAction(a);
+                        } catch (InterruptedException e){}   
+                    }
+                }
+            }
+        } 
     }
 }
