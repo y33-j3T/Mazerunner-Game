@@ -95,9 +95,6 @@ public class Entity {
     public void setVision(int VISION){
         this.VISION = VISION;
     }
-    public void setSpeed(int SPEED){
-        this.SPEED = SPEED;
-    }
     
     // some entity method
     public void addHP(int amountOfHP){
@@ -117,9 +114,6 @@ public class Entity {
     }
     public void addVision(int amountOfVision){
         this.VISION += amountOfVision;
-    }
-    public void addSpeed(int amountOfSpeed){
-        this.SPEED += amountOfSpeed;
     }
     
     public void move(int a){

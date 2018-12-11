@@ -11,11 +11,10 @@ import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 
 public class Main extends JFrame implements KeyListener {
-    Main(){
-        
-    }
     public static void main(String[] args) {
+       Game Mazerunner = new Game();
        
+       KeyListener PlayerInput = new KeyListener
         
     }
     
@@ -63,14 +62,18 @@ public class Main extends JFrame implements KeyListener {
         if(e.getKeyCode()==KeyEvent.VK_UP)
         if(e.getKeyCode()==KeyEvent.VK_DOWN)
         if(e.getKeyCode()==KeyEvent.VK_LEFT)
-        if(e.getKeyCode()==KeyEvent.VK_RIGHT)
-        Game.BULLET.autoRun(e);
+        if(e.getKeyCode()==KeyEvent.VK_RIGHT){
+            Game.BULLET.autoRun(e);
+            repaint();        
+        }
         
         if(e.getKeyCode()==KeyEvent.VK_W)
         if(e.getKeyCode()==KeyEvent.VK_A)
         if(e.getKeyCode()==KeyEvent.VK_S)
-        if(e.getKeyCode()==KeyEvent.VK_D)
-        Game.JOHNNY.executeCollisionAction(e);
+        if(e.getKeyCode()==KeyEvent.VK_D){
+            Game.JOHNNY.executeCollisionAction(e);
+            repaint();
+        }
     }
 
     @Override
