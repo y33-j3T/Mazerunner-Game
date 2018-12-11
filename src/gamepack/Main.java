@@ -1,45 +1,33 @@
 package gamepack;
 
-import static gamepack.Game.FOGMAP;
 import static gamepack.Game.MAP;
 import static gamepack.Game.MAPHEIGHT;
 import static gamepack.Game.MAPWIDTH;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.io.IOException;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
-public class Main extends JPanel {
-    public static void main(String[] args) {
-        Game Mazerunner = new Game();
+public class Main extends JFrame implements KeyListener {
+    Main(){
         
-//        while(true){
-//            try{
-//                cls();
-                attach_MAP_to_FRAME(); 
-                
-//                Thread.sleep(1000);
-//            } catch (InterruptedException e){
-//                
-//            }
-//        }
-        
-        showFrame();                                                            // put all stuff into frame and display
-
     }
-
+    public static void main(String[] args) {
+       
+        
+    }
+    
+ 
+    
+    @Override
     public void paint(Graphics g){
-        Dimension d = this.getPreferredSize();
         int fontSize = 20;
-
         g.setFont(new Font("Monospaced", Font.PLAIN, fontSize));
-
         g.setColor(Color.black);
         
-        for(int i=0 ; i<MAPHEIGHT ; i++){                                       // not done yet, print on console first
+        for(int i=0 ; i<MAPHEIGHT ; i++){                                       
             for(int j=0 ; j<MAPWIDTH ; j++){
                 g.drawString(MAP[j][i][1], j*20, i*20+20);
             }
@@ -47,7 +35,7 @@ public class Main extends JPanel {
         }
     }
 	
-    private static void showFrame(){
+    private void showFrame(){
         JFrame frame = new JFrame("Mazerunner");
         frame.getContentPane().add(new Main());
         
@@ -55,15 +43,6 @@ public class Main extends JPanel {
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-    }
-        
-    public static void cls(){                                                   // clears the screen        
-        try {
-            if (System.getProperty("os.name").contains("Windows"))
-                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-            else
-                Runtime.getRuntime().exec("clear");
-        } catch (IOException | InterruptedException ex) {}
     }
     
     private static void attach_MAP_to_FRAME(){                                  // shows game on JFrame
@@ -73,5 +52,28 @@ public class Main extends JPanel {
             }
             System.out.println();
         }
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        if(e.getKeyCode()==KeyEvent.VK_UP)
+        if(e.getKeyCode()==KeyEvent.VK_DOWN)
+        if(e.getKeyCode()==KeyEvent.VK_LEFT)
+        if(e.getKeyCode()==KeyEvent.VK_RIGHT)
+        Game.BULLET.autoRun(e);
+        
+        if(e.getKeyCode()==KeyEvent.VK_W)
+        if(e.getKeyCode()==KeyEvent.VK_A)
+        if(e.getKeyCode()==KeyEvent.VK_S)
+        if(e.getKeyCode()==KeyEvent.VK_D)
+        Game.JOHNNY.executeCollisionAction(e);
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
     }
 }

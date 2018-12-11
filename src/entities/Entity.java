@@ -11,7 +11,6 @@ public class Entity {
     protected int ATTACKDAMAGE;
     protected int ARMOR;
     protected int VISION;
-    protected int SPEED;
     
     // getters
     public int getX(){

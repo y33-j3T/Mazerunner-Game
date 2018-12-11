@@ -31,7 +31,6 @@ public class Player extends Entity{
         ATTACKDAMAGE = 5;
         ARMOR = 2;
         VISION = 2;
-        SPEED = 500;
     }
    
     public int getUpVisionRange(){

@@ -10,7 +10,7 @@ import static gamepack.Game.VERTICALWALL;
 import static gamepack.Game.ZOMBIE;
 import java.awt.event.KeyEvent;
 
-public class Item extends Entity{
+public class Item extends Entity implements Runnable{
     public Item(String ICON){
         this.ICON = ICON;
         HP = 0;
@@ -21,6 +21,22 @@ public class Item extends Entity{
         SPEED = 0;
     }
     
+    // methods for BULLET only
+    public void autoRun(KeyEvent input){
+        int a = giveShootDir(input);
+        while(true){
+            for(int i=0 ; i<MAPHEIGHT ; i++){
+                for(int j=0 ; j<MAPWIDTH ; j++){
+                    if(this.getOwnMap()[j][i]){
+                        try{
+                            wait(500);
+                            this.executeCollisionAction(a);
+                        } catch (InterruptedException e){}   
+                    }
+                }
+            }
+        } 
+    }
     public int giveShootDir(KeyEvent input){
         switch (input.getKeyCode()){
             case KeyEvent.VK_UP:
@@ -45,34 +61,9 @@ public class Item extends Entity{
         else
             this.move(a);
     }
-    
-    public void autoRun(KeyEvent input){
-        int a=-1;
-        switch (input.getKeyCode()){
-            case KeyEvent.VK_UP:
-                a=0;
-                break;
-            case KeyEvent.VK_DOWN:
-                a=1;
-                break;
-            case KeyEvent.VK_LEFT:
-                a=2;
-                break;
-            case KeyEvent.VK_RIGHT:
-                a=3;
-                break;
-        }
-        while(true){
-            for(int i=0 ; i<MAPHEIGHT ; i++){
-                for(int j=0 ; j<MAPWIDTH ; j++){
-                    if(this.getOwnMap()[j][i]){
-                        try{
-                            wait(500);
-                            this.executeCollisionAction(a);
-                        } catch (InterruptedException e){}   
-                    }
-                }
-            }
-        } 
+
+    @Override
+    public void run() {
+        this.autoRun(input);
     }
 }

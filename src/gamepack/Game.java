@@ -7,7 +7,7 @@ import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Game {
+public class Game  {
     public Game(){
         WIDTH = getDimension(0);
         HEIGHT = getDimension(1);
@@ -204,5 +204,7 @@ public class Game {
         else if(entity == GOLD){
             GOLDMAP[a][b]=true;
         }
-    }     
+    }    
+    
+    Thread thread_zombie = new Thread((Runnable) ZOMBIE);
 }

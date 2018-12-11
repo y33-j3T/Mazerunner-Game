@@ -11,7 +11,7 @@ import static gamepack.Game.VERTICALWALL;
 import static gamepack.Game.ZOMBIE;
 import java.util.Random;
 
-public class Mob extends Entity {
+public class Mob extends Entity implements Runnable {
     public Mob(String ICON ){
         this.ICON = ICON;
         HP = 5;
@@ -19,7 +19,6 @@ public class Mob extends Entity {
         ATTACKDAMAGE = 5;
         ARMOR = 1;
         VISION = 5;
-        SPEED = 500;
     }
     
     public void autoRun(){
@@ -53,5 +52,10 @@ public class Mob extends Entity {
         }
         else
             move(a);
+    }
+
+    @Override
+    public void run() {
+        this.autoRun();
     }
 }
