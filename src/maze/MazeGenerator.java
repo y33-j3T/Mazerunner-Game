@@ -47,8 +47,8 @@ public final class MazeGenerator {
             VERTICALWALLMAP[(WIDTH-1)*2+1+1][i*2+1] = true;                     // " | "
         }
         for (int j = 0; j < WIDTH; j++) {                                       // draw the bottom line
-                VERTICALWALLMAP[j*2][(HEIGHT-1)*2+1+1] = true;                  // " | ---"
-                HORIZONTALWALLMAP[j*2+1][(HEIGHT-1)*2+1+1] = true;
+            VERTICALWALLMAP[j*2][(HEIGHT-1)*2+1+1] = true;                  // " | ---"
+            HORIZONTALWALLMAP[j*2+1][(HEIGHT-1)*2+1+1] = true;
         }
         VERTICALWALLMAP[(WIDTH-1)*2+1+1][(HEIGHT-1)*2+1+1]= true;               // " | "
     }

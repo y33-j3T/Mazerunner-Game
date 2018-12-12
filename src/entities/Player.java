@@ -1,5 +1,7 @@
 package entities;
 
+import static gamepack.Game.spawnX;
+import static gamepack.Game.spawnY;
 import static gamepack.Game.BULLET;
 import static gamepack.Game.BULLETMAP;
 import static gamepack.Game.EXIT;
@@ -23,6 +25,7 @@ import static gamepack.Game.ZOMBIEMAP;
 import java.awt.event.KeyEvent;
 
 public class Player extends Entity{
+    private int LIVES = 0;
     
     public Player(){
         ICON = " J ";
@@ -78,16 +81,26 @@ public class Player extends Entity{
     return visionRange;    
 }
     
-    public void executeCollisionAction(KeyEvent input){                          // to be overriden from each child class
-        if(getCollidedBlock(input)==ZOMBIE){
+    public void executeCollisionAction(KeyEvent input){                          
+        if(this.getCollidedBlock(input)==ZOMBIE){
             this.subHP(ZOMBIE.getAttackDamage()-this.getArmor());
+            if(this.getHP()<=0){
+                if(LIVES>0){
+                    LIVES--;
+                    this.getOwnMap()[this.getX()][this.getY()]=false;
+                    this.setPosition(spawnX, spawnY);
+                    this.getOwnMap()[this.getX()][this.getY()]=true;
+                } else {
+                    exitSeq(1);
+                }
+            }
         }
-        if(getCollidedBlock(input)==EXIT){
+        if(this.getCollidedBlock(input)==EXIT){
             if(LOSTITEM_amount<LOSTITEM_totalAmount){
                 System.out.println("You haven't collected all items, r u sure?");
-                // pause
+                // pop out 
                 // if yes
-                    //exitSeq(lost)
+                    //exitSeq(0)
                 // else
                     // unpause
             } else {
@@ -95,12 +108,12 @@ public class Player extends Entity{
                 // exitSeq(won)
             }
         }
-        else if(getCollidedBlock(input)==LOSTITEM){
+        else if(this.getCollidedBlock(input)==LOSTITEM){
             move(input);
             LOSTITEM_amount+=1;
             LOSTITEMMAP[this.getX()][this.getY()]=false;
         }
-        else if(getCollidedBlock(input)==HPREGEN){
+        else if(this.getCollidedBlock(input)==HPREGEN){
             move(input);
             if(this.TOTALHP-this.getHP()<5)
                 this.setHP(this.TOTALHP);
@@ -108,12 +121,12 @@ public class Player extends Entity{
                 this.addHP(5);
             HPREGENMAP[this.getX()][this.getY()]=false;
         }
-        else if(getCollidedBlock(input)==GOLD){
+        else if(this.getCollidedBlock(input)==GOLD){
             move(input);
             GOLD_amount+=5;
             GOLDMAP[this.getX()][this.getY()]=false;
         }
-        else if(getCollidedBlock(input)==PATH){
+        else if(this.getCollidedBlock(input)==PATH){
             move(input);
         }
         // else VERTICALWALL & HORIZONTALWALL left
@@ -121,7 +134,6 @@ public class Player extends Entity{
     }
     public Entity getCollidedBlock(KeyEvent input){
         switch (input.getKeyCode()) {
-            case KeyEvent.VK_UP:
             case KeyEvent.VK_W:
                 if(ZOMBIEMAP[this.getX()][this.getY()-1])
                     return ZOMBIE;
@@ -139,7 +151,6 @@ public class Player extends Entity{
                     return HPREGEN;
                 else if(GOLDMAP[this.getX()][this.getY()-1])
                     return GOLD;
-            case KeyEvent.VK_DOWN:
             case KeyEvent.VK_S:
                 if(ZOMBIEMAP[this.getX()][this.getY()+1])
                     return ZOMBIE;
@@ -157,7 +168,6 @@ public class Player extends Entity{
                     return HPREGEN;
                 else if(GOLDMAP[this.getX()][this.getY()+1])
                     return GOLD;
-            case KeyEvent.VK_LEFT:
             case KeyEvent.VK_A:
                 if(ZOMBIEMAP[this.getX()-1][this.getY()])
                     return ZOMBIE;
@@ -175,7 +185,6 @@ public class Player extends Entity{
                     return HPREGEN;
                 else if(GOLDMAP[this.getX()-1][this.getY()])
                     return GOLD;
-            case KeyEvent.VK_RIGHT:
             case KeyEvent.VK_D:
                 if(ZOMBIEMAP[this.getX()+1][this.getY()])
                     return ZOMBIE;
@@ -219,5 +228,9 @@ public class Player extends Entity{
                 this.getOwnMap()[this.getX()][this.getY()]=true;
                 break;
         }
+    }
+    
+    public void respawn(){
+        
     }
 }

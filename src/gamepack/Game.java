@@ -38,6 +38,8 @@ public class Game  {
     public static int HEIGHT;
     public static int MAPWIDTH;
     public static int MAPHEIGHT;
+    public static int spawnX;
+    public static int spawnY;
     
     public static String[][][] MAP = new String[MAPWIDTH][MAPHEIGHT][2];
     
@@ -190,6 +192,8 @@ public class Game  {
         
         if(entity == JOHNNY){
             JOHNNYMAP[a][b]=true;
+            spawnX = a;
+            spawnY = b;
         }
         else if(entity == ZOMBIE){
             ZOMBIEMAP[a][b]=true;

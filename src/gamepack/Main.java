@@ -9,13 +9,11 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
-public class Main extends JFrame implements KeyListener {
+public class Main extends JPanel implements KeyListener {
     public static void main(String[] args) {
-       Game Mazerunner = new Game();
-       
-       KeyListener PlayerInput = new KeyListener
-        
+       Game Mazerunner = new Game();    
     }
     
  
@@ -44,14 +42,6 @@ public class Main extends JFrame implements KeyListener {
         frame.setVisible(true);
     }
     
-    private static void attach_MAP_to_FRAME(){                                  // shows game on JFrame
-        for(int i=0 ; i<MAPHEIGHT ; i++){                                       // not done yet, print on console first
-            for(int j=0 ; j<MAPWIDTH ; j++){
-                System.out.print(MAP[j][i][1]);
-            }
-            System.out.println();
-        }
-    }
 
     @Override
     public void keyTyped(KeyEvent e) {

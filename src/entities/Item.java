@@ -11,6 +11,8 @@ import static gamepack.Game.ZOMBIE;
 import java.awt.event.KeyEvent;
 
 public class Item extends Entity implements Runnable{
+    int input;
+    
     public Item(String ICON){
         this.ICON = ICON;
         HP = 0;
@@ -18,10 +20,8 @@ public class Item extends Entity implements Runnable{
         ATTACKDAMAGE = 0;
         ARMOR = 999999999;
         VISION = 0;
-        SPEED = 0;
     }
     
-    // methods for BULLET only
     public void autoRun(KeyEvent input){
         int a = giveShootDir(input);
         while(true){
@@ -64,6 +64,6 @@ public class Item extends Entity implements Runnable{
 
     @Override
     public void run() {
-        this.autoRun(input);
+        
     }
 }

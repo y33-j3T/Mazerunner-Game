@@ -37,9 +37,7 @@ public class Entity {
     public int getVision(){
         return VISION;
     }
-    public int getSpeed(){
-        return SPEED;
-    }
+    
     public boolean[][] getOwnMap(){
         if (this == JOHNNY)
             return JOHNNYMAP;
