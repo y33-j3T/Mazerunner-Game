@@ -3,18 +3,14 @@ package gamepack;
 import entities.*;
 import maze.MazeGenerator;
 
-import java.util.InputMismatchException;
 import java.util.Random;
-import java.util.Scanner;
 
 public class Game  {
     public Game(){
-        WIDTH = getDimension(0);
-        HEIGHT = getDimension(1);
         MAPWIDTH = WIDTH*2+1;
         MAPHEIGHT = HEIGHT*2+1;
         
-        MAP = new String[MAPWIDTH][MAPHEIGHT][2];
+        MAP = new String[MAPWIDTH][MAPHEIGHT];
         
         JOHNNYMAP = new boolean[MAPWIDTH][MAPHEIGHT];
         ZOMBIEMAP = new boolean[MAPWIDTH][MAPHEIGHT];
@@ -41,7 +37,7 @@ public class Game  {
     public static int spawnX;
     public static int spawnY;
     
-    public static String[][][] MAP = new String[MAPWIDTH][MAPHEIGHT][2];
+    public static String[][] MAP = new String[MAPWIDTH][MAPHEIGHT];
     
     public static Player JOHNNY = new Player();
     public static Mob ZOMBIE = new Mob(" Z ");
@@ -67,47 +63,13 @@ public class Game  {
     public static boolean[][] EXITMAP;
     public static boolean[][] FOGMAP;
     
-    public static int LOSTITEM_amount=0;
-    public static int LOSTITEM_totalAmount=0;    
-    public static int GOLD_amount=0;
     
-    public static int getDimension(int a){                                      // get user input for maze dimension
-        String str;
-        if(a==0)
-            str = "Width";
-        else 
-            str = "Height";
         
-        int dimension;
-        while(true){
-            try{
-                Scanner s = new Scanner(System.in);
-                
-                do{
-                    System.out.print(str + " of maze (min 20, max 100): ");
-                    dimension = s.nextInt();
-                    
-                    if(dimension<20){
-                        System.out.println("Input is too small. Try again.\n");
-                    }
-                    else if(dimension>100){
-                        System.out.println("Input is too big. Try again\n");
-                    }
-                } while (dimension<20 || dimension>100);
-                
-                return dimension;
-                
-            } catch (InputMismatchException e){
-                System.out.println("Input is not an integer. Try again.\n");
-            }
-        }
-    }
-        
-    public static void refresh(){
+    public void refresh(){
         refreshFOGMAP();
         refreshMAP();
     }
-    public static void refreshFOGMAP(){
+    public void refreshFOGMAP(){
         for(int i=0 ; i<MAPHEIGHT ; i++){
             for(int j=0 ; j<MAPWIDTH ; j++){
                 FOGMAP[j][i]=true;
@@ -135,40 +97,40 @@ public class Game  {
             FOGMAP[JOHNNY.getX()+i][JOHNNY.getY()+1] = false;
         }
     }
-    public static void refreshMAP(){
+    public void refreshMAP(){
         for(int i=0 ; i<MAPHEIGHT ; i++){
             for(int j=0 ; j<MAPWIDTH ; j++){
                 if(FOGMAP[j][i]==true)
-                    MAP[j][i][1]=FOG.getIcon();
+                    MAP[j][i]=FOG.getIcon();
                 else if(EXITMAP[j][i])
-                        MAP[j][i][1]=EXIT.getIcon();
+                        MAP[j][i]=EXIT.getIcon();
                 else if(VERTICALWALLMAP[j][i])
-                        MAP[j][i][1]=VERTICALWALL.getIcon();
+                        MAP[j][i]=VERTICALWALL.getIcon();
                 else if(HORIZONTALWALLMAP[j][i])
-                    MAP[j][i][1]=HORIZONTALWALL.getIcon();
+                    MAP[j][i]=HORIZONTALWALL.getIcon();
                 else if(EXITMAP[j][i])
-                    MAP[j][i][1]=EXIT.getIcon();
+                    MAP[j][i]=EXIT.getIcon();
                 else if(PATHMAP[j][i]){
                     if(JOHNNYMAP[j][i])                                         //JOHNNYMAP 
-                        MAP[j][i][1]=JOHNNY.getIcon();                          //                  NO                    
+                        MAP[j][i]=JOHNNY.getIcon();                          //                  NO                    
                     else if(ZOMBIEMAP[j][i])                                    //ZOMBIEMAP
-                        MAP[j][i][1]=ZOMBIE.getIcon();                          //                  OVERLAPPING
+                        MAP[j][i]=ZOMBIE.getIcon();                          //                  OVERLAPPING
                     else if(BULLETMAP[j][i])                                    //BULLETMAP
-                        MAP[j][i][1]=BULLET.getIcon();                          //
+                        MAP[j][i]=BULLET.getIcon();                          //
                     else if(LOSTITEMMAP[j][i])
-                        MAP[j][i][1]=LOSTITEM.getIcon();
+                        MAP[j][i]=LOSTITEM.getIcon();
                     else if(HPREGENMAP[j][i])
-                        MAP[j][i][1]=HPREGEN.getIcon();
+                        MAP[j][i]=HPREGEN.getIcon();
                     else if(GOLDMAP[j][i])
-                        MAP[j][i][1]=GOLD.getIcon();
+                        MAP[j][i]=GOLD.getIcon();
                     else
-                        MAP[j][i][1]=PATH.getIcon();
+                        MAP[j][i]=PATH.getIcon();
                 }
             }
         }
     }
         
-    public static void initializeEntity(){
+    public void initializeEntity(){
         randomAllocateEntity(JOHNNY);
         for(int i=0 ; i<MAPWIDTH*MAPHEIGHT/30 ; i++){
             randomAllocateEntity(ZOMBIE);
@@ -200,7 +162,7 @@ public class Game  {
         }
         else if(entity == LOSTITEM){
             LOSTITEMMAP[a][b]=true;
-            LOSTITEM_totalAmount+=1;
+            JOHNNY.setLOSTITEM_totalAmount(JOHNNY.getLostItemAmount()+1);
         }
         else if(entity == HPREGEN){
             HPREGENMAP[a][b]=true;
@@ -210,5 +172,14 @@ public class Game  {
         }
     }    
     
-    Thread thread_zombie = new Thread((Runnable) ZOMBIE);
+    public String toString(){
+        String strMAP = "";
+        for(int i=0 ; i<MAPHEIGHT ; i++){
+            for(int j=0 ; j<MAPWIDTH ; j++){
+                strMAP = strMAP.concat(MAP[j][i]);
+            }
+            strMAP = strMAP.concat("\n");
+        }
+        return strMAP;
+    }
 }

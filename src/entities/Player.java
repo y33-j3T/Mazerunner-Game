@@ -8,15 +8,12 @@ import static gamepack.Game.EXIT;
 import static gamepack.Game.EXITMAP;
 import static gamepack.Game.GOLD;
 import static gamepack.Game.GOLDMAP;
-import static gamepack.Game.GOLD_amount;
 import static gamepack.Game.HORIZONTALWALL;
 import static gamepack.Game.HORIZONTALWALLMAP;
 import static gamepack.Game.HPREGEN;
 import static gamepack.Game.HPREGENMAP;
 import static gamepack.Game.LOSTITEM;
 import static gamepack.Game.LOSTITEMMAP;
-import static gamepack.Game.LOSTITEM_amount;
-import static gamepack.Game.LOSTITEM_totalAmount;
 import static gamepack.Game.PATH;
 import static gamepack.Game.VERTICALWALL;
 import static gamepack.Game.VERTICALWALLMAP;
@@ -25,7 +22,10 @@ import static gamepack.Game.ZOMBIEMAP;
 import java.awt.event.KeyEvent;
 
 public class Player extends Entity{
-    private int LIVES = 0;
+    private int LIVES = 3;
+    private int LOSTITEM_amount=0;
+    private int LOSTITEM_totalAmount=0;    
+    private int GOLD_amount=0;
     
     public Player(){
         ICON = " J ";
@@ -36,6 +36,32 @@ public class Player extends Entity{
         VISION = 2;
     }
    
+    public int getLives(){
+        return this.LIVES;
+    }
+    public int getLostItemAmount(){
+        return this.LOSTITEM_amount;
+    }
+    public int getTotalLostItemAmount(){
+        return this.LOSTITEM_totalAmount;
+    }
+    public int getGoldAmount(){
+        return this.GOLD_amount;
+    }
+
+    public void setLIVES(int LIVES) {
+        this.LIVES = LIVES;
+    }
+    public void setLOSTITEM_amount(int LOSTITEM_amount) {
+        this.LOSTITEM_amount = LOSTITEM_amount;
+    }
+    public void setLOSTITEM_totalAmount(int LOSTITEM_totalAmount) {
+        this.LOSTITEM_totalAmount = LOSTITEM_totalAmount;
+    }
+    public void setGOLD_amount(int GOLD_amount) {
+        this.GOLD_amount = GOLD_amount;
+    }
+    
     public int getUpVisionRange(){
         int visionRange=1;
         while(visionRange<VISION){
@@ -91,7 +117,7 @@ public class Player extends Entity{
                     this.setPosition(spawnX, spawnY);
                     this.getOwnMap()[this.getX()][this.getY()]=true;
                 } else {
-                    exitSeq(1);
+//                    exitSeq(1);
                 }
             }
         }
@@ -228,9 +254,5 @@ public class Player extends Entity{
                 this.getOwnMap()[this.getX()][this.getY()]=true;
                 break;
         }
-    }
-    
-    public void respawn(){
-        
     }
 }

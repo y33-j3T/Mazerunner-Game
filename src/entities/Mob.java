@@ -42,7 +42,7 @@ public class Mob extends Entity implements Runnable {
         if(getCollidedBlock(a)==VERTICALWALL)
         if(getCollidedBlock(a)==HORIZONTALWALL)
         if(getCollidedBlock(a)==EXIT)
-            move(r.nextInt());
+            this.executeCollisionAction(r.nextInt(4));
         else if(getCollidedBlock(a)==BULLET){
             this.subHP(JOHNNY.getAttackDamage()-this.getArmor());
             if(this.getHP()<=0){
