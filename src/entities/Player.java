@@ -1,7 +1,5 @@
 package entities;
 
-import static gamepack.Game.spawnX;
-import static gamepack.Game.spawnY;
 import static gamepack.Game.BULLET;
 import static gamepack.Game.BULLETMAP;
 import static gamepack.Game.EXIT;
@@ -19,13 +17,17 @@ import static gamepack.Game.VERTICALWALL;
 import static gamepack.Game.VERTICALWALLMAP;
 import static gamepack.Game.ZOMBIE;
 import static gamepack.Game.ZOMBIEMAP;
+import gamepack.areYouSureDialog;
 import java.awt.event.KeyEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Player extends Entity{
     private int LIVES = 3;
     private int LOSTITEM_amount=0;
     private int LOSTITEM_totalAmount=0;    
     private int GOLD_amount=0;
+    private int spawnX, spawnY;
     
     public Player(){
         ICON = " J ";
@@ -35,7 +37,13 @@ public class Player extends Entity{
         ARMOR = 2;
         VISION = 2;
     }
-   
+    
+    public int getSpawnX(){
+        return spawnX;
+    }
+    public int getSpawnY(){
+        return spawnY;
+    }
     public int getLives(){
         return this.LIVES;
     }
@@ -48,7 +56,11 @@ public class Player extends Entity{
     public int getGoldAmount(){
         return this.GOLD_amount;
     }
-
+    
+    public void setSpawn(int x, int y){
+        this.spawnX = x;
+        this.spawnY = y;
+    }
     public void setLIVES(int LIVES) {
         this.LIVES = LIVES;
     }
@@ -123,15 +135,12 @@ public class Player extends Entity{
         }
         if(this.getCollidedBlock(input)==EXIT){
             if(LOSTITEM_amount<LOSTITEM_totalAmount){
-                System.out.println("You haven't collected all items, r u sure?");
-                // pop out 
-                // if yes
-                    //exitSeq(0)
-                // else
-                    // unpause
-            } else {
-                // clear screen
-                // exitSeq(won)
+                try {
+                    Thread.wait();
+                    areYouSureDialog areYouSure = new areYouSureDialog();
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Player.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }
         else if(this.getCollidedBlock(input)==LOSTITEM){

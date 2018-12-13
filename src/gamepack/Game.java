@@ -12,7 +12,7 @@ public class Game  {
         
         MAP = new String[MAPWIDTH][MAPHEIGHT];
         
-        JOHNNYMAP = new boolean[MAPWIDTH][MAPHEIGHT];
+//        JOHNNYMAP = new boolean[MAPWIDTH][MAPHEIGHT];
         ZOMBIEMAP = new boolean[MAPWIDTH][MAPHEIGHT];
         VERTICALWALLMAP = new boolean[MAPWIDTH][MAPHEIGHT];
         HORIZONTALWALLMAP = new boolean[MAPWIDTH][MAPHEIGHT];
@@ -34,8 +34,6 @@ public class Game  {
     public static int HEIGHT;
     public static int MAPWIDTH;
     public static int MAPHEIGHT;
-    public static int spawnX;
-    public static int spawnY;
     
     public static String[][] MAP = new String[MAPWIDTH][MAPHEIGHT];
     
@@ -51,7 +49,7 @@ public class Game  {
     public static Item FOG = new Item(" # ");
     public static Item EXIT = new Item(" E ");
     
-    public static boolean[][] JOHNNYMAP;
+//    public static boolean[][] JOHNNYMAP;
     public static boolean[][] ZOMBIEMAP;
     public static boolean[][] VERTICALWALLMAP;
     public static boolean[][] HORIZONTALWALLMAP;
@@ -111,7 +109,7 @@ public class Game  {
                 else if(EXITMAP[j][i])
                     MAP[j][i]=EXIT.getIcon();
                 else if(PATHMAP[j][i]){
-                    if(JOHNNYMAP[j][i])                                         //JOHNNYMAP 
+                    if(JOHNNY.getX()==j && JOHNNY.getY()==i)                                         //JOHNNYMAP 
                         MAP[j][i]=JOHNNY.getIcon();                          //                  NO                    
                     else if(ZOMBIEMAP[j][i])                                    //ZOMBIEMAP
                         MAP[j][i]=ZOMBIE.getIcon();                          //                  OVERLAPPING
@@ -149,13 +147,12 @@ public class Game  {
         do{
             a = r.nextInt(MAPWIDTH-1)+1;
             b = r.nextInt(MAPHEIGHT-1)+1;
-        } while (!PATHMAP[a][b] || JOHNNYMAP[a][b] || ZOMBIEMAP[a][b] || LOSTITEMMAP[a][b] || HPREGENMAP[a][b] || GOLDMAP[a][b]);
+        } while (!PATHMAP[a][b] || JOHNNY.getX()==a && JOHNNY.getY()==b || ZOMBIEMAP[a][b] || LOSTITEMMAP[a][b] || HPREGENMAP[a][b] || GOLDMAP[a][b]);
         entity.setPosition(a, b);
         
         if(entity == JOHNNY){
-            JOHNNYMAP[a][b]=true;
-            spawnX = a;
-            spawnY = b;
+            JOHNNY.setPosition(a, b);
+            JOHNNY.setSpawn(a, b);
         }
         else if(entity == ZOMBIE){
             ZOMBIEMAP[a][b]=true;

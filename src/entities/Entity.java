@@ -4,6 +4,7 @@ import static gamepack.Game.*;
 import java.awt.event.KeyEvent;
 
 public class Entity {
+    
     protected int x, y;
     protected String ICON;
     protected int HP;
@@ -13,6 +14,7 @@ public class Entity {
     protected int VISION;
     
     // getters
+    
     public int getX(){
         return x;
     }
@@ -39,9 +41,7 @@ public class Entity {
     }
     
     public boolean[][] getOwnMap(){
-        if (this == JOHNNY)
-            return JOHNNYMAP;
-        else if(this == ZOMBIE)
+        if(this == ZOMBIE)
             return ZOMBIEMAP;
         else if(this == VERTICALWALL)
             return VERTICALWALLMAP;
@@ -144,7 +144,7 @@ public class Entity {
     public Entity getCollidedBlock(int a){
         switch (a) {
             case 0:
-                if(JOHNNYMAP[this.getX()][this.getY()-1])
+                if(this.getX()==JOHNNY.getX() && this.getY()-1==JOHNNY.getY())
                     return JOHNNY;
                 else if(ZOMBIEMAP[this.getX()][this.getY()-1])
                     return ZOMBIE;
@@ -163,7 +163,7 @@ public class Entity {
                 else if(GOLDMAP[this.getX()][this.getY()-1])
                     return GOLD;
             case 1:
-                if(JOHNNYMAP[this.getX()][this.getY()+1])
+                if(this.getX()==JOHNNY.getX() && this.getY()+1==JOHNNY.getY())
                     return JOHNNY;
                 else if(ZOMBIEMAP[this.getX()][this.getY()+1])
                     return ZOMBIE;
@@ -182,7 +182,7 @@ public class Entity {
                 else if(GOLDMAP[this.getX()][this.getY()+1])
                     return GOLD;
             case 2:
-                if(JOHNNYMAP[this.getX()-1][this.getY()])
+                if(this.getX()-1==JOHNNY.getX() && this.getY()==JOHNNY.getY())
                     return JOHNNY;
                 else if(ZOMBIEMAP[this.getX()-1][this.getY()-1])
                     return ZOMBIE;
@@ -201,7 +201,7 @@ public class Entity {
                 else if(GOLDMAP[this.getX()-1][this.getY()])
                     return GOLD;
             case 3:
-                if(JOHNNYMAP[this.getX()+1][this.getY()])
+                if(this.getX()+1==JOHNNY.getX() && this.getY()==JOHNNY.getY())
                     return JOHNNY;
                 else if(ZOMBIEMAP[this.getX()+1][this.getY()-1])
                     return ZOMBIE;

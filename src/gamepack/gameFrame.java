@@ -9,8 +9,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class gameFrame extends javax.swing.JFrame {
+    String strMAP;
     public gameFrame() {
-        
         initComponents();
     }
 
@@ -40,8 +40,8 @@ public class gameFrame extends javax.swing.JFrame {
         jProgressBar3 = new javax.swing.JProgressBar();
         jProgressBar4 = new javax.swing.JProgressBar();
         jProgressBar5 = new javax.swing.JProgressBar();
-        jLabel26 = new javax.swing.JLabel();
         hpProgressBar1 = new javax.swing.JProgressBar();
+        jProgressBar6 = new javax.swing.JProgressBar();
         gameSettingsPanel = new javax.swing.JPanel();
         jToggleButton1 = new javax.swing.JToggleButton();
         jSlider1 = new javax.swing.JSlider();
@@ -79,24 +79,21 @@ public class gameFrame extends javax.swing.JFrame {
         mazeArea.setEditable(false);
         mazeArea.setColumns(20);
         mazeArea.setRows(5);
+        mazeArea.setText(strMAP);
         jScrollPane1.setViewportView(mazeArea);
 
         javax.swing.GroupLayout mazePanelLayout = new javax.swing.GroupLayout(mazePanel);
         mazePanel.setLayout(mazePanelLayout);
         mazePanelLayout.setHorizontalGroup(
             mazePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mazeLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(mazePanelLayout.createSequentialGroup()
-                .addGap(218, 218, 218)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(354, Short.MAX_VALUE))
+            .addComponent(mazeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 795, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
         );
         mazePanelLayout.setVerticalGroup(
             mazePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mazePanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(86, 86, 86)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(mazeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -132,15 +129,16 @@ public class gameFrame extends javax.swing.JFrame {
         jProgressBar4.setMinimum(2);
         jProgressBar4.setValue(JOHNNY.getVision());
 
-        jProgressBar5.setMaximum(JOHNNY.getTotalLostItemAmount());
+        jProgressBar5.setMaximum(40);
         jProgressBar5.setMinimum(0);
-        jProgressBar5.setValue(JOHNNY.getLostItemAmount());
-
-        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel26.setText(Integer.toString(JOHNNY.getGoldAmount()));
+        jProgressBar5.setValue(JOHNNY.getGoldAmount());
 
         hpProgressBar1.setMaximum(JOHNNY.getTotalHP());
         hpProgressBar1.setValue(JOHNNY.getHP());
+
+        jProgressBar6.setMaximum(JOHNNY.getTotalLostItemAmount());
+        jProgressBar6.setMinimum(0);
+        jProgressBar6.setValue(JOHNNY.getLostItemAmount());
 
         javax.swing.GroupLayout playerStatsPanelLayout = new javax.swing.GroupLayout(playerStatsPanel);
         playerStatsPanel.setLayout(playerStatsPanelLayout);
@@ -149,7 +147,10 @@ public class gameFrame extends javax.swing.JFrame {
             .addGroup(playerStatsPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(playerStatsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, playerStatsPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addGap(114, 114, 114)
+                        .addComponent(jProgressBar6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, playerStatsPanelLayout.createSequentialGroup()
@@ -161,12 +162,11 @@ public class gameFrame extends javax.swing.JFrame {
                         .addGap(132, 132, 132)
                         .addGroup(playerStatsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(hpProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
-                            .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(hpProgressBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jProgressBar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jProgressBar3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jProgressBar4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jProgressBar5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jProgressBar5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(24, 24, 24))
         );
         playerStatsPanelLayout.setVerticalGroup(
@@ -192,14 +192,17 @@ public class gameFrame extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(jProgressBar4, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(playerStatsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel8)
-                    .addComponent(jProgressBar5, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(playerStatsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(playerStatsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(playerStatsPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addGap(18, 18, 18))
+                    .addGroup(playerStatsPanelLayout.createSequentialGroup()
+                        .addComponent(jProgressBar6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(playerStatsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
-                    .addComponent(jLabel26))
-                .addGap(24, 24, 24))
+                    .addComponent(jProgressBar5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12))
         );
 
         gameSettingsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("GAME SETTINGS"));
@@ -388,7 +391,7 @@ public class gameFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
-         if(evt.getKeyCode()==KeyEvent.VK_UP)
+        if(evt.getKeyCode()==KeyEvent.VK_UP)
         if(evt.getKeyCode()==KeyEvent.VK_DOWN)
         if(evt.getKeyCode()==KeyEvent.VK_LEFT)
         if(evt.getKeyCode()==KeyEvent.VK_RIGHT){
@@ -435,9 +438,14 @@ public class gameFrame extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 Game MazerunnerGame = new Game();
-                System.out.println(MazerunnerGame.toString());
-                String strMAP = MazerunnerGame.toString();
-                new gameFrame().setVisible(true);
+                strMAP = MazerunnerGame.toString();
+                
+                gameFrame frame = new gameFrame();
+                frame.setLocationRelativeTo(null);
+                frame.setVisible(true);
+                
+                mazeArea.setText(strMAP);
+                
                 Thread a = new Thread() {
                     public void run() {
                         try {
@@ -498,7 +506,6 @@ public class gameFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -510,6 +517,7 @@ public class gameFrame extends javax.swing.JFrame {
     private javax.swing.JProgressBar jProgressBar3;
     private javax.swing.JProgressBar jProgressBar4;
     private javax.swing.JProgressBar jProgressBar5;
+    private javax.swing.JProgressBar jProgressBar6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSlider jSlider1;
     private javax.swing.JToggleButton jToggleButton1;
