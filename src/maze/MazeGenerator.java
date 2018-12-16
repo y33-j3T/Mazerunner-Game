@@ -1,6 +1,7 @@
 package maze;
 
-import static gamepack.Game.EXITMAP;
+import entities.Item;
+import static gamepack.Game.EXIT;
 import static gamepack.Game.HEIGHT;
 import static gamepack.Game.HORIZONTALWALLMAP;
 import static gamepack.Game.MAPHEIGHT;
@@ -54,6 +55,7 @@ public final class MazeGenerator {
     }
     
     public void assignExitToMAP(){
+        
         Random r = new Random();
         int horizonVerticalDet = r.nextInt(2);
         if(horizonVerticalDet==0){
@@ -63,12 +65,12 @@ public final class MazeGenerator {
                 do{
                     a=r.nextInt(MAPWIDTH);
                 } while (a%2==0);
-                EXITMAP[a][0]=true;
+                EXIT.setPosition(a, 0);
             } else {
                 do{
                     a=r.nextInt(MAPWIDTH);
                 } while (a%2==0);
-                EXITMAP[a][MAPHEIGHT-1]=true;
+                EXIT.setPosition(a, MAPHEIGHT-1);
             }
         } else {
             int leftRightDet = r.nextInt(2);
@@ -77,12 +79,12 @@ public final class MazeGenerator {
                 do{
                     a=r.nextInt(MAPHEIGHT);
                 } while (a%2==0);
-                EXITMAP[0][a]=true;
+                EXIT.setPosition(0, a);
             } else {
                 do{
                     a=r.nextInt(MAPHEIGHT);
                 } while (a%2==0);
-                EXITMAP[MAPWIDTH-1][a]=true;
+                EXIT.setPosition(MAPWIDTH-1, a);
             }
         }
     }

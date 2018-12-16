@@ -1,6 +1,7 @@
 package gamepack;
 
 import entities.*;
+import java.util.ArrayList;
 import maze.MazeGenerator;
 
 import java.util.Random;
@@ -12,21 +13,20 @@ public class Game  {
         
         MAP = new String[MAPWIDTH][MAPHEIGHT];
         
-//        JOHNNYMAP = new boolean[MAPWIDTH][MAPHEIGHT];
-        ZOMBIEMAP = new boolean[MAPWIDTH][MAPHEIGHT];
+        FOGMAP = new boolean[MAPWIDTH][MAPHEIGHT];
         VERTICALWALLMAP = new boolean[MAPWIDTH][MAPHEIGHT];
         HORIZONTALWALLMAP = new boolean[MAPWIDTH][MAPHEIGHT];
         PATHMAP = new boolean[MAPWIDTH][MAPHEIGHT];
-        LOSTITEMMAP = new boolean[MAPWIDTH][MAPHEIGHT];
-        HPREGENMAP = new boolean[MAPWIDTH][MAPHEIGHT];
-        GOLDMAP = new boolean[MAPWIDTH][MAPHEIGHT];
-        BULLETMAP = new boolean[MAPWIDTH][MAPHEIGHT];
-        EXITMAP = new boolean[MAPWIDTH][MAPHEIGHT];
-    
-        FOGMAP = new boolean[MAPWIDTH][MAPHEIGHT];
         
-        MazeGenerator MAZE = new MazeGenerator();                               
-        initializeEntity();                                                     
+        LOSTITEMMAP = new ArrayList<>();
+        HPREGENMAP = new ArrayList<>();
+        GOLDMAP = new ArrayList<>();
+        BULLETMAP = new ArrayList<>();
+        ZOMBIEMAP = new ArrayList<>();
+        
+        
+        MazeGenerator MAZE = new MazeGenerator();     
+        initializeEntity();  
         refresh();
     }
     
@@ -38,31 +38,28 @@ public class Game  {
     public static String[][] MAP = new String[MAPWIDTH][MAPHEIGHT];
     
     public static Player JOHNNY = new Player();
-    public static Mob ZOMBIE = new Mob(" Z ");
-    public static Item VERTICALWALL = new Item(" | ");
-    public static Item HORIZONTALWALL = new Item("---");
-    public static Item PATH = new Item("   ");
-    public static Item LOSTITEM = new Item(" @ ");
-    public static Item HPREGEN = new Item(" + ");  
-    public static Item GOLD = new Item(" $ ");
-    public static Item BULLET = new Item(" * ");
-    public static Item FOG = new Item(" # ");
-    public static Item EXIT = new Item(" E ");
+    public static Item EXIT = new Item (" E ", 0, 0);
+    public static Item HORIZONTALWALL = new Item("---", 0, 0);
+    public static Item VERTICALWALL = new Item(" | ", 0, 0);
+    public static Item PATH = new Item("   ", 0, 0);
+    public static Item BULLET = new Item(" * ", 0, 0);
+    public static Item HPREGEN = new Item (" + ", 0, 0);
+    public static Item LOSTITEM = new Item(" @ ", 0, 0);
+    public static Item GOLD = new Item(" $ ", 0, 0);
+    public static Item FOG = new Item(" # ", 0, 0);
+    public static Mob ZOMBIE = new Mob(" Z ", 0, 0);
     
-//    public static boolean[][] JOHNNYMAP;
-    public static boolean[][] ZOMBIEMAP;
+    public static boolean[][] FOGMAP;
     public static boolean[][] VERTICALWALLMAP;
     public static boolean[][] HORIZONTALWALLMAP;
-    public static boolean[][] BULLETMAP;
     public static boolean[][] PATHMAP;
-    public static boolean[][] LOSTITEMMAP;
-    public static boolean[][] HPREGENMAP;
-    public static boolean[][] GOLDMAP;
-    public static boolean[][] EXITMAP;
-    public static boolean[][] FOGMAP;
+
+    public static ArrayList<Item> HPREGENMAP;
+    public static ArrayList<Item> LOSTITEMMAP;
+    public static ArrayList<Item> GOLDMAP;
+    public static ArrayList<Bullet> BULLETMAP;
+    public static ArrayList<Mob> ZOMBIEMAP;
     
-    
-        
     public void refresh(){
         refreshFOGMAP();
         refreshMAP();
@@ -70,7 +67,7 @@ public class Game  {
     public void refreshFOGMAP(){
         for(int i=0 ; i<MAPHEIGHT ; i++){
             for(int j=0 ; j<MAPWIDTH ; j++){
-                FOGMAP[j][i]=true;
+                FOGMAP[j][i]=false;
             }
         }
         FOGMAP[JOHNNY.getX()][JOHNNY.getY()]=false;
@@ -99,75 +96,176 @@ public class Game  {
         for(int i=0 ; i<MAPHEIGHT ; i++){
             for(int j=0 ; j<MAPWIDTH ; j++){
                 if(FOGMAP[j][i]==true)
-                    MAP[j][i]=FOG.getIcon();
-                else if(EXITMAP[j][i])
-                        MAP[j][i]=EXIT.getIcon();
-                else if(VERTICALWALLMAP[j][i])
-                        MAP[j][i]=VERTICALWALL.getIcon();
-                else if(HORIZONTALWALLMAP[j][i])
-                    MAP[j][i]=HORIZONTALWALL.getIcon();
-                else if(EXITMAP[j][i])
+                    MAP[j][i]=" # ";
+                else if(EXIT.getX()==j && EXIT.getY()==i)
                     MAP[j][i]=EXIT.getIcon();
+                else if(VERTICALWALLMAP[j][i])
+                    MAP[j][i]=" | ";
+                else if(HORIZONTALWALLMAP[j][i])
+                    MAP[j][i]="---";
                 else if(PATHMAP[j][i]){
-                    if(JOHNNY.getX()==j && JOHNNY.getY()==i)                                         //JOHNNYMAP 
-                        MAP[j][i]=JOHNNY.getIcon();                          //                  NO                    
-                    else if(ZOMBIEMAP[j][i])                                    //ZOMBIEMAP
-                        MAP[j][i]=ZOMBIE.getIcon();                          //                  OVERLAPPING
-                    else if(BULLETMAP[j][i])                                    //BULLETMAP
-                        MAP[j][i]=BULLET.getIcon();                          //
-                    else if(LOSTITEMMAP[j][i])
-                        MAP[j][i]=LOSTITEM.getIcon();
-                    else if(HPREGENMAP[j][i])
-                        MAP[j][i]=HPREGEN.getIcon();
-                    else if(GOLDMAP[j][i])
-                        MAP[j][i]=GOLD.getIcon();
-                    else
-                        MAP[j][i]=PATH.getIcon();
+                    if(JOHNNY.getX()==j && JOHNNY.getY()==i)                                         
+                        MAP[j][i]=JOHNNY.getIcon();
+                    else {
+                        // must be arranged from Icon to be put at layers from back to front
+                        MAP[j][i]="   ";
+                        
+                        for(int k=0 ; k<LOSTITEMMAP.size() ; k++){
+                            if(LOSTITEMMAP.get(k).getX()==j && LOSTITEMMAP.get(k).getY()==i)                                   
+                                MAP[j][i]=LOSTITEMMAP.get(k).getIcon(); 
+                        }
+                        for(int k=0 ; k<HPREGENMAP.size() ; k++){
+                            if(HPREGENMAP.get(k).getX()==j && HPREGENMAP.get(k).getY()==i)                                   
+                                MAP[j][i]=HPREGENMAP.get(k).getIcon(); 
+                        }
+                        for(int k=0 ; k<GOLDMAP.size() ; k++){
+                            if(GOLDMAP.get(k).getX()==j && GOLDMAP.get(k).getY()==i)                                   
+                                MAP[j][i]=GOLDMAP.get(k).getIcon(); 
+                        }
+                        for(int k=0 ; k<BULLETMAP.size() ; k++){
+                            if(BULLETMAP.get(k).getX()==j && BULLETMAP.get(k).getY()==i)                                   
+                                MAP[j][i]=BULLETMAP.get(k).getIcon(); 
+                        }
+                        for(int k=0 ; k<ZOMBIEMAP.size() ; k++){
+                            if(ZOMBIEMAP.get(k).getX()==j && ZOMBIEMAP.get(k).getY()==i)                                   
+                                MAP[j][i]=ZOMBIEMAP.get(k).getIcon(); 
+                        }
+                    }
                 }
             }
         }
     }
         
-    public void initializeEntity(){
-        randomAllocateEntity(JOHNNY);
-        for(int i=0 ; i<MAPWIDTH*MAPHEIGHT/30 ; i++){
-            randomAllocateEntity(ZOMBIE);
-            randomAllocateEntity(HPREGEN);
-        }
-        for(int i=0 ; i<MAPWIDTH*MAPHEIGHT/60 ; i++){
-            randomAllocateEntity(LOSTITEM);
-        }
-        for(int i=0 ; i<MAPWIDTH*MAPHEIGHT/20 ; i++){
-            randomAllocateEntity(GOLD);
-        }
-    }
     public static void randomAllocateEntity(Entity entity){
         Random r = new Random();
         int a, b;
-        do{
-            a = r.nextInt(MAPWIDTH-1)+1;
-            b = r.nextInt(MAPHEIGHT-1)+1;
-        } while (!PATHMAP[a][b] || JOHNNY.getX()==a && JOHNNY.getY()==b || ZOMBIEMAP[a][b] || LOSTITEMMAP[a][b] || HPREGENMAP[a][b] || GOLDMAP[a][b]);
-        entity.setPosition(a, b);
+        boolean canAllocate = true;
         
-        if(entity == JOHNNY){
-            JOHNNY.setPosition(a, b);
-            JOHNNY.setSpawn(a, b);
+        do{
+            do{
+                a = r.nextInt(MAPWIDTH-1)+1;
+                b = r.nextInt(MAPHEIGHT-1)+1;
+            } while (!PATHMAP[a][b]);
+
+            if(a==JOHNNY.getX() && b==JOHNNY.getY()){
+                canAllocate = false;
+            } else {
+                if(canAllocate){
+                    for(int i=0 ; i<ZOMBIEMAP.size() ; i++){
+                        if(a==ZOMBIEMAP.get(i).getX() && b==ZOMBIEMAP.get(i).getY()){
+                            canAllocate = false;
+                            break;
+                        }
+                    }
+                }
+                if(canAllocate){
+                    for(int i=0 ; i<HPREGENMAP.size() ; i++){
+                        if(a==HPREGENMAP.get(i).getX() && b==HPREGENMAP.get(i).getY()){
+                            canAllocate = false;
+                            break;
+                        }
+                    }
+                }
+                if(canAllocate){
+                    for(int i=0 ; i<LOSTITEMMAP.size() ; i++){
+                        if(a==LOSTITEMMAP.get(i).getX() && b==LOSTITEMMAP.get(i).getY()){
+                            canAllocate = false;
+                            break;
+                        }
+                    }
+                }
+                if(canAllocate){
+                    for(int i=0 ; i<GOLDMAP.size() ; i++){
+                        if(a==GOLDMAP.get(i).getX() && b==GOLDMAP.get(i).getY()){
+                            canAllocate = false;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if(canAllocate){
+                if(entity == ZOMBIE){
+                    Mob zombie = new Mob(" Z ", a, b);
+                    ZOMBIEMAP.add(zombie);
+                }
+                else if(entity == HPREGEN){
+                    Item hpregen = new Item(" + ", a, b);
+                    HPREGENMAP.add(hpregen);
+                }
+                else if(entity == LOSTITEM){
+                    Item lostitem = new Item(" @ ", a, b);
+                    LOSTITEMMAP.add(lostitem);
+                }
+                else if(entity == GOLD){
+                    Item gold = new Item(" $ ", a, b);
+                    GOLDMAP.add(gold);
+                }
+            }
+        } while (canAllocate==false);
+    }
+    
+    public static void initializeEntity() {
+        Random r = new Random();
+        int a, b, totalEntity, mapArea;
+        ArrayList<Entity> posAdded = new ArrayList<>();
+        
+        mapArea = MAPWIDTH*MAPHEIGHT;
+        totalEntity = (mapArea*2)/15+1;
+        
+        while(posAdded.size() < totalEntity){
+            boolean canAdd = true;
+            // check if it's a PATH
+            do{
+                a = r.nextInt(MAPWIDTH-1)+1;
+                b = r.nextInt(MAPHEIGHT-1)+1;
+            } while (!PATHMAP[a][b]);
+            
+            // check if other ENTITY exists on PATH
+            for(int i=0 ; i<posAdded.size() ; i++){
+                if(posAdded.get(i).getX()==a && posAdded.get(i).getY()==b){
+                    break;
+                } 
+            }
+            
+            if(canAdd){
+                Entity toAdd = new Entity();
+                toAdd.setPosition(a, b);
+                posAdded.add(toAdd);
+            } 
+            
+            System.out.println(posAdded.size());
         }
-        else if(entity == ZOMBIE){
-            ZOMBIEMAP[a][b]=true;
+        
+        JOHNNY.setPosition(posAdded.get(0).getX(), posAdded.get(0).getY());
+        JOHNNY.setSpawn(posAdded.get(0).getX(), posAdded.get(0).getY());
+        
+        for(int i=1 ; i<=mapArea/30 ; i++){
+            Mob zombie = new Mob(" Z ", 0, 0);
+            zombie.setPosition(posAdded.get(i).getX(), posAdded.get(i).getY());
+            ZOMBIEMAP.add(zombie);
         }
-        else if(entity == LOSTITEM){
-            LOSTITEMMAP[a][b]=true;
+        
+        for(int i=mapArea/30+1 ; i<=mapArea/15 ; i++){
+            Item hpregen = new Item(" + ", 0, 0);
+            hpregen.setPosition(posAdded.get(i).getX(), posAdded.get(i).getY());
+            HPREGENMAP.add((Item) hpregen);
+        }
+        
+        for(int i=mapArea/15+1 ; i<=mapArea/12 ; i++){
+            Item lostitem = new Item(" @ ", 0, 0);
+            lostitem.setPosition(posAdded.get(i).getX(), posAdded.get(i).getY());
+            LOSTITEMMAP.add((Item) HPREGEN);
             JOHNNY.setLOSTITEM_totalAmount(JOHNNY.getLostItemAmount()+1);
         }
-        else if(entity == HPREGEN){
-            HPREGENMAP[a][b]=true;
-        }
-        else if(entity == GOLD){
-            GOLDMAP[a][b]=true;
+        
+        for(int i=mapArea/12+1 ; i<=mapArea*2/15 ; i++){
+            Item gold = new Item(" $ ", 0, 0);
+            gold.setPosition(posAdded.get(i).getX(), posAdded.get(i).getY());
+            GOLDMAP.add((Item) gold);
         }
     }    
+    
     
     public String toString(){
         String strMAP = "";

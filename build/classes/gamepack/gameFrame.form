@@ -67,23 +67,20 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="mazeLabel" pref="795" max="32767" attributes="0"/>
-              <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" pref="700" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <Component id="jScrollPane1" min="-2" pref="146" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="mazeLabel" min="-2" pref="262" max="-2" attributes="0"/>
-              </Group>
+              <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="mazeLabel">
-        </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
           <AuxValues>
             <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -96,9 +93,6 @@
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="rows" type="int" value="5"/>
-                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="strMAP" type="code"/>
-                </Property>
               </Properties>
             </Component>
           </SubComponents>
@@ -117,33 +111,26 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="114" max="-2" attributes="0"/>
-                          <Component id="jProgressBar6" max="32767" attributes="0"/>
-                      </Group>
-                      <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="hpProgressBar1" pref="158" max="32767" attributes="0"/>
-                              <Component id="hpProgressBar" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jProgressBar2" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jProgressBar3" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jProgressBar4" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jProgressBar5" alignment="1" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="jLabel8" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jLabel6" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jLabel7" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jLabel5" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jLabel4" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jLabel3" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jLabel9" alignment="0" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jProgressBar5" max="32767" attributes="0"/>
+                      <Component id="jProgressBar6" alignment="1" max="32767" attributes="0"/>
+                      <Component id="hpProgressBar1" alignment="0" pref="158" max="32767" attributes="0"/>
+                      <Component id="hpProgressBar" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jProgressBar2" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jProgressBar3" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jProgressBar4" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
               </Group>
@@ -178,20 +165,15 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="jProgressBar6" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                      <Component id="jProgressBar6" min="-2" pref="28" max="-2" attributes="0"/>
                   </Group>
+                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel9" min="-2" pref="22" max="-2" attributes="0"/>
                       <Component id="jProgressBar5" min="-2" pref="28" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                  <EmptySpace pref="28" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -254,7 +236,7 @@
               <Connection code="5" type="code"/>
             </Property>
             <Property name="value" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="JOHNNY.getAttackDamage()/10" type="code"/>
+              <Connection code="JOHNNY.getATTACKDAMAGE()/10" type="code"/>
             </Property>
           </Properties>
         </Component>
@@ -267,7 +249,7 @@
               <Connection code="2" type="code"/>
             </Property>
             <Property name="value" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="JOHNNY.getArmor()" type="code"/>
+              <Connection code="JOHNNY.getARMOR()" type="code"/>
             </Property>
           </Properties>
         </Component>
@@ -280,7 +262,7 @@
               <Connection code="2" type="code"/>
             </Property>
             <Property name="value" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="JOHNNY.getVision()" type="code"/>
+              <Connection code="JOHNNY.getVISION()" type="code"/>
             </Property>
           </Properties>
         </Component>
@@ -300,7 +282,7 @@
         <Component class="javax.swing.JProgressBar" name="hpProgressBar1">
           <Properties>
             <Property name="maximum" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="JOHNNY.getTotalHP()" type="code"/>
+              <Connection code="JOHNNY.getTOTALHP()" type="code"/>
             </Property>
             <Property name="value" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="JOHNNY.getHP()" type="code"/>
@@ -350,7 +332,7 @@
                       <Component id="jToggleButton1" min="-2" max="-2" attributes="0"/>
                       <Component id="jSlider1" min="-2" pref="32" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="27" max="32767" attributes="0"/>
+                  <EmptySpace pref="30" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -532,7 +514,7 @@
                       <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel25" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="24" max="32767" attributes="0"/>
+                  <EmptySpace pref="28" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

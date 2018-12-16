@@ -5,6 +5,8 @@
  */
 package gamepack;
 
+import static gamepack.Game.JOHNNY;
+
 /**
  *
  * @author Yee Jet Tan
@@ -14,8 +16,8 @@ public class upgradeDialog extends javax.swing.JDialog {
     /**
      * Creates new form upgradeDialog
      */
-    public upgradeDialog(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public upgradeDialog() {
+        super();
         initComponents();
     }
 
@@ -29,10 +31,10 @@ public class upgradeDialog extends javax.swing.JDialog {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        armorUpgrade = new javax.swing.JButton();
+        totalHPUpgrade = new javax.swing.JButton();
+        visionUpgrade = new javax.swing.JButton();
+        attackDamageUpgrade = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -41,29 +43,35 @@ public class upgradeDialog extends javax.swing.JDialog {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("UPGRADES");
 
-        jButton2.setText("Armor + 1");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        armorUpgrade.setText("Armor + 1");
+        armorUpgrade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                armorUpgradeActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Total HP + 20");
-
-        jButton4.setText("Vision + 1");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        totalHPUpgrade.setText("Total HP + 20");
+        totalHPUpgrade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                totalHPUpgradeActionPerformed(evt);
             }
         });
 
-        jButton5.setText("Attack Damage + 1");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        visionUpgrade.setText("Vision + 1");
+        visionUpgrade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                visionUpgradeActionPerformed(evt);
             }
         });
 
+        attackDamageUpgrade.setText("Attack Damage + 1");
+        attackDamageUpgrade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                attackDamageUpgradeActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("You've reached 40 Gold!");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -74,15 +82,12 @@ public class upgradeDialog extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(156, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE))
+                    .addComponent(totalHPUpgrade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(armorUpgrade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(visionUpgrade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(attackDamageUpgrade, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(156, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -91,30 +96,43 @@ public class upgradeDialog extends javax.swing.JDialog {
                 .addGap(3, 3, 3)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
+                .addComponent(totalHPUpgrade)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
+                .addComponent(armorUpgrade)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4)
+                .addComponent(visionUpgrade)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton5)
+                .addComponent(attackDamageUpgrade)
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void armorUpgradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_armorUpgradeActionPerformed
+        JOHNNY.setARMOR(JOHNNY.getARMOR()+1);
+        JOHNNY.setGOLD_amount(0);
+        dispose();
+    }//GEN-LAST:event_armorUpgradeActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void visionUpgradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visionUpgradeActionPerformed
+        JOHNNY.setVISION(JOHNNY.getVISION()+1);
+        JOHNNY.setGOLD_amount(0);
+        dispose();
+    }//GEN-LAST:event_visionUpgradeActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    private void attackDamageUpgradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_attackDamageUpgradeActionPerformed
+        JOHNNY.setATTACKDAMAGE(JOHNNY.getATTACKDAMAGE()+1);
+        JOHNNY.setGOLD_amount(0);
+        dispose();
+    }//GEN-LAST:event_attackDamageUpgradeActionPerformed
+
+    private void totalHPUpgradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalHPUpgradeActionPerformed
+        JOHNNY.setTOTALHP(JOHNNY.getTOTALHP()+20);
+        JOHNNY.setHP(JOHNNY.getHP()+20);
+        JOHNNY.setGOLD_amount(0);
+        dispose();
+    }//GEN-LAST:event_totalHPUpgradeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -146,7 +164,7 @@ public class upgradeDialog extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                upgradeDialog dialog = new upgradeDialog(new javax.swing.JFrame(), true);
+                upgradeDialog dialog = new upgradeDialog();
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -159,11 +177,11 @@ public class upgradeDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton armorUpgrade;
+    private javax.swing.JButton attackDamageUpgrade;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton totalHPUpgrade;
+    private javax.swing.JButton visionUpgrade;
     // End of variables declaration//GEN-END:variables
 }
