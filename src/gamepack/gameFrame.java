@@ -50,8 +50,6 @@ public class gameFrame extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        testing123 = new javax.swing.JTextArea();
         playerControlsPanel = new javax.swing.JPanel();
         label5 = new java.awt.Label();
         jLabel16 = new javax.swing.JLabel();
@@ -66,7 +64,6 @@ public class gameFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setFocusable(true);
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 formKeyPressed(evt);
@@ -80,6 +77,13 @@ public class gameFrame extends javax.swing.JFrame {
         mazeArea.setRows(MAPHEIGHT);
         mazeArea.setText("");
         mazeArea.setToolTipText("");
+        mazeArea.setPreferredSize(new java.awt.Dimension(41, 41));
+        mazeArea.setSelectedTextColor(new java.awt.Color(0, 0, 0));
+        mazeArea.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                mazeAreaKeyPressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(mazeArea);
 
         javax.swing.GroupLayout mazePanelLayout = new javax.swing.GroupLayout(mazePanel);
@@ -240,10 +244,6 @@ public class gameFrame extends javax.swing.JFrame {
 
         jLabel15.setText(" E - EXIT");
 
-        testing123.setColumns(20);
-        testing123.setRows(5);
-        jScrollPane2.setViewportView(testing123);
-
         javax.swing.GroupLayout entitiesPanelLayout = new javax.swing.GroupLayout(entitiesPanel);
         entitiesPanel.setLayout(entitiesPanelLayout);
         entitiesPanelLayout.setHorizontalGroup(
@@ -262,10 +262,6 @@ public class gameFrame extends javax.swing.JFrame {
                     .addComponent(jLabel12)
                     .addComponent(jLabel15))
                 .addContainerGap(102, Short.MAX_VALUE))
-            .addGroup(entitiesPanelLayout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         entitiesPanelLayout.setVerticalGroup(
             entitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -285,9 +281,7 @@ public class gameFrame extends javax.swing.JFrame {
                 .addGroup(entitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(jLabel15))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(125, Short.MAX_VALUE))
         );
 
         playerControlsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("PLAYER CONTROLS"));
@@ -395,6 +389,7 @@ public class gameFrame extends javax.swing.JFrame {
         boolean exist = false;
         switch (evt.getKeyCode()) {
             case KeyEvent.VK_UP:
+                System.out.println("up");
                 for(int i=0 ; i<BULLETMAP.size() ; i++){
                     if(BULLETMAP.get(i).getX()==JOHNNY.getX() && BULLETMAP.get(i).getY()==JOHNNY.getY()-1 && BULLETMAP.get(i).getDir()==0){
                         exist = true;
@@ -453,9 +448,23 @@ public class gameFrame extends javax.swing.JFrame {
             case KeyEvent.VK_A:
             case KeyEvent.VK_D:
                 JOHNNY.executeCollisionAction(evt);
-                break;     
+                break;   
+            case KeyEvent.VK_P:
+            {
+                pauseDialog pause = new pauseDialog();
+                pause.start();
+            try {
+                this.wait();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(gameFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            }
         }
     }//GEN-LAST:event_formKeyPressed
+
+    private void mazeAreaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_mazeAreaKeyPressed
+        formKeyPressed(evt);
+    }//GEN-LAST:event_mazeAreaKeyPressed
 
     public void start() {
         /* Set the Nimbus look and feel */
@@ -488,7 +497,9 @@ public class gameFrame extends javax.swing.JFrame {
             public void run() {
                 Game MazerunnerGame = new Game();
                 strMAP = MazerunnerGame.toString();
-                mazeArea.setText(strMAP);
+                mazeArea.setRows(MAPHEIGHT);
+                mazeArea.setColumns(MAPHEIGHT);
+                mazeArea.append(strMAP);
                 
                 gameFrame frame = new gameFrame();
                 frame.setLocationRelativeTo(null);
@@ -497,15 +508,11 @@ public class gameFrame extends javax.swing.JFrame {
                 Thread a = new Thread(){
                     @Override
                     public void run() {
-//                            mazeArea.append(MazerunnerGame.toString());
-//                            testing123.setText("abc");
-                            int t = 0;
                         while (true) {
-                            
                             MazerunnerGame.refresh();
                             mazeArea.setText(MazerunnerGame.toString());
-                            
                             System.out.println(mazeArea.getText());
+                            
                             if(JOHNNY.getGoldAmount()==40){
                                 upgradeDialog dialog = new upgradeDialog();
                                 dialog.setLocationRelativeTo(null);
@@ -513,15 +520,13 @@ public class gameFrame extends javax.swing.JFrame {
                             }
                             
                             synchronized( this ){
-
-                            try {
-                                this.wait(1000);
-                                //sleep(3000);
-                            } catch (InterruptedException ex) {
-                                Logger.getLogger(gameFrame.class.getName()).log(Level.SEVERE, null, ex);
+                                try {
+                                    this.wait(10);
+                                    //sleep(3000);
+                                } catch (InterruptedException ex) {
+                                    Logger.getLogger(gameFrame.class.getName()).log(Level.SEVERE, null, ex);
+                                }
                             }
-                            }
-                            
                         }
                     }
                 };
@@ -571,7 +576,6 @@ public class gameFrame extends javax.swing.JFrame {
     private javax.swing.JProgressBar jProgressBar5;
     private javax.swing.JProgressBar jProgressBar6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSlider jSlider1;
     private javax.swing.JToggleButton jToggleButton1;
     private java.awt.Label label5;
@@ -579,6 +583,5 @@ public class gameFrame extends javax.swing.JFrame {
     private javax.swing.JPanel mazePanel;
     private javax.swing.JPanel playerControlsPanel;
     private javax.swing.JPanel playerStatsPanel;
-    private javax.swing.JTextArea testing123;
     // End of variables declaration//GEN-END:variables
 }

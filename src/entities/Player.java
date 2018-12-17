@@ -156,7 +156,7 @@ public class Player extends Entity{
 }
     
     public void executeCollisionAction(KeyEvent input){
-        System.out.println("check col " + this.getCollidedBlock(input).ICON);
+        System.out.println("check col " + this.getCollidedBlock(input).getIcon());
         if(this.getCollidedBlock(input)==ZOMBIE){
             this.setHP(this.getHP()-ZOMBIE.getATTACKDAMAGE()+this.getARMOR());
             if(this.getHP()<=0){

@@ -232,9 +232,7 @@ public class Game  {
                 Entity toAdd = new Entity();
                 toAdd.setPosition(a, b);
                 posAdded.add(toAdd);
-            } 
-            
-            System.out.println(posAdded.size());
+            }            
         }
         
         JOHNNY.setPosition(posAdded.get(0).getX(), posAdded.get(0).getY());

@@ -19,7 +19,6 @@ import static gamepack.Game.VERTICALWALL;
 import static gamepack.Game.VERTICALWALLMAP;
 import static gamepack.Game.ZOMBIE;
 import static gamepack.Game.ZOMBIEMAP;
-import static java.lang.Thread.sleep;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
