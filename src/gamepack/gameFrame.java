@@ -4,6 +4,8 @@ import entities.Bullet;
 import entities.Mob;
 import static gamepack.Game.BULLETMAP;
 import static gamepack.Game.JOHNNY;
+import static gamepack.Game.MAPHEIGHT;
+import static gamepack.Game.MAPWIDTH;
 import java.awt.event.KeyEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -48,6 +50,8 @@ public class gameFrame extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        testing123 = new javax.swing.JTextArea();
         playerControlsPanel = new javax.swing.JPanel();
         label5 = new java.awt.Label();
         jLabel16 = new javax.swing.JLabel();
@@ -58,10 +62,11 @@ public class gameFrame extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setFocusable(true);
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 formKeyPressed(evt);
@@ -71,8 +76,10 @@ public class gameFrame extends javax.swing.JFrame {
         mazePanel.setBorder(javax.swing.BorderFactory.createTitledBorder("GG MAZE"));
 
         mazeArea.setEditable(false);
-        mazeArea.setColumns(20);
-        mazeArea.setRows(5);
+        mazeArea.setColumns(MAPWIDTH);
+        mazeArea.setRows(MAPHEIGHT);
+        mazeArea.setText("");
+        mazeArea.setToolTipText("");
         jScrollPane1.setViewportView(mazeArea);
 
         javax.swing.GroupLayout mazePanelLayout = new javax.swing.GroupLayout(mazePanel);
@@ -187,7 +194,7 @@ public class gameFrame extends javax.swing.JFrame {
                 .addGroup(playerStatsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jProgressBar5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         gameSettingsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("GAME SETTINGS"));
@@ -212,7 +219,7 @@ public class gameFrame extends javax.swing.JFrame {
                 .addGroup(gameSettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jToggleButton1)
                     .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         entitiesPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("ENTITIES"));
@@ -233,6 +240,10 @@ public class gameFrame extends javax.swing.JFrame {
 
         jLabel15.setText(" E - EXIT");
 
+        testing123.setColumns(20);
+        testing123.setRows(5);
+        jScrollPane2.setViewportView(testing123);
+
         javax.swing.GroupLayout entitiesPanelLayout = new javax.swing.GroupLayout(entitiesPanel);
         entitiesPanel.setLayout(entitiesPanelLayout);
         entitiesPanelLayout.setHorizontalGroup(
@@ -244,12 +255,16 @@ public class gameFrame extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
                     .addComponent(jLabel11))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
                 .addGroup(entitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel14)
                     .addComponent(jLabel13)
                     .addComponent(jLabel12)
                     .addComponent(jLabel15))
+                .addContainerGap(102, Short.MAX_VALUE))
+            .addGroup(entitiesPanelLayout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         entitiesPanelLayout.setVerticalGroup(
@@ -270,7 +285,9 @@ public class gameFrame extends javax.swing.JFrame {
                 .addGroup(entitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(jLabel15))
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         playerControlsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("PLAYER CONTROLS"));
@@ -291,8 +308,6 @@ public class gameFrame extends javax.swing.JFrame {
 
         jLabel23.setText("RIGHT ARROW - SHOOT RIGHT");
 
-        jLabel24.setText("R - UPGRADES");
-
         jLabel25.setText("P - PAUSE");
 
         javax.swing.GroupLayout playerControlsPanelLayout = new javax.swing.GroupLayout(playerControlsPanel);
@@ -303,21 +318,24 @@ public class gameFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(playerControlsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(playerControlsPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel16)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(label5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel17)
-                    .addComponent(jLabel18)
-                    .addComponent(jLabel19)
-                    .addComponent(jLabel24))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(playerControlsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel20)
-                    .addComponent(jLabel21)
-                    .addComponent(jLabel22)
-                    .addComponent(jLabel23)
-                    .addComponent(jLabel25))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(playerControlsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(playerControlsPanelLayout.createSequentialGroup()
+                                .addComponent(jLabel16)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(label5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel17)
+                            .addComponent(jLabel18)
+                            .addComponent(jLabel19))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                        .addGroup(playerControlsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel20)
+                            .addComponent(jLabel21)
+                            .addComponent(jLabel22)
+                            .addComponent(jLabel23))
+                        .addContainerGap(43, Short.MAX_VALUE))
+                    .addGroup(playerControlsPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel25)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         playerControlsPanelLayout.setVerticalGroup(
             playerControlsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -339,10 +357,8 @@ public class gameFrame extends javax.swing.JFrame {
                     .addComponent(jLabel19)
                     .addComponent(jLabel23))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(playerControlsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel24)
-                    .addComponent(jLabel25))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addComponent(jLabel25)
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -481,10 +497,14 @@ public class gameFrame extends javax.swing.JFrame {
                 Thread a = new Thread(){
                     @Override
                     public void run() {
+//                            mazeArea.append(MazerunnerGame.toString());
+//                            testing123.setText("abc");
+                            int t = 0;
                         while (true) {
                             
                             MazerunnerGame.refresh();
                             mazeArea.setText(MazerunnerGame.toString());
+                            
                             System.out.println(mazeArea.getText());
                             if(JOHNNY.getGoldAmount()==40){
                                 upgradeDialog dialog = new upgradeDialog();
@@ -492,11 +512,16 @@ public class gameFrame extends javax.swing.JFrame {
                                 dialog.setVisible(true);
                             }
                             
+                            synchronized( this ){
+
                             try {
-                                sleep(1000);
+                                this.wait(1000);
+                                //sleep(3000);
                             } catch (InterruptedException ex) {
                                 Logger.getLogger(gameFrame.class.getName()).log(Level.SEVERE, null, ex);
                             }
+                            }
+                            
                         }
                     }
                 };
@@ -509,11 +534,6 @@ public class gameFrame extends javax.swing.JFrame {
                 bulletThread.start();
             }
         });
-    }
-    public void updateDisplay(Game maze){
-        maze.refresh();
-        System.out.println("setting test");
-        mazeArea.setText(maze.toString());
     }
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -537,7 +557,6 @@ public class gameFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -552,6 +571,7 @@ public class gameFrame extends javax.swing.JFrame {
     private javax.swing.JProgressBar jProgressBar5;
     private javax.swing.JProgressBar jProgressBar6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSlider jSlider1;
     private javax.swing.JToggleButton jToggleButton1;
     private java.awt.Label label5;
@@ -559,5 +579,6 @@ public class gameFrame extends javax.swing.JFrame {
     private javax.swing.JPanel mazePanel;
     private javax.swing.JPanel playerControlsPanel;
     private javax.swing.JPanel playerStatsPanel;
+    private javax.swing.JTextArea testing123;
     // End of variables declaration//GEN-END:variables
 }

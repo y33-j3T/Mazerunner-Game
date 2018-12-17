@@ -75,7 +75,10 @@ public class Bullet extends Item implements Runnable{
                         BULLETMAP.get(i).move(dir);
                     }
                 }
-                sleep(200);
+                synchronized( this ){
+                    this.wait(200);
+                    //sleep(200);
+                }
             } catch (InterruptedException ex) {
                 Logger.getLogger(Bullet.class.getName()).log(Level.SEVERE, null, ex);
             }

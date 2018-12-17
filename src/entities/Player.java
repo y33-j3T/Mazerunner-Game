@@ -155,7 +155,8 @@ public class Player extends Entity{
     return visionRange;    
 }
     
-    public void executeCollisionAction(KeyEvent input){                          
+    public void executeCollisionAction(KeyEvent input){
+        System.out.println("check col " + this.getCollidedBlock(input).ICON);
         if(this.getCollidedBlock(input)==ZOMBIE){
             this.setHP(this.getHP()-ZOMBIE.getATTACKDAMAGE()+this.getARMOR());
             if(this.getHP()<=0){
@@ -206,11 +207,11 @@ public class Player extends Entity{
                     GOLDMAP.remove(i);
             }
         }
-        else if(this.getCollidedBlock(input)==PATH || this.getCollidedBlock(input)==BULLET){
+        else if(this.getCollidedBlock(input)==VERTICALWALL || this.getCollidedBlock(input)==HORIZONTALWALL){
+            // do nothing
+        } else {
             this.move(input);
         }
-        // else VERTICALWALL & HORIZONTALWALL left
-        // so do nothing
     }
     public Entity getCollidedBlock(KeyEvent input){
         switch (input.getKeyCode()) {
@@ -225,6 +226,10 @@ public class Player extends Entity{
                     if(this.getX()==ZOMBIEMAP.get(i).getX() && this.getY()-1==ZOMBIEMAP.get(i).getY()){
                         return ZOMBIE;
                     }
+                }
+                for(int i=0 ; i<BULLETMAP.size() ; i++){
+                    if(this.getX()==BULLETMAP.get(i).getX() && this.getY()-1==BULLETMAP.get(i).getY())                                   
+                        return BULLET;
                 }
                 for(int i=0 ; i<LOSTITEMMAP.size() ; i++){
                     if(this.getX()==LOSTITEMMAP.get(i).getX() && this.getY()-1==LOSTITEMMAP.get(i).getY()){
@@ -241,10 +246,7 @@ public class Player extends Entity{
                         return GOLD;
                     }
                 }
-                for(int i=0 ; i<BULLETMAP.size() ; i++){
-                    if(this.getX()==BULLETMAP.get(i).getX() && this.getY()-1==BULLETMAP.get(i).getY())                                   
-                        return BULLET;
-                }
+                
             case KeyEvent.VK_S:
                 if(VERTICALWALLMAP[this.getX()][this.getY()+1])
                     return VERTICALWALL;
@@ -256,6 +258,10 @@ public class Player extends Entity{
                     if(this.getX()==ZOMBIEMAP.get(i).getX() && this.getY()+1==ZOMBIEMAP.get(i).getY()){
                         return ZOMBIE;
                     }
+                }
+                for(int i=0 ; i<BULLETMAP.size() ; i++){
+                    if(this.getX()==BULLETMAP.get(i).getX() && this.getY()+1==BULLETMAP.get(i).getY())                                   
+                        return BULLET;
                 }
                 for(int i=0 ; i<LOSTITEMMAP.size() ; i++){
                     if(this.getX()==LOSTITEMMAP.get(i).getX() && this.getY()+1==LOSTITEMMAP.get(i).getY()){
@@ -272,10 +278,7 @@ public class Player extends Entity{
                         return GOLD;
                     }
                 }
-                for(int i=0 ; i<BULLETMAP.size() ; i++){
-                    if(this.getX()==BULLETMAP.get(i).getX() && this.getY()+1==BULLETMAP.get(i).getY())                                   
-                        return BULLET;
-                }
+                
             case KeyEvent.VK_A:
                 if(VERTICALWALLMAP[this.getX()-1][this.getY()])
                     return VERTICALWALL;
@@ -287,6 +290,10 @@ public class Player extends Entity{
                     if(this.getX()-1==ZOMBIEMAP.get(i).getX() && this.getY()==ZOMBIEMAP.get(i).getY()){
                         return ZOMBIE;
                     }
+                }
+                for(int i=0 ; i<BULLETMAP.size() ; i++){
+                    if(this.getX()-1==BULLETMAP.get(i).getX() && this.getY()==BULLETMAP.get(i).getY())                                   
+                        return BULLET;
                 }
                 for(int i=0 ; i<LOSTITEMMAP.size() ; i++){
                     if(this.getX()-1==LOSTITEMMAP.get(i).getX() && this.getY()==LOSTITEMMAP.get(i).getY()){
@@ -303,10 +310,7 @@ public class Player extends Entity{
                         return GOLD;
                     }
                 }
-                for(int i=0 ; i<BULLETMAP.size() ; i++){
-                    if(this.getX()-1==BULLETMAP.get(i).getX() && this.getY()==BULLETMAP.get(i).getY())                                   
-                        return BULLET;
-                }
+                
             case KeyEvent.VK_D:
                 if(VERTICALWALLMAP[this.getX()+1][this.getY()])
                     return VERTICALWALL;
@@ -318,6 +322,10 @@ public class Player extends Entity{
                     if(this.getX()+1==ZOMBIEMAP.get(i).getX() && this.getY()==ZOMBIEMAP.get(i).getY()){
                         return ZOMBIE;
                     }
+                }
+                for(int i=0 ; i<BULLETMAP.size() ; i++){
+                    if(this.getX()+1==BULLETMAP.get(i).getX() && this.getY()==BULLETMAP.get(i).getY())                                   
+                        return BULLET;
                 }
                 for(int i=0 ; i<LOSTITEMMAP.size() ; i++){
                     if(this.getX()+1==LOSTITEMMAP.get(i).getX() && this.getY()==LOSTITEMMAP.get(i).getY()){
@@ -334,10 +342,7 @@ public class Player extends Entity{
                         return GOLD;
                     }
                 }
-                for(int i=0 ; i<BULLETMAP.size() ; i++){
-                    if(this.getX()+1==BULLETMAP.get(i).getX() && this.getY()==BULLETMAP.get(i).getY())                                   
-                        return BULLET;
-                }
+                
         }
         return PATH;
     }
@@ -345,15 +350,19 @@ public class Player extends Entity{
         switch (input.getKeyCode()){
             case KeyEvent.VK_W:
                 this.setY(this.getY()-1);
+                System.out.println("moveW");
                 break;
             case KeyEvent.VK_S:
                 this.setY(this.getY()+1);
+                System.out.println("moveS");
                 break;
             case KeyEvent.VK_A:
                 this.setX(this.getX()-1);
+                System.out.println("moveA");
                 break;
             case KeyEvent.VK_D:
                 this.setX(this.getX()+1);
+                System.out.println("moveD");
                 break;
         }
     }

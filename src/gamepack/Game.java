@@ -67,7 +67,7 @@ public class Game  {
     public void refreshFOGMAP(){
         for(int i=0 ; i<MAPHEIGHT ; i++){
             for(int j=0 ; j<MAPWIDTH ; j++){
-                FOGMAP[j][i]=false;
+                FOGMAP[j][i]=true;
             }
         }
         FOGMAP[JOHNNY.getX()][JOHNNY.getY()]=false;
@@ -264,8 +264,7 @@ public class Game  {
             gold.setPosition(posAdded.get(i).getX(), posAdded.get(i).getY());
             GOLDMAP.add((Item) gold);
         }
-    }    
-    
+    }
     
     public String toString(){
         String strMAP = "";
