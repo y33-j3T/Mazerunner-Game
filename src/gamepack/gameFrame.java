@@ -6,6 +6,7 @@ import static gamepack.Game.BULLETMAP;
 import static gamepack.Game.JOHNNY;
 import static gamepack.Game.MAPHEIGHT;
 import static gamepack.Game.MAPWIDTH;
+import static gamepack.Game.VERTICALWALLMAP;
 import java.awt.event.KeyEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,13 +32,13 @@ public class gameFrame extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        livesProgressBar = new javax.swing.JProgressBar();
+        attackDamageProgressBar = new javax.swing.JProgressBar();
+        armorProgressBar = new javax.swing.JProgressBar();
+        visionProgressBar = new javax.swing.JProgressBar();
+        goldProgressBar = new javax.swing.JProgressBar();
         hpProgressBar = new javax.swing.JProgressBar();
-        jProgressBar2 = new javax.swing.JProgressBar();
-        jProgressBar3 = new javax.swing.JProgressBar();
-        jProgressBar4 = new javax.swing.JProgressBar();
-        jProgressBar5 = new javax.swing.JProgressBar();
-        hpProgressBar1 = new javax.swing.JProgressBar();
-        jProgressBar6 = new javax.swing.JProgressBar();
+        lostItemProgressBar = new javax.swing.JProgressBar();
         gameSettingsPanel = new javax.swing.JPanel();
         jToggleButton1 = new javax.swing.JToggleButton();
         jSlider1 = new javax.swing.JSlider();
@@ -116,32 +117,32 @@ public class gameFrame extends javax.swing.JFrame {
 
         jLabel9.setText("GOLD");
 
-        hpProgressBar.setMaximum(JOHNNY.getLives());
-        hpProgressBar.setMinimum(0);
-        hpProgressBar.setValue(JOHNNY.getLives());
+        livesProgressBar.setMaximum(JOHNNY.getLives());
+        livesProgressBar.setMinimum(0);
+        livesProgressBar.setValue(JOHNNY.getLives());
 
-        jProgressBar2.setMaximum(10);
-        jProgressBar2.setMinimum(5);
-        jProgressBar2.setValue(JOHNNY.getATTACKDAMAGE()/10);
+        attackDamageProgressBar.setMaximum(10);
+        attackDamageProgressBar.setMinimum(5);
+        attackDamageProgressBar.setValue(JOHNNY.getATTACKDAMAGE()/10);
 
-        jProgressBar3.setMaximum(5);
-        jProgressBar3.setMinimum(2);
-        jProgressBar3.setValue(JOHNNY.getARMOR());
+        armorProgressBar.setMaximum(5);
+        armorProgressBar.setMinimum(2);
+        armorProgressBar.setValue(JOHNNY.getARMOR());
 
-        jProgressBar4.setMaximum(5);
-        jProgressBar4.setMinimum(2);
-        jProgressBar4.setValue(JOHNNY.getVISION());
+        visionProgressBar.setMaximum(5);
+        visionProgressBar.setMinimum(2);
+        visionProgressBar.setValue(JOHNNY.getVISION());
 
-        jProgressBar5.setMaximum(40);
-        jProgressBar5.setMinimum(0);
-        jProgressBar5.setValue(JOHNNY.getGoldAmount());
+        goldProgressBar.setMaximum(40);
+        goldProgressBar.setMinimum(0);
+        goldProgressBar.setValue(JOHNNY.getGoldAmount());
 
-        hpProgressBar1.setMaximum(JOHNNY.getTOTALHP());
-        hpProgressBar1.setValue(JOHNNY.getHP());
+        hpProgressBar.setMaximum(JOHNNY.getTOTALHP());
+        hpProgressBar.setValue(JOHNNY.getHP());
 
-        jProgressBar6.setMaximum(JOHNNY.getTotalLostItemAmount());
-        jProgressBar6.setMinimum(0);
-        jProgressBar6.setValue(JOHNNY.getLostItemAmount());
+        lostItemProgressBar.setMaximum(JOHNNY.getTotalLostItemAmount());
+        lostItemProgressBar.setMinimum(0);
+        lostItemProgressBar.setValue(JOHNNY.getLostItemAmount());
 
         javax.swing.GroupLayout playerStatsPanelLayout = new javax.swing.GroupLayout(playerStatsPanel);
         playerStatsPanel.setLayout(playerStatsPanelLayout);
@@ -159,13 +160,13 @@ public class gameFrame extends javax.swing.JFrame {
                     .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(77, 77, 77)
                 .addGroup(playerStatsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jProgressBar5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jProgressBar6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(hpProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
-                    .addComponent(hpProgressBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jProgressBar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jProgressBar3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jProgressBar4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(goldProgressBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lostItemProgressBar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(hpProgressBar, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
+                    .addComponent(livesProgressBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(attackDamageProgressBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(armorProgressBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(visionProgressBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(24, 24, 24))
         );
         playerStatsPanelLayout.setVerticalGroup(
@@ -173,31 +174,31 @@ public class gameFrame extends javax.swing.JFrame {
             .addGroup(playerStatsPanelLayout.createSequentialGroup()
                 .addGroup(playerStatsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(hpProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(livesProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(playerStatsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
-                    .addComponent(hpProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(hpProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(playerStatsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
-                    .addComponent(jProgressBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(attackDamageProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(playerStatsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
-                    .addComponent(jProgressBar3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(armorProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(playerStatsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel6)
-                    .addComponent(jProgressBar4, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
+                    .addComponent(visionProgressBar, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(playerStatsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
-                    .addComponent(jProgressBar6, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lostItemProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
                 .addGroup(playerStatsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jProgressBar5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(goldProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
@@ -389,7 +390,6 @@ public class gameFrame extends javax.swing.JFrame {
         boolean exist = false;
         switch (evt.getKeyCode()) {
             case KeyEvent.VK_UP:
-                System.out.println("up");
                 for(int i=0 ; i<BULLETMAP.size() ; i++){
                     if(BULLETMAP.get(i).getX()==JOHNNY.getX() && BULLETMAP.get(i).getY()==JOHNNY.getY()-1 && BULLETMAP.get(i).getDir()==0){
                         exist = true;
@@ -444,21 +444,26 @@ public class gameFrame extends javax.swing.JFrame {
                 break;
                 
             case KeyEvent.VK_W:
+                JOHNNY.executeCollisionAction(evt);
+                break;   
             case KeyEvent.VK_S:
+                JOHNNY.executeCollisionAction(evt);
+                break;   
             case KeyEvent.VK_A:
+                JOHNNY.executeCollisionAction(evt);
+                break;   
             case KeyEvent.VK_D:
                 JOHNNY.executeCollisionAction(evt);
                 break;   
             case KeyEvent.VK_P:
-            {
                 pauseDialog pause = new pauseDialog();
                 pause.start();
-            try {
-                this.wait();
-            } catch (InterruptedException ex) {
-                Logger.getLogger(gameFrame.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            }
+                try {
+                    wait();
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(gameFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                break;
         }
     }//GEN-LAST:event_formKeyPressed
 
@@ -504,25 +509,25 @@ public class gameFrame extends javax.swing.JFrame {
                 gameFrame frame = new gameFrame();
                 frame.setLocationRelativeTo(null);
                 frame.setVisible(true);
-                
+                mazeArea.append(strMAP);
                 Thread a = new Thread(){
                     @Override
                     public void run() {
                         while (true) {
-                            MazerunnerGame.refresh();
-                            mazeArea.setText(MazerunnerGame.toString());
-                            System.out.println(mazeArea.getText());
-                            
-                            if(JOHNNY.getGoldAmount()==40){
-                                upgradeDialog dialog = new upgradeDialog();
-                                dialog.setLocationRelativeTo(null);
-                                dialog.setVisible(true);
-                            }
-                            
                             synchronized( this ){
+                                MazerunnerGame.refresh();
+                                mazeArea.setText(MazerunnerGame.toString());
+                                System.out.println(mazeArea.getText());
+                                
+                                if(JOHNNY.getGoldAmount()==40){
+                                    upgradeDialog dialog = new upgradeDialog();
+                                    dialog.setLocationRelativeTo(null);
+                                    dialog.setVisible(true);
+                                }
+                            
                                 try {
-                                    this.wait(10);
-                                    //sleep(3000);
+//                                    this.wait(80);
+                                    this.wait(1000);
                                 } catch (InterruptedException ex) {
                                     Logger.getLogger(gameFrame.class.getName()).log(Level.SEVERE, null, ex);
                                 }
@@ -530,22 +535,22 @@ public class gameFrame extends javax.swing.JFrame {
                         }
                     }
                 };
-                a.start();
-                
-                Thread zombieThread = new Thread(new Mob());
-                zombieThread.start();
-                
-                Thread bulletThread = new Thread(new Bullet(" * ", 0, 0, 0));
-                bulletThread.start();
+                synchronized(this){
+                    a.start();
+                    (new Thread(new Mob())).start();
+                    (new Thread(new Bullet(" * ", 0, 0, 0))).start();
+                }   
             }
         });
     }
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JProgressBar armorProgressBar;
+    public static javax.swing.JProgressBar attackDamageProgressBar;
     private javax.swing.JPanel entitiesPanel;
     private javax.swing.JPanel gameSettingsPanel;
-    private javax.swing.JProgressBar hpProgressBar;
-    private javax.swing.JProgressBar hpProgressBar1;
+    public static javax.swing.JProgressBar goldProgressBar;
+    public static javax.swing.JProgressBar hpProgressBar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -570,18 +575,16 @@ public class gameFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JProgressBar jProgressBar2;
-    private javax.swing.JProgressBar jProgressBar3;
-    private javax.swing.JProgressBar jProgressBar4;
-    private javax.swing.JProgressBar jProgressBar5;
-    private javax.swing.JProgressBar jProgressBar6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSlider jSlider1;
     private javax.swing.JToggleButton jToggleButton1;
     private java.awt.Label label5;
+    public static javax.swing.JProgressBar livesProgressBar;
+    public static javax.swing.JProgressBar lostItemProgressBar;
     private javax.swing.JTextArea mazeArea;
     private javax.swing.JPanel mazePanel;
     private javax.swing.JPanel playerControlsPanel;
     private javax.swing.JPanel playerStatsPanel;
+    public static javax.swing.JProgressBar visionProgressBar;
     // End of variables declaration//GEN-END:variables
 }

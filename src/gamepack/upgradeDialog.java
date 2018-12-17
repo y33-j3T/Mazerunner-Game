@@ -6,6 +6,9 @@
 package gamepack;
 
 import static gamepack.Game.JOHNNY;
+import static gamepack.gameFrame.armorProgressBar;
+import static gamepack.gameFrame.attackDamageProgressBar;
+import static gamepack.gameFrame.visionProgressBar;
 
 /**
  *
@@ -110,27 +113,38 @@ public class upgradeDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void armorUpgradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_armorUpgradeActionPerformed
-        JOHNNY.setARMOR(JOHNNY.getARMOR()+1);
-        JOHNNY.setGOLD_amount(0);
+        if(JOHNNY.getARMOR()<5){
+            JOHNNY.setARMOR(JOHNNY.getARMOR()+1);
+            JOHNNY.setGOLD_amount(0);
+            armorProgressBar.setValue(JOHNNY.getARMOR());
+        }
         dispose();
     }//GEN-LAST:event_armorUpgradeActionPerformed
 
     private void visionUpgradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visionUpgradeActionPerformed
-        JOHNNY.setVISION(JOHNNY.getVISION()+1);
-        JOHNNY.setGOLD_amount(0);
+        if(JOHNNY.getVISION()<5){
+            JOHNNY.setVISION(JOHNNY.getVISION()+1);
+            JOHNNY.setGOLD_amount(0);
+            visionProgressBar.setValue(JOHNNY.getVISION());
+        }
         dispose();
     }//GEN-LAST:event_visionUpgradeActionPerformed
 
     private void attackDamageUpgradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_attackDamageUpgradeActionPerformed
-        JOHNNY.setATTACKDAMAGE(JOHNNY.getATTACKDAMAGE()+1);
-        JOHNNY.setGOLD_amount(0);
+        if(JOHNNY.getATTACKDAMAGE()<10){
+            JOHNNY.setATTACKDAMAGE(JOHNNY.getATTACKDAMAGE()+1);
+            JOHNNY.setGOLD_amount(0);
+            attackDamageProgressBar.setValue(JOHNNY.getATTACKDAMAGE());
+        }
         dispose();
     }//GEN-LAST:event_attackDamageUpgradeActionPerformed
 
     private void totalHPUpgradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalHPUpgradeActionPerformed
-        JOHNNY.setTOTALHP(JOHNNY.getTOTALHP()+20);
-        JOHNNY.setHP(JOHNNY.getHP()+20);
-        JOHNNY.setGOLD_amount(0);
+        if(JOHNNY.getTOTALHP()<200){
+            JOHNNY.setTOTALHP(JOHNNY.getTOTALHP()+20);
+            JOHNNY.setHP(JOHNNY.getHP()+20);
+            JOHNNY.setGOLD_amount(0);
+        }
         dispose();
     }//GEN-LAST:event_totalHPUpgradeActionPerformed
 

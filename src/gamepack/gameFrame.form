@@ -144,13 +144,13 @@
                   </Group>
                   <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jProgressBar5" max="32767" attributes="0"/>
-                      <Component id="jProgressBar6" alignment="1" max="32767" attributes="0"/>
-                      <Component id="hpProgressBar1" alignment="0" pref="158" max="32767" attributes="0"/>
-                      <Component id="hpProgressBar" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jProgressBar2" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jProgressBar3" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jProgressBar4" alignment="0" max="32767" attributes="0"/>
+                      <Component id="goldProgressBar" max="32767" attributes="0"/>
+                      <Component id="lostItemProgressBar" alignment="1" max="32767" attributes="0"/>
+                      <Component id="hpProgressBar" alignment="0" pref="158" max="32767" attributes="0"/>
+                      <Component id="livesProgressBar" alignment="0" max="32767" attributes="0"/>
+                      <Component id="attackDamageProgressBar" alignment="0" max="32767" attributes="0"/>
+                      <Component id="armorProgressBar" alignment="0" max="32767" attributes="0"/>
+                      <Component id="visionProgressBar" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
               </Group>
@@ -161,37 +161,37 @@
               <Group type="102" alignment="0" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                      <Component id="hpProgressBar" min="-2" pref="28" max="-2" attributes="0"/>
+                      <Component id="livesProgressBar" min="-2" pref="28" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                      <Component id="hpProgressBar1" min="-2" pref="28" max="-2" attributes="0"/>
+                      <Component id="hpProgressBar" min="-2" pref="28" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                      <Component id="jProgressBar2" min="-2" pref="28" max="-2" attributes="0"/>
+                      <Component id="attackDamageProgressBar" min="-2" pref="28" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                      <Component id="jProgressBar3" min="-2" pref="28" max="-2" attributes="0"/>
+                      <Component id="armorProgressBar" min="-2" pref="28" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                      <Component id="jProgressBar4" pref="28" max="32767" attributes="0"/>
+                      <Component id="visionProgressBar" pref="28" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                      <Component id="jProgressBar6" min="-2" pref="28" max="-2" attributes="0"/>
+                      <Component id="lostItemProgressBar" min="-2" pref="28" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel9" min="-2" pref="22" max="-2" attributes="0"/>
-                      <Component id="jProgressBar5" min="-2" pref="28" max="-2" attributes="0"/>
+                      <Component id="goldProgressBar" min="-2" pref="28" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="12" max="32767" attributes="0"/>
               </Group>
@@ -234,7 +234,7 @@
             <Property name="text" type="java.lang.String" value="GOLD"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JProgressBar" name="hpProgressBar">
+        <Component class="javax.swing.JProgressBar" name="livesProgressBar">
           <Properties>
             <Property name="maximum" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="JOHNNY.getLives()" type="code"/>
@@ -246,8 +246,11 @@
               <Connection code="JOHNNY.getLives()" type="code"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+          </AuxValues>
         </Component>
-        <Component class="javax.swing.JProgressBar" name="jProgressBar2">
+        <Component class="javax.swing.JProgressBar" name="attackDamageProgressBar">
           <Properties>
             <Property name="maximum" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="10" type="code"/>
@@ -259,8 +262,11 @@
               <Connection code="JOHNNY.getATTACKDAMAGE()/10" type="code"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+          </AuxValues>
         </Component>
-        <Component class="javax.swing.JProgressBar" name="jProgressBar3">
+        <Component class="javax.swing.JProgressBar" name="armorProgressBar">
           <Properties>
             <Property name="maximum" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="5" type="code"/>
@@ -272,8 +278,11 @@
               <Connection code="JOHNNY.getARMOR()" type="code"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+          </AuxValues>
         </Component>
-        <Component class="javax.swing.JProgressBar" name="jProgressBar4">
+        <Component class="javax.swing.JProgressBar" name="visionProgressBar">
           <Properties>
             <Property name="maximum" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="5" type="code"/>
@@ -285,8 +294,11 @@
               <Connection code="JOHNNY.getVISION()" type="code"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+          </AuxValues>
         </Component>
-        <Component class="javax.swing.JProgressBar" name="jProgressBar5">
+        <Component class="javax.swing.JProgressBar" name="goldProgressBar">
           <Properties>
             <Property name="maximum" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="40" type="code"/>
@@ -298,8 +310,11 @@
               <Connection code="JOHNNY.getGoldAmount()" type="code"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+          </AuxValues>
         </Component>
-        <Component class="javax.swing.JProgressBar" name="hpProgressBar1">
+        <Component class="javax.swing.JProgressBar" name="hpProgressBar">
           <Properties>
             <Property name="maximum" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="JOHNNY.getTOTALHP()" type="code"/>
@@ -308,8 +323,11 @@
               <Connection code="JOHNNY.getHP()" type="code"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+          </AuxValues>
         </Component>
-        <Component class="javax.swing.JProgressBar" name="jProgressBar6">
+        <Component class="javax.swing.JProgressBar" name="lostItemProgressBar">
           <Properties>
             <Property name="maximum" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="JOHNNY.getTotalLostItemAmount()" type="code"/>
@@ -321,6 +339,9 @@
               <Connection code="JOHNNY.getLostItemAmount()" type="code"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

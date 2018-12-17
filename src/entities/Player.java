@@ -9,6 +9,7 @@ import static gamepack.Game.HORIZONTALWALL;
 import static gamepack.Game.HORIZONTALWALLMAP;
 import static gamepack.Game.HPREGEN;
 import static gamepack.Game.HPREGENMAP;
+import static gamepack.Game.JOHNNY;
 import static gamepack.Game.LOSTITEM;
 import static gamepack.Game.LOSTITEMMAP;
 import static gamepack.Game.PATH;
@@ -17,6 +18,11 @@ import static gamepack.Game.VERTICALWALLMAP;
 import static gamepack.Game.ZOMBIE;
 import static gamepack.Game.ZOMBIEMAP;
 import gamepack.areYouSureDialog;
+import gamepack.gameFrame;
+import static gamepack.gameFrame.goldProgressBar;
+import static gamepack.gameFrame.hpProgressBar;
+import static gamepack.gameFrame.livesProgressBar;
+import static gamepack.gameFrame.lostItemProgressBar;
 import gamepack.loseDialog;
 import gamepack.winDialog;
 import java.awt.event.KeyEvent;
@@ -156,33 +162,46 @@ public class Player extends Entity{
 }
     
     public void executeCollisionAction(KeyEvent input){
-        System.out.println("check col " + this.getCollidedBlock(input).getIcon());
+//        System.out.println("check col " + this.getCollidedBlock(input).getIcon());
         if(this.getCollidedBlock(input)==ZOMBIE){
             this.setHP(this.getHP()-ZOMBIE.getATTACKDAMAGE()+this.getARMOR());
+            hpProgressBar.setValue(JOHNNY.getHP());
             if(this.getHP()<=0){
                 if(LIVES>0){
                     LIVES--;
+                    livesProgressBar.setValue(JOHNNY.getLives());
+                    this.setHP(this.getTOTALHP());
+                    hpProgressBar.setValue(JOHNNY.getHP());
                     this.setPosition(spawnX, spawnY);
                 } else {
                     loseDialog lose = new loseDialog();
+                    lose.start();
+                    try {
+                        wait();
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Player.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
             }
         }
         else if(this.getCollidedBlock(input)==EXIT){
             if(LOSTITEM_amount<LOSTITEM_totalAmount){
                 try {
-                    wait();
                     areYouSureDialog areYouSure = new areYouSureDialog();
+                    areYouSure.start();
+                    wait();
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Player.class.getName()).log(Level.SEVERE, null, ex);
                 }
             } else {
                 winDialog win = new winDialog();
+                win.start();
             }
         }
         else if(this.getCollidedBlock(input)==LOSTITEM){
             this.move(input);
             LOSTITEM_amount+=1;
+            lostItemProgressBar.setValue(JOHNNY.getLostItemAmount());
             for(int i=0 ; i<LOSTITEMMAP.size() ; i++){
                 if(LOSTITEMMAP.get(i).getX()==this.getX() && LOSTITEMMAP.get(i).getY()==this.getY())
                     LOSTITEMMAP.remove(i);
@@ -190,10 +209,14 @@ public class Player extends Entity{
         }
         else if(this.getCollidedBlock(input)==HPREGEN){
             this.move(input);
-            if(this.TOTALHP-this.getHP()<5)
+            if(this.TOTALHP-this.getHP()<5){
                 this.setHP(this.TOTALHP);
-            else
+                hpProgressBar.setValue(JOHNNY.getHP());
+            }
+            else {
                 this.setHP(this.getHP()+5);
+                hpProgressBar.setValue(JOHNNY.getHP());
+            }
             for(int i=0 ; i<HPREGENMAP.size() ; i++){
                 if(HPREGENMAP.get(i).getX()==this.getX() && HPREGENMAP.get(i).getY()==this.getY())
                     HPREGENMAP.remove(i);
@@ -202,7 +225,8 @@ public class Player extends Entity{
         else if(this.getCollidedBlock(input)==GOLD){
             this.move(input);
             GOLD_amount+=5;
-            for(int i=0 ; i<HPREGENMAP.size() ; i++){
+            goldProgressBar.setValue(JOHNNY.getGoldAmount());
+            for(int i=0 ; i<GOLDMAP.size() ; i++){
                 if(GOLDMAP.get(i).getX()==this.getX() && GOLDMAP.get(i).getY()==this.getY())
                     GOLDMAP.remove(i);
             }
@@ -222,29 +246,32 @@ public class Player extends Entity{
                     return HORIZONTALWALL;
                 else if(EXIT.getX()==this.getX() && EXIT.getY()==this.getY()-1)
                     return EXIT;
-                for(int i=0 ; i<ZOMBIEMAP.size() ; i++){
-                    if(this.getX()==ZOMBIEMAP.get(i).getX() && this.getY()-1==ZOMBIEMAP.get(i).getY()){
-                        return ZOMBIE;
+                else {
+                    for(int i=0 ; i<ZOMBIEMAP.size() ; i++){
+                        if(this.getX()==ZOMBIEMAP.get(i).getX() && this.getY()-1==ZOMBIEMAP.get(i).getY()){
+                            return ZOMBIE;
+                        }
                     }
-                }
-                for(int i=0 ; i<BULLETMAP.size() ; i++){
-                    if(this.getX()==BULLETMAP.get(i).getX() && this.getY()-1==BULLETMAP.get(i).getY())                                   
-                        return BULLET;
-                }
-                for(int i=0 ; i<LOSTITEMMAP.size() ; i++){
-                    if(this.getX()==LOSTITEMMAP.get(i).getX() && this.getY()-1==LOSTITEMMAP.get(i).getY()){
-                        return LOSTITEM;
+                    for(int i=0 ; i<LOSTITEMMAP.size() ; i++){
+                        if(this.getX()==LOSTITEMMAP.get(i).getX() && this.getY()-1==LOSTITEMMAP.get(i).getY()){
+                            return LOSTITEM;
+                        }
                     }
-                }
-                for(int i=0 ; i<HPREGENMAP.size() ; i++){
-                    if(this.getX()==HPREGENMAP.get(i).getX() && this.getY()-1==HPREGENMAP.get(i).getY()){
-                        return HPREGEN;
+                    for(int i=0 ; i<HPREGENMAP.size() ; i++){
+                        if(this.getX()==HPREGENMAP.get(i).getX() && this.getY()-1==HPREGENMAP.get(i).getY()){
+                            return HPREGEN;
+                        }
                     }
-                }
-                for(int i=0 ; i<GOLDMAP.size() ; i++){
-                    if(this.getX()==GOLDMAP.get(i).getX() && this.getY()-1==GOLDMAP.get(i).getY()){
-                        return GOLD;
+                    for(int i=0 ; i<GOLDMAP.size() ; i++){
+                        if(this.getX()==GOLDMAP.get(i).getX() && this.getY()-1==GOLDMAP.get(i).getY()){
+                            return GOLD;
+                        }
                     }
+                    for(int i=0 ; i<BULLETMAP.size() ; i++){
+                        if(this.getX()==BULLETMAP.get(i).getX() && this.getY()-1==BULLETMAP.get(i).getY())                                   
+                            return BULLET;
+                    }
+                    return PATH;
                 }
                 
             case KeyEvent.VK_S:
@@ -254,29 +281,32 @@ public class Player extends Entity{
                     return HORIZONTALWALL;
                 else if(EXIT.getX()==this.getX() && EXIT.getY()==this.getY()+1)
                     return EXIT;
-                for(int i=0 ; i<ZOMBIEMAP.size() ; i++){
-                    if(this.getX()==ZOMBIEMAP.get(i).getX() && this.getY()+1==ZOMBIEMAP.get(i).getY()){
-                        return ZOMBIE;
+                else{
+                    for(int i=0 ; i<ZOMBIEMAP.size() ; i++){
+                        if(this.getX()==ZOMBIEMAP.get(i).getX() && this.getY()+1==ZOMBIEMAP.get(i).getY()){
+                            return ZOMBIE;
+                        }
                     }
-                }
-                for(int i=0 ; i<BULLETMAP.size() ; i++){
-                    if(this.getX()==BULLETMAP.get(i).getX() && this.getY()+1==BULLETMAP.get(i).getY())                                   
-                        return BULLET;
-                }
-                for(int i=0 ; i<LOSTITEMMAP.size() ; i++){
-                    if(this.getX()==LOSTITEMMAP.get(i).getX() && this.getY()+1==LOSTITEMMAP.get(i).getY()){
-                        return LOSTITEM;
+                    for(int i=0 ; i<BULLETMAP.size() ; i++){
+                        if(this.getX()==BULLETMAP.get(i).getX() && this.getY()+1==BULLETMAP.get(i).getY())                                   
+                            return BULLET;
                     }
-                }
-                for(int i=0 ; i<HPREGENMAP.size() ; i++){
-                    if(this.getX()==HPREGENMAP.get(i).getX() && this.getY()+1==HPREGENMAP.get(i).getY()){
-                        return HPREGEN;
+                    for(int i=0 ; i<LOSTITEMMAP.size() ; i++){
+                        if(this.getX()==LOSTITEMMAP.get(i).getX() && this.getY()+1==LOSTITEMMAP.get(i).getY()){
+                            return LOSTITEM;
+                        }
                     }
-                }
-                for(int i=0 ; i<GOLDMAP.size() ; i++){
-                    if(this.getX()==GOLDMAP.get(i).getX() && this.getY()+1==GOLDMAP.get(i).getY()){
-                        return GOLD;
+                    for(int i=0 ; i<HPREGENMAP.size() ; i++){
+                        if(this.getX()==HPREGENMAP.get(i).getX() && this.getY()+1==HPREGENMAP.get(i).getY()){
+                            return HPREGEN;
+                        }
                     }
+                    for(int i=0 ; i<GOLDMAP.size() ; i++){
+                        if(this.getX()==GOLDMAP.get(i).getX() && this.getY()+1==GOLDMAP.get(i).getY()){
+                            return GOLD;
+                        }
+                    }
+                    return PATH;
                 }
                 
             case KeyEvent.VK_A:
@@ -286,29 +316,32 @@ public class Player extends Entity{
                     return HORIZONTALWALL;
                 else if(EXIT.getX()==this.getX()-1 && EXIT.getY()==this.getY())
                     return EXIT;
-                for(int i=0 ; i<ZOMBIEMAP.size() ; i++){
-                    if(this.getX()-1==ZOMBIEMAP.get(i).getX() && this.getY()==ZOMBIEMAP.get(i).getY()){
-                        return ZOMBIE;
+                else{
+                    for(int i=0 ; i<ZOMBIEMAP.size() ; i++){
+                        if(this.getX()-1==ZOMBIEMAP.get(i).getX() && this.getY()==ZOMBIEMAP.get(i).getY()){
+                            return ZOMBIE;
+                        }
                     }
-                }
-                for(int i=0 ; i<BULLETMAP.size() ; i++){
-                    if(this.getX()-1==BULLETMAP.get(i).getX() && this.getY()==BULLETMAP.get(i).getY())                                   
-                        return BULLET;
-                }
-                for(int i=0 ; i<LOSTITEMMAP.size() ; i++){
-                    if(this.getX()-1==LOSTITEMMAP.get(i).getX() && this.getY()==LOSTITEMMAP.get(i).getY()){
-                        return LOSTITEM;
+                    for(int i=0 ; i<BULLETMAP.size() ; i++){
+                        if(this.getX()-1==BULLETMAP.get(i).getX() && this.getY()==BULLETMAP.get(i).getY())                                   
+                            return BULLET;
                     }
-                }
-                for(int i=0 ; i<HPREGENMAP.size() ; i++){
-                    if(this.getX()-1==HPREGENMAP.get(i).getX() && this.getY()==HPREGENMAP.get(i).getY()){
-                        return HPREGEN;
+                    for(int i=0 ; i<LOSTITEMMAP.size() ; i++){
+                        if(this.getX()-1==LOSTITEMMAP.get(i).getX() && this.getY()==LOSTITEMMAP.get(i).getY()){
+                            return LOSTITEM;
+                        }
                     }
-                }
-                for(int i=0 ; i<GOLDMAP.size() ; i++){
-                    if(this.getX()-1==GOLDMAP.get(i).getX() && this.getY()==GOLDMAP.get(i).getY()){
-                        return GOLD;
+                    for(int i=0 ; i<HPREGENMAP.size() ; i++){
+                        if(this.getX()-1==HPREGENMAP.get(i).getX() && this.getY()==HPREGENMAP.get(i).getY()){
+                            return HPREGEN;
+                        }
                     }
+                    for(int i=0 ; i<GOLDMAP.size() ; i++){
+                        if(this.getX()-1==GOLDMAP.get(i).getX() && this.getY()==GOLDMAP.get(i).getY()){
+                            return GOLD;
+                        }
+                    }
+                    return PATH;
                 }
                 
             case KeyEvent.VK_D:
@@ -318,31 +351,33 @@ public class Player extends Entity{
                     return HORIZONTALWALL;
                 else if(EXIT.getX()==this.getX()+1 && EXIT.getY()==this.getY())
                     return EXIT;
-                for(int i=0 ; i<ZOMBIEMAP.size() ; i++){
-                    if(this.getX()+1==ZOMBIEMAP.get(i).getX() && this.getY()==ZOMBIEMAP.get(i).getY()){
-                        return ZOMBIE;
+                else{
+                    for(int i=0 ; i<ZOMBIEMAP.size() ; i++){
+                        if(this.getX()+1==ZOMBIEMAP.get(i).getX() && this.getY()==ZOMBIEMAP.get(i).getY()){
+                            return ZOMBIE;
+                        }
                     }
-                }
-                for(int i=0 ; i<BULLETMAP.size() ; i++){
-                    if(this.getX()+1==BULLETMAP.get(i).getX() && this.getY()==BULLETMAP.get(i).getY())                                   
-                        return BULLET;
-                }
-                for(int i=0 ; i<LOSTITEMMAP.size() ; i++){
-                    if(this.getX()+1==LOSTITEMMAP.get(i).getX() && this.getY()==LOSTITEMMAP.get(i).getY()){
-                        return LOSTITEM;
+                    for(int i=0 ; i<BULLETMAP.size() ; i++){
+                        if(this.getX()+1==BULLETMAP.get(i).getX() && this.getY()==BULLETMAP.get(i).getY())                                   
+                            return BULLET;
                     }
-                }
-                for(int i=0 ; i<HPREGENMAP.size() ; i++){
-                    if(this.getX()+1==HPREGENMAP.get(i).getX() && this.getY()==HPREGENMAP.get(i).getY()){
-                        return HPREGEN;
+                    for(int i=0 ; i<LOSTITEMMAP.size() ; i++){
+                        if(this.getX()+1==LOSTITEMMAP.get(i).getX() && this.getY()==LOSTITEMMAP.get(i).getY()){
+                            return LOSTITEM;
+                        }
                     }
-                }
-                for(int i=0 ; i<GOLDMAP.size() ; i++){
-                    if(this.getX()+1==GOLDMAP.get(i).getX() && this.getY()==GOLDMAP.get(i).getY()){
-                        return GOLD;
+                    for(int i=0 ; i<HPREGENMAP.size() ; i++){
+                        if(this.getX()+1==HPREGENMAP.get(i).getX() && this.getY()==HPREGENMAP.get(i).getY()){
+                            return HPREGEN;
+                        }
                     }
+                    for(int i=0 ; i<GOLDMAP.size() ; i++){
+                        if(this.getX()+1==GOLDMAP.get(i).getX() && this.getY()==GOLDMAP.get(i).getY()){
+                            return GOLD;
+                        }
+                    }
+                    return PATH;
                 }
-                
         }
         return PATH;
     }
@@ -350,19 +385,19 @@ public class Player extends Entity{
         switch (input.getKeyCode()){
             case KeyEvent.VK_W:
                 this.setY(this.getY()-1);
-                System.out.println("moveW");
+//                System.out.println("moveW");
                 break;
             case KeyEvent.VK_S:
                 this.setY(this.getY()+1);
-                System.out.println("moveS");
+//                System.out.println("moveS");
                 break;
             case KeyEvent.VK_A:
                 this.setX(this.getX()-1);
-                System.out.println("moveA");
+//                System.out.println("moveA");
                 break;
             case KeyEvent.VK_D:
                 this.setX(this.getX()+1);
-                System.out.println("moveD");
+//                System.out.println("moveD");
                 break;
         }
     }

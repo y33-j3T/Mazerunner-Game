@@ -71,14 +71,14 @@ public class pauseDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void unpauseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unpauseButtonActionPerformed
-        this.notifyAll();
+        notifyAll();
         dispose();
     }//GEN-LAST:event_unpauseButtonActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void start() {
+    public void start() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -110,7 +110,8 @@ public class pauseDialog extends javax.swing.JDialog {
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
-                        this.notifyAll();
+                        dispose();
+                        notify();
                     }
                 });
                 dialog.setVisible(true);

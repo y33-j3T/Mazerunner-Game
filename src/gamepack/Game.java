@@ -67,7 +67,7 @@ public class Game  {
     public void refreshFOGMAP(){
         for(int i=0 ; i<MAPHEIGHT ; i++){
             for(int j=0 ; j<MAPWIDTH ; j++){
-                FOGMAP[j][i]=true;
+                FOGMAP[j][i]=false;
             }
         }
         FOGMAP[JOHNNY.getX()][JOHNNY.getY()]=false;

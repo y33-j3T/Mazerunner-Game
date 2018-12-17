@@ -82,13 +82,12 @@ public class Mob extends Entity implements Runnable {
         Random r = new Random();
         while(!ZOMBIEMAP.isEmpty()){
             try {
-                for(int i=0 ; i<ZOMBIEMAP.size(); i++){
-                    int a = r.nextInt(4);
-                    ZOMBIEMAP.get(i).executeCollisionAction(a);
-                }
                 synchronized( this ){
-                    this.wait(1000);
-                    //sleep(1000);
+                    for(int i=0 ; i<ZOMBIEMAP.size(); i++){
+                        int a = r.nextInt(4);
+                        ZOMBIEMAP.get(i).executeCollisionAction(a);
+                    }
+                        this.wait(1000);
                 }
             } catch (InterruptedException ex) {
                 Logger.getLogger(Mob.class.getName()).log(Level.SEVERE, null, ex);

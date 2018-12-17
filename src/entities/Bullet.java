@@ -42,39 +42,40 @@ public class Bullet extends Item implements Runnable{
     public void run() {
         while (!BULLETMAP.isEmpty()){
             try {
-                for(int i=0 ; i<BULLETMAP.size() ; i++){
-                    int dir = BULLETMAP.get(i).getDir();
+                synchronized( this ){
+                    for(int i=0 ; i<BULLETMAP.size() ; i++){
+                        int dir = BULLETMAP.get(i).getDir();
 
-                    if(BULLETMAP.get(i).getCollidedBlock(dir)==ZOMBIE){
-                        BULLETMAP.get(i).move(dir);
-                        for(int j=0 ; j<ZOMBIEMAP.size() ; j++){
-                            if(ZOMBIEMAP.get(j).getX()==BULLETMAP.get(i).getX() && ZOMBIEMAP.get(j).getY()==BULLETMAP.get(i).getY()){
-                                ZOMBIEMAP.get(j).setHP(ZOMBIEMAP.get(j).getHP()-JOHNNY.getATTACKDAMAGE()+ZOMBIEMAP.get(j).getARMOR());
-                                BULLETMAP.remove(i);
-                            } 
+                        if(BULLETMAP.get(i).getCollidedBlock(dir)==ZOMBIE){
+                            BULLETMAP.get(i).move(dir);
+                            for(int j=0 ; j<ZOMBIEMAP.size() ; j++){
+                                if(ZOMBIEMAP.get(j).getX()==BULLETMAP.get(i).getX() && ZOMBIEMAP.get(j).getY()==BULLETMAP.get(i).getY()){
+                                    ZOMBIEMAP.get(j).setHP(ZOMBIEMAP.get(j).getHP()-JOHNNY.getATTACKDAMAGE()+ZOMBIEMAP.get(j).getARMOR());
+                                    BULLETMAP.remove(i);
+                                } 
 
-                            if(ZOMBIEMAP.get(j).getHP()<=0){
-                                ZOMBIEMAP.remove(j);
+                                if(ZOMBIEMAP.get(j).getHP()<=0){
+                                    ZOMBIEMAP.remove(j);
+                                }
                             }
                         }
+                        else if(BULLETMAP.get(i).getCollidedBlock(dir)==VERTICALWALL){
+                            BULLETMAP.remove(i);
+                        }
+                        else if(BULLETMAP.get(i).getCollidedBlock(dir)==HORIZONTALWALL){
+                            BULLETMAP.remove(i);
+                        }
+                        else if(BULLETMAP.get(i).getCollidedBlock(dir)==EXIT){
+                            BULLETMAP.remove(i);
+                        }   
+                        else if(BULLETMAP.get(i).getCollidedBlock(dir)==FOG){
+                            BULLETMAP.remove(i);
+                        }
+                        else {
+                            BULLETMAP.get(i).move(dir);
+                        }
                     }
-                    else if(BULLETMAP.get(i).getCollidedBlock(dir)==VERTICALWALL){
-                        BULLETMAP.remove(i);
-                    }
-                    else if(BULLETMAP.get(i).getCollidedBlock(dir)==HORIZONTALWALL){
-                        BULLETMAP.remove(i);
-                    }
-                    else if(BULLETMAP.get(i).getCollidedBlock(dir)==EXIT){
-                        BULLETMAP.remove(i);
-                    }   
-                    else if(BULLETMAP.get(i).getCollidedBlock(dir)==FOG){
-                        BULLETMAP.remove(i);
-                    }
-                    else {
-                        BULLETMAP.get(i).move(dir);
-                    }
-                }
-                synchronized( this ){
+                    
                     this.wait(200);
                     //sleep(200);
                 }
@@ -95,29 +96,32 @@ public class Bullet extends Item implements Runnable{
                     return FOG;
                 else if(EXIT.getX()==this.getX() && EXIT.getY()==this.getY()-1)
                     return EXIT;
-                for(int i=0 ; i<ZOMBIEMAP.size() ; i++){
-                    if(this.getX()==ZOMBIEMAP.get(i).getX() && this.getY()-1==ZOMBIEMAP.get(i).getY()){
-                        return ZOMBIE;
+                else {
+                    for(int i=0 ; i<ZOMBIEMAP.size() ; i++){
+                        if(this.getX()==ZOMBIEMAP.get(i).getX() && this.getY()-1==ZOMBIEMAP.get(i).getY()){
+                            return ZOMBIE;
+                        }
                     }
-                }
-                for(int i=0 ; i<LOSTITEMMAP.size() ; i++){
-                    if(this.getX()==LOSTITEMMAP.get(i).getX() && this.getY()-1==LOSTITEMMAP.get(i).getY()){
-                        return LOSTITEM;
+                    for(int i=0 ; i<LOSTITEMMAP.size() ; i++){
+                        if(this.getX()==LOSTITEMMAP.get(i).getX() && this.getY()-1==LOSTITEMMAP.get(i).getY()){
+                            return LOSTITEM;
+                        }
                     }
-                }
-                for(int i=0 ; i<HPREGENMAP.size() ; i++){
-                    if(this.getX()==HPREGENMAP.get(i).getX() && this.getY()-1==HPREGENMAP.get(i).getY()){
-                        return HPREGEN;
+                    for(int i=0 ; i<HPREGENMAP.size() ; i++){
+                        if(this.getX()==HPREGENMAP.get(i).getX() && this.getY()-1==HPREGENMAP.get(i).getY()){
+                            return HPREGEN;
+                        }
                     }
-                }
-                for(int i=0 ; i<GOLDMAP.size() ; i++){
-                    if(this.getX()==GOLDMAP.get(i).getX() && this.getY()-1==GOLDMAP.get(i).getY()){
-                        return GOLD;
+                    for(int i=0 ; i<GOLDMAP.size() ; i++){
+                        if(this.getX()==GOLDMAP.get(i).getX() && this.getY()-1==GOLDMAP.get(i).getY()){
+                            return GOLD;
+                        }
                     }
-                }
-                for(int i=0 ; i<BULLETMAP.size() ; i++){
-                    if(this.getX()==BULLETMAP.get(i).getX() && this.getY()-1==BULLETMAP.get(i).getY())                                   
-                        return BULLET;
+                    for(int i=0 ; i<BULLETMAP.size() ; i++){
+                        if(this.getX()==BULLETMAP.get(i).getX() && this.getY()-1==BULLETMAP.get(i).getY())                                   
+                            return BULLET;
+                    }
+                    return PATH;
                 }
             case 1:
                 if(VERTICALWALLMAP[this.getX()][this.getY()+1])
@@ -128,29 +132,32 @@ public class Bullet extends Item implements Runnable{
                     return FOG;
                 else if(EXIT.getX()==this.getX() && EXIT.getY()==this.getY()+1)
                     return EXIT;
-                for(int i=0 ; i<ZOMBIEMAP.size() ; i++){
-                    if(this.getX()==ZOMBIEMAP.get(i).getX() && this.getY()+1==ZOMBIEMAP.get(i).getY()){
-                        return ZOMBIE;
+                else {
+                    for(int i=0 ; i<ZOMBIEMAP.size() ; i++){
+                        if(this.getX()==ZOMBIEMAP.get(i).getX() && this.getY()+1==ZOMBIEMAP.get(i).getY()){
+                            return ZOMBIE;
+                        }
                     }
-                }
-                for(int i=0 ; i<LOSTITEMMAP.size() ; i++){
-                    if(this.getX()==LOSTITEMMAP.get(i).getX() && this.getY()+1==LOSTITEMMAP.get(i).getY()){
-                        return LOSTITEM;
+                    for(int i=0 ; i<LOSTITEMMAP.size() ; i++){
+                        if(this.getX()==LOSTITEMMAP.get(i).getX() && this.getY()+1==LOSTITEMMAP.get(i).getY()){
+                            return LOSTITEM;
+                        }
                     }
-                }
-                for(int i=0 ; i<HPREGENMAP.size() ; i++){
-                    if(this.getX()==HPREGENMAP.get(i).getX() && this.getY()+1==HPREGENMAP.get(i).getY()){
-                        return HPREGEN;
+                    for(int i=0 ; i<HPREGENMAP.size() ; i++){
+                        if(this.getX()==HPREGENMAP.get(i).getX() && this.getY()+1==HPREGENMAP.get(i).getY()){
+                            return HPREGEN;
+                        }
                     }
-                }
-                for(int i=0 ; i<GOLDMAP.size() ; i++){
-                    if(this.getX()==GOLDMAP.get(i).getX() && this.getY()+1==GOLDMAP.get(i).getY()){
-                        return GOLD;
+                    for(int i=0 ; i<GOLDMAP.size() ; i++){
+                        if(this.getX()==GOLDMAP.get(i).getX() && this.getY()+1==GOLDMAP.get(i).getY()){
+                            return GOLD;
+                        }
                     }
-                }
-                for(int i=0 ; i<BULLETMAP.size() ; i++){
-                    if(this.getX()==BULLETMAP.get(i).getX() && this.getY()+1==BULLETMAP.get(i).getY())                                   
-                        return BULLET;
+                    for(int i=0 ; i<BULLETMAP.size() ; i++){
+                        if(this.getX()==BULLETMAP.get(i).getX() && this.getY()+1==BULLETMAP.get(i).getY())                                   
+                            return BULLET;
+                    }
+                    return PATH;
                 }
             case 2:
                 if(VERTICALWALLMAP[this.getX()-1][this.getY()])
@@ -161,29 +168,32 @@ public class Bullet extends Item implements Runnable{
                     return FOG;
                 else if(EXIT.getX()==this.getX()-1 && EXIT.getY()==this.getY())
                     return EXIT;
-                for(int i=0 ; i<ZOMBIEMAP.size() ; i++){
-                    if(this.getX()-1==ZOMBIEMAP.get(i).getX() && this.getY()==ZOMBIEMAP.get(i).getY()){
-                        return ZOMBIE;
+                else {
+                    for(int i=0 ; i<ZOMBIEMAP.size() ; i++){
+                        if(this.getX()-1==ZOMBIEMAP.get(i).getX() && this.getY()==ZOMBIEMAP.get(i).getY()){
+                            return ZOMBIE;
+                        }
                     }
-                }
-                for(int i=0 ; i<LOSTITEMMAP.size() ; i++){
-                    if(this.getX()-1==LOSTITEMMAP.get(i).getX() && this.getY()==LOSTITEMMAP.get(i).getY()){
-                        return LOSTITEM;
+                    for(int i=0 ; i<LOSTITEMMAP.size() ; i++){
+                        if(this.getX()-1==LOSTITEMMAP.get(i).getX() && this.getY()==LOSTITEMMAP.get(i).getY()){
+                            return LOSTITEM;
+                        }
                     }
-                }
-                for(int i=0 ; i<HPREGENMAP.size() ; i++){
-                    if(this.getX()-1==HPREGENMAP.get(i).getX() && this.getY()==HPREGENMAP.get(i).getY()){
-                        return HPREGEN;
+                    for(int i=0 ; i<HPREGENMAP.size() ; i++){
+                        if(this.getX()-1==HPREGENMAP.get(i).getX() && this.getY()==HPREGENMAP.get(i).getY()){
+                            return HPREGEN;
+                        }
                     }
-                }
-                for(int i=0 ; i<GOLDMAP.size() ; i++){
-                    if(this.getX()-1==GOLDMAP.get(i).getX() && this.getY()==GOLDMAP.get(i).getY()){
-                        return GOLD;
+                    for(int i=0 ; i<GOLDMAP.size() ; i++){
+                        if(this.getX()-1==GOLDMAP.get(i).getX() && this.getY()==GOLDMAP.get(i).getY()){
+                            return GOLD;
+                        }
                     }
-                }
-                for(int i=0 ; i<BULLETMAP.size() ; i++){
-                    if(this.getX()-1==BULLETMAP.get(i).getX() && this.getY()==BULLETMAP.get(i).getY())                                   
-                        return BULLET;
+                    for(int i=0 ; i<BULLETMAP.size() ; i++){
+                        if(this.getX()-1==BULLETMAP.get(i).getX() && this.getY()==BULLETMAP.get(i).getY())                                   
+                            return BULLET;
+                    }
+                    return PATH;
                 }
             case 3:
                 if(VERTICALWALLMAP[this.getX()+1][this.getY()])
@@ -194,29 +204,32 @@ public class Bullet extends Item implements Runnable{
                     return FOG;
                 else if(EXIT.getX()==this.getX()+1 && EXIT.getY()==this.getY())
                     return EXIT;
-                for(int i=0 ; i<ZOMBIEMAP.size() ; i++){
-                    if(this.getX()+1==ZOMBIEMAP.get(i).getX() && this.getY()==ZOMBIEMAP.get(i).getY()){
-                        return ZOMBIE;
+                else {
+                    for(int i=0 ; i<ZOMBIEMAP.size() ; i++){
+                        if(this.getX()+1==ZOMBIEMAP.get(i).getX() && this.getY()==ZOMBIEMAP.get(i).getY()){
+                            return ZOMBIE;
+                        }
                     }
-                }
-                for(int i=0 ; i<LOSTITEMMAP.size() ; i++){
-                    if(this.getX()+1==LOSTITEMMAP.get(i).getX() && this.getY()==LOSTITEMMAP.get(i).getY()){
-                        return LOSTITEM;
+                    for(int i=0 ; i<LOSTITEMMAP.size() ; i++){
+                        if(this.getX()+1==LOSTITEMMAP.get(i).getX() && this.getY()==LOSTITEMMAP.get(i).getY()){
+                            return LOSTITEM;
+                        }
                     }
-                }
-                for(int i=0 ; i<HPREGENMAP.size() ; i++){
-                    if(this.getX()+1==HPREGENMAP.get(i).getX() && this.getY()==HPREGENMAP.get(i).getY()){
-                        return HPREGEN;
+                    for(int i=0 ; i<HPREGENMAP.size() ; i++){
+                        if(this.getX()+1==HPREGENMAP.get(i).getX() && this.getY()==HPREGENMAP.get(i).getY()){
+                            return HPREGEN;
+                        }
                     }
-                }
-                for(int i=0 ; i<GOLDMAP.size() ; i++){
-                    if(this.getX()+1==GOLDMAP.get(i).getX() && this.getY()==GOLDMAP.get(i).getY()){
-                        return GOLD;
+                    for(int i=0 ; i<GOLDMAP.size() ; i++){
+                        if(this.getX()+1==GOLDMAP.get(i).getX() && this.getY()==GOLDMAP.get(i).getY()){
+                            return GOLD;
+                        }
                     }
-                }
-                for(int i=0 ; i<BULLETMAP.size() ; i++){
-                    if(this.getX()+1==BULLETMAP.get(i).getX() && this.getY()==BULLETMAP.get(i).getY())                                   
-                        return BULLET;
+                    for(int i=0 ; i<BULLETMAP.size() ; i++){
+                        if(this.getX()+1==BULLETMAP.get(i).getX() && this.getY()==BULLETMAP.get(i).getY())                                   
+                            return BULLET;
+                    }
+                    return PATH;
                 }
         }
         return PATH;
