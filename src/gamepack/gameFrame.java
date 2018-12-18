@@ -13,6 +13,7 @@ import static gamepack.Game.VERTICALWALL;
 import static gamepack.Game.VERTICALWALLMAP;
 import static gamepack.Game.ZOMBIE;
 import static gamepack.Game.ZOMBIEMAP;
+import java.awt.Font;
 import java.awt.event.KeyEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -535,6 +536,7 @@ public class gameFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_mazeAreaKeyPressed
     
     public void updateMaze(String input){
+        mazeArea.setFont(new Font("monospaced", Font.PLAIN, 9));
         mazeArea.setText(input);
     }
     public void start() {
