@@ -65,11 +65,15 @@ public final class MazeGenerator {
                 do{
                     a=r.nextInt(MAPWIDTH);
                 } while (a%2==0);
+                HORIZONTALWALLMAP[a][0]=false;
+                VERTICALWALLMAP[a][0]=false;
                 EXIT.setPosition(a, 0);
             } else {
                 do{
                     a=r.nextInt(MAPWIDTH);
                 } while (a%2==0);
+                HORIZONTALWALLMAP[a][MAPHEIGHT-1]=false;
+                VERTICALWALLMAP[a][MAPHEIGHT-1]=false;
                 EXIT.setPosition(a, MAPHEIGHT-1);
             }
         } else {
@@ -79,11 +83,15 @@ public final class MazeGenerator {
                 do{
                     a=r.nextInt(MAPHEIGHT);
                 } while (a%2==0);
+                HORIZONTALWALLMAP[0][a]=false;
+                VERTICALWALLMAP[0][a]=false;
                 EXIT.setPosition(0, a);
             } else {
                 do{
                     a=r.nextInt(MAPHEIGHT);
                 } while (a%2==0);
+                HORIZONTALWALLMAP[MAPWIDTH-1][a]=false;
+                VERTICALWALLMAP[MAPWIDTH-1][a]=false;
                 EXIT.setPosition(MAPWIDTH-1, a);
             }
         }

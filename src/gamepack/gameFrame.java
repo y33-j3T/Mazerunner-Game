@@ -3,10 +3,16 @@ package gamepack;
 import entities.Bullet;
 import entities.Mob;
 import static gamepack.Game.BULLETMAP;
+import static gamepack.Game.EXIT;
+import static gamepack.Game.HORIZONTALWALL;
+import static gamepack.Game.HORIZONTALWALLMAP;
 import static gamepack.Game.JOHNNY;
 import static gamepack.Game.MAPHEIGHT;
 import static gamepack.Game.MAPWIDTH;
+import static gamepack.Game.VERTICALWALL;
 import static gamepack.Game.VERTICALWALLMAP;
+import static gamepack.Game.ZOMBIE;
+import static gamepack.Game.ZOMBIEMAP;
 import java.awt.event.KeyEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -396,6 +402,19 @@ public class gameFrame extends javax.swing.JFrame {
                         break;
                     }
                 }
+                for(int i=0 ; i<ZOMBIEMAP.size() ; i++){
+                    if(ZOMBIEMAP.get(i).getX()==JOHNNY.getX() && ZOMBIEMAP.get(i).getY()==JOHNNY.getY()-1){
+                        exist = true;
+                        break;
+                    }
+                }
+                if(VERTICALWALLMAP[JOHNNY.getX()][JOHNNY.getY()-1])
+                    exist = true;
+                else if(HORIZONTALWALLMAP[JOHNNY.getX()][JOHNNY.getY()-1])
+                    exist = true;
+                else if(EXIT.getX()==JOHNNY.getX() && EXIT.getY()==JOHNNY.getY()-1)
+                    exist = true;
+                
                 if(!exist){
                     Bullet bullet = new Bullet(" * ", JOHNNY.getX(), JOHNNY.getY()-1, 0);
                     BULLETMAP.add(bullet);
@@ -411,9 +430,24 @@ public class gameFrame extends javax.swing.JFrame {
                         break;
                     }
                 }
+                for(int i=0 ; i<ZOMBIEMAP.size() ; i++){
+                    if(ZOMBIEMAP.get(i).getX()==JOHNNY.getX() && ZOMBIEMAP.get(i).getY()==JOHNNY.getY()+1){
+                        exist = true;
+                        break;
+                    }
+                }
+                if(VERTICALWALLMAP[JOHNNY.getX()][JOHNNY.getY()+1])
+                    exist = true;
+                else if(HORIZONTALWALLMAP[JOHNNY.getX()][JOHNNY.getY()+1])
+                    exist = true;
+                else if(EXIT.getX()==JOHNNY.getX() && EXIT.getY()==JOHNNY.getY()+1)
+                    exist = true;
+                
                 if(!exist){
                     Bullet bullet = new Bullet(" * ", JOHNNY.getX(), JOHNNY.getY()+1, 1);
                     BULLETMAP.add(bullet);
+                    Thread bulletThread= new Thread(bullet);
+                    bulletThread.start();
                 }
                 break;
                 
@@ -424,9 +458,24 @@ public class gameFrame extends javax.swing.JFrame {
                         break;
                     }
                 }
+                for(int i=0 ; i<ZOMBIEMAP.size() ; i++){
+                    if(ZOMBIEMAP.get(i).getX()==JOHNNY.getX()-1 && ZOMBIEMAP.get(i).getY()==JOHNNY.getY()){
+                        exist = true;
+                        break;
+                    }
+                }
+                if(VERTICALWALLMAP[JOHNNY.getX()-1][JOHNNY.getY()])
+                    exist = true;
+                else if(HORIZONTALWALLMAP[JOHNNY.getX()-1][JOHNNY.getY()])
+                    exist = true;
+                else if(EXIT.getX()==JOHNNY.getX()-1 && EXIT.getY()==JOHNNY.getY())
+                    exist = true;
+                
                 if(!exist){
                     Bullet bullet = new Bullet(" * ", JOHNNY.getX()-1, JOHNNY.getY(), 2);
                     BULLETMAP.add(bullet);
+                    Thread bulletThread= new Thread(bullet);
+                    bulletThread.start();
                 }
                 break;
                 
@@ -437,9 +486,24 @@ public class gameFrame extends javax.swing.JFrame {
                         break;
                     }
                 }
+                for(int i=0 ; i<ZOMBIEMAP.size() ; i++){
+                    if(ZOMBIEMAP.get(i).getX()==JOHNNY.getX()+1 && ZOMBIEMAP.get(i).getY()==JOHNNY.getY()){
+                        exist = true;
+                        break;
+                    }
+                }
+                if(VERTICALWALLMAP[JOHNNY.getX()+1][JOHNNY.getY()])
+                    exist = true;
+                else if(HORIZONTALWALLMAP[JOHNNY.getX()+1][JOHNNY.getY()])
+                    exist = true;
+                else if(EXIT.getX()==JOHNNY.getX()+1 && EXIT.getY()==JOHNNY.getY())
+                    exist = true;
+                
                 if(!exist){
                     Bullet bullet = new Bullet(" * ", JOHNNY.getX()+1, JOHNNY.getY(), 3);
                     BULLETMAP.add(bullet);
+                    Thread bulletThread= new Thread(bullet);
+                    bulletThread.start();
                 }
                 break;
                 
@@ -518,16 +582,10 @@ public class gameFrame extends javax.swing.JFrame {
                                 MazerunnerGame.refresh();
                                 mazeArea.setText(MazerunnerGame.toString());
                                 System.out.println(mazeArea.getText());
-                                
-                                if(JOHNNY.getGoldAmount()==40){
-                                    upgradeDialog dialog = new upgradeDialog();
-                                    dialog.setLocationRelativeTo(null);
-                                    dialog.setVisible(true);
-                                }
                             
                                 try {
-//                                    this.wait(80);
-                                    this.wait(1000);
+                                    this.wait(80);
+//                                    this.wait(1000);
                                 } catch (InterruptedException ex) {
                                     Logger.getLogger(gameFrame.class.getName()).log(Level.SEVERE, null, ex);
                                 }

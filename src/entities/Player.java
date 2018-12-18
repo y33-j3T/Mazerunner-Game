@@ -24,6 +24,7 @@ import static gamepack.gameFrame.hpProgressBar;
 import static gamepack.gameFrame.livesProgressBar;
 import static gamepack.gameFrame.lostItemProgressBar;
 import gamepack.loseDialog;
+import gamepack.upgradeDialog;
 import gamepack.winDialog;
 import java.awt.event.KeyEvent;
 import java.util.logging.Level;
@@ -229,6 +230,11 @@ public class Player extends Entity{
             for(int i=0 ; i<GOLDMAP.size() ; i++){
                 if(GOLDMAP.get(i).getX()==this.getX() && GOLDMAP.get(i).getY()==this.getY())
                     GOLDMAP.remove(i);
+            }
+            
+            if(JOHNNY.getGoldAmount()==40){
+                upgradeDialog dialog = new upgradeDialog();
+                dialog.start();
             }
         }
         else if(this.getCollidedBlock(input)==VERTICALWALL || this.getCollidedBlock(input)==HORIZONTALWALL){

@@ -81,6 +81,8 @@ public class Bullet extends Item implements Runnable{
                 }
             } catch (InterruptedException ex) {
                 Logger.getLogger(Bullet.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (NullPointerException e){
+                
             }
         }
     }

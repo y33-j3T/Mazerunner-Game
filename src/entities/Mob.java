@@ -98,10 +98,17 @@ public class Mob extends Entity implements Runnable {
     public void executeCollisionAction(int a){
         Random r = new Random();
         if(this.getCollidedBlock(a)==ZOMBIE)
-        if(this.getCollidedBlock(a)==VERTICALWALL)
-        if(this.getCollidedBlock(a)==HORIZONTALWALL)
-        if(this.getCollidedBlock(a)==EXIT){
-            this.executeCollisionAction(r.nextInt(4));
+//            this.executeCollisionAction(r.nextInt(4));
+            this.executeCollisionAction(a+1);
+        else if(this.getCollidedBlock(a)==VERTICALWALL)
+//            this.executeCollisionAction(r.nextInt(4));
+            this.executeCollisionAction(a+1);
+        else if(this.getCollidedBlock(a)==HORIZONTALWALL)
+//            this.executeCollisionAction(r.nextInt(4));
+            this.executeCollisionAction(a+1);
+        else if(this.getCollidedBlock(a)==EXIT){
+//            this.executeCollisionAction(r.nextInt(4));
+            this.executeCollisionAction(a+1);
         } else {
             this.move(a);
         }
@@ -133,29 +140,32 @@ public class Mob extends Entity implements Runnable {
                     return EXIT;
                 else if(JOHNNY.getX()==this.getX() && JOHNNY.getY()==this.getY()-1)
                     return JOHNNY;
-                for(int i=0 ; i<ZOMBIEMAP.size() ; i++){
-                    if(this.getX()==ZOMBIEMAP.get(i).getX() && this.getY()-1==ZOMBIEMAP.get(i).getY()){
-                        return ZOMBIE;
+                else {
+                    for(int i=0 ; i<ZOMBIEMAP.size() ; i++){
+                        if(this.getX()==ZOMBIEMAP.get(i).getX() && this.getY()-1==ZOMBIEMAP.get(i).getY()){
+                            return ZOMBIE;
+                        }
                     }
-                }
-                for(int i=0 ; i<LOSTITEMMAP.size() ; i++){
-                    if(this.getX()==LOSTITEMMAP.get(i).getX() && this.getY()-1==LOSTITEMMAP.get(i).getY()){
-                        return LOSTITEM;
+                    for(int i=0 ; i<LOSTITEMMAP.size() ; i++){
+                        if(this.getX()==LOSTITEMMAP.get(i).getX() && this.getY()-1==LOSTITEMMAP.get(i).getY()){
+                            return LOSTITEM;
+                        }
                     }
-                }
-                for(int i=0 ; i<HPREGENMAP.size() ; i++){
-                    if(this.getX()==HPREGENMAP.get(i).getX() && this.getY()-1==HPREGENMAP.get(i).getY()){
-                        return HPREGEN;
+                    for(int i=0 ; i<HPREGENMAP.size() ; i++){
+                        if(this.getX()==HPREGENMAP.get(i).getX() && this.getY()-1==HPREGENMAP.get(i).getY()){
+                            return HPREGEN;
+                        }
                     }
-                }
-                for(int i=0 ; i<GOLDMAP.size() ; i++){
-                    if(this.getX()==GOLDMAP.get(i).getX() && this.getY()-1==GOLDMAP.get(i).getY()){
-                        return GOLD;
+                    for(int i=0 ; i<GOLDMAP.size() ; i++){
+                        if(this.getX()==GOLDMAP.get(i).getX() && this.getY()-1==GOLDMAP.get(i).getY()){
+                            return GOLD;
+                        }
                     }
-                }
-                for(int i=0 ; i<BULLETMAP.size() ; i++){
-                    if(this.getX()==BULLETMAP.get(i).getX() && this.getY()-1==BULLETMAP.get(i).getY())                                   
-                        return BULLET;
+                    for(int i=0 ; i<BULLETMAP.size() ; i++){
+                        if(this.getX()==BULLETMAP.get(i).getX() && this.getY()-1==BULLETMAP.get(i).getY())                                   
+                            return BULLET;
+                    }
+                    return PATH;
                 }
             case 1:
                 if(VERTICALWALLMAP[this.getX()][this.getY()+1])
@@ -166,29 +176,32 @@ public class Mob extends Entity implements Runnable {
                     return EXIT;
                 else if(JOHNNY.getX()==this.getX() && JOHNNY.getY()==this.getY()+1)
                     return JOHNNY;
-                for(int i=0 ; i<ZOMBIEMAP.size() ; i++){
-                    if(this.getX()==ZOMBIEMAP.get(i).getX() && this.getY()+1==ZOMBIEMAP.get(i).getY()){
-                        return ZOMBIE;
+                else{
+                    for(int i=0 ; i<ZOMBIEMAP.size() ; i++){
+                        if(this.getX()==ZOMBIEMAP.get(i).getX() && this.getY()+1==ZOMBIEMAP.get(i).getY()){
+                            return ZOMBIE;
+                        }
                     }
-                }
-                for(int i=0 ; i<LOSTITEMMAP.size() ; i++){
-                    if(this.getX()==LOSTITEMMAP.get(i).getX() && this.getY()+1==LOSTITEMMAP.get(i).getY()){
-                        return LOSTITEM;
+                    for(int i=0 ; i<LOSTITEMMAP.size() ; i++){
+                        if(this.getX()==LOSTITEMMAP.get(i).getX() && this.getY()+1==LOSTITEMMAP.get(i).getY()){
+                            return LOSTITEM;
+                        }
                     }
-                }
-                for(int i=0 ; i<HPREGENMAP.size() ; i++){
-                    if(this.getX()==HPREGENMAP.get(i).getX() && this.getY()+1==HPREGENMAP.get(i).getY()){
-                        return HPREGEN;
+                    for(int i=0 ; i<HPREGENMAP.size() ; i++){
+                        if(this.getX()==HPREGENMAP.get(i).getX() && this.getY()+1==HPREGENMAP.get(i).getY()){
+                            return HPREGEN;
+                        }
                     }
-                }
-                for(int i=0 ; i<GOLDMAP.size() ; i++){
-                    if(this.getX()==GOLDMAP.get(i).getX() && this.getY()+1==GOLDMAP.get(i).getY()){
-                        return GOLD;
+                    for(int i=0 ; i<GOLDMAP.size() ; i++){
+                        if(this.getX()==GOLDMAP.get(i).getX() && this.getY()+1==GOLDMAP.get(i).getY()){
+                            return GOLD;
+                        }
                     }
-                }
-                for(int i=0 ; i<BULLETMAP.size() ; i++){
-                    if(this.getX()==BULLETMAP.get(i).getX() && this.getY()+1==BULLETMAP.get(i).getY())                                   
-                        return BULLET;
+                    for(int i=0 ; i<BULLETMAP.size() ; i++){
+                        if(this.getX()==BULLETMAP.get(i).getX() && this.getY()+1==BULLETMAP.get(i).getY())                                   
+                            return BULLET;
+                    }
+                    return PATH;
                 }
             case 2:
                 if(VERTICALWALLMAP[this.getX()-1][this.getY()])
@@ -199,29 +212,32 @@ public class Mob extends Entity implements Runnable {
                     return EXIT;
                 else if(JOHNNY.getX()==this.getX()-1 && JOHNNY.getY()==this.getY())
                     return JOHNNY;
-                for(int i=0 ; i<ZOMBIEMAP.size() ; i++){
-                    if(this.getX()-1==ZOMBIEMAP.get(i).getX() && this.getY()==ZOMBIEMAP.get(i).getY()){
-                        return ZOMBIE;
+                else {
+                    for(int i=0 ; i<ZOMBIEMAP.size() ; i++){
+                        if(this.getX()-1==ZOMBIEMAP.get(i).getX() && this.getY()==ZOMBIEMAP.get(i).getY()){
+                            return ZOMBIE;
+                        }
                     }
-                }
-                for(int i=0 ; i<LOSTITEMMAP.size() ; i++){
-                    if(this.getX()-1==LOSTITEMMAP.get(i).getX() && this.getY()==LOSTITEMMAP.get(i).getY()){
-                        return LOSTITEM;
+                    for(int i=0 ; i<LOSTITEMMAP.size() ; i++){
+                        if(this.getX()-1==LOSTITEMMAP.get(i).getX() && this.getY()==LOSTITEMMAP.get(i).getY()){
+                            return LOSTITEM;
+                        }
                     }
-                }
-                for(int i=0 ; i<HPREGENMAP.size() ; i++){
-                    if(this.getX()-1==HPREGENMAP.get(i).getX() && this.getY()==HPREGENMAP.get(i).getY()){
-                        return HPREGEN;
+                    for(int i=0 ; i<HPREGENMAP.size() ; i++){
+                        if(this.getX()-1==HPREGENMAP.get(i).getX() && this.getY()==HPREGENMAP.get(i).getY()){
+                            return HPREGEN;
+                        }
                     }
-                }
-                for(int i=0 ; i<GOLDMAP.size() ; i++){
-                    if(this.getX()-1==GOLDMAP.get(i).getX() && this.getY()==GOLDMAP.get(i).getY()){
-                        return GOLD;
+                    for(int i=0 ; i<GOLDMAP.size() ; i++){
+                        if(this.getX()-1==GOLDMAP.get(i).getX() && this.getY()==GOLDMAP.get(i).getY()){
+                            return GOLD;
+                        }
                     }
-                }
-                for(int i=0 ; i<BULLETMAP.size() ; i++){
-                    if(this.getX()-1==BULLETMAP.get(i).getX() && this.getY()==BULLETMAP.get(i).getY())                                   
-                        return BULLET;
+                    for(int i=0 ; i<BULLETMAP.size() ; i++){
+                        if(this.getX()-1==BULLETMAP.get(i).getX() && this.getY()==BULLETMAP.get(i).getY())                                   
+                            return BULLET;
+                    }
+                    return PATH;
                 }
             case 3:
                 if(VERTICALWALLMAP[this.getX()+1][this.getY()])
@@ -232,30 +248,35 @@ public class Mob extends Entity implements Runnable {
                     return EXIT;
                 else if(JOHNNY.getX()==this.getX()+1 && JOHNNY.getY()==this.getY())
                     return JOHNNY;
-                for(int i=0 ; i<ZOMBIEMAP.size() ; i++){
-                    if(this.getX()+1==ZOMBIEMAP.get(i).getX() && this.getY()==ZOMBIEMAP.get(i).getY()){
-                        return ZOMBIE;
+                else {
+                    for(int i=0 ; i<ZOMBIEMAP.size() ; i++){
+                        if(this.getX()+1==ZOMBIEMAP.get(i).getX() && this.getY()==ZOMBIEMAP.get(i).getY()){
+                            return ZOMBIE;
+                        }
                     }
-                }
-                for(int i=0 ; i<LOSTITEMMAP.size() ; i++){
-                    if(this.getX()+1==LOSTITEMMAP.get(i).getX() && this.getY()==LOSTITEMMAP.get(i).getY()){
-                        return LOSTITEM;
+                    for(int i=0 ; i<LOSTITEMMAP.size() ; i++){
+                        if(this.getX()+1==LOSTITEMMAP.get(i).getX() && this.getY()==LOSTITEMMAP.get(i).getY()){
+                            return LOSTITEM;
+                        }
                     }
-                }
-                for(int i=0 ; i<HPREGENMAP.size() ; i++){
-                    if(this.getX()+1==HPREGENMAP.get(i).getX() && this.getY()==HPREGENMAP.get(i).getY()){
-                        return HPREGEN;
+                    for(int i=0 ; i<HPREGENMAP.size() ; i++){
+                        if(this.getX()+1==HPREGENMAP.get(i).getX() && this.getY()==HPREGENMAP.get(i).getY()){
+                            return HPREGEN;
+                        }
                     }
-                }
-                for(int i=0 ; i<GOLDMAP.size() ; i++){
-                    if(this.getX()+1==GOLDMAP.get(i).getX() && this.getY()==GOLDMAP.get(i).getY()){
-                        return GOLD;
+                    for(int i=0 ; i<GOLDMAP.size() ; i++){
+                        if(this.getX()+1==GOLDMAP.get(i).getX() && this.getY()==GOLDMAP.get(i).getY()){
+                            return GOLD;
+                        }
                     }
+                    for(int i=0 ; i<BULLETMAP.size() ; i++){
+                        if(this.getX()+1==BULLETMAP.get(i).getX() && this.getY()==BULLETMAP.get(i).getY())                                   
+                            return BULLET;
+                    }
+                    return PATH;
                 }
-                for(int i=0 ; i<BULLETMAP.size() ; i++){
-                    if(this.getX()+1==BULLETMAP.get(i).getX() && this.getY()==BULLETMAP.get(i).getY())                                   
-                        return BULLET;
-                }
+            default: 
+                break;
         }
         return PATH;
     }
