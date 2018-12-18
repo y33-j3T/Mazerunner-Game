@@ -47,7 +47,6 @@ public class gameFrame extends javax.swing.JFrame {
         lostItemProgressBar = new javax.swing.JProgressBar();
         gameSettingsPanel = new javax.swing.JPanel();
         jToggleButton1 = new javax.swing.JToggleButton();
-        jSlider1 = new javax.swing.JSlider();
         entitiesPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -219,17 +218,13 @@ public class gameFrame extends javax.swing.JFrame {
             gameSettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(gameSettingsPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jToggleButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSlider1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         gameSettingsPanelLayout.setVerticalGroup(
             gameSettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(gameSettingsPanelLayout.createSequentialGroup()
-                .addGroup(gameSettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jToggleButton1)
-                    .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jToggleButton1)
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
@@ -638,7 +633,6 @@ public class gameFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSlider jSlider1;
     private javax.swing.JToggleButton jToggleButton1;
     private java.awt.Label label5;
     public static javax.swing.JProgressBar livesProgressBar;

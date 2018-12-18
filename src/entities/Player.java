@@ -165,23 +165,20 @@ public class Player extends Entity{
     public void executeCollisionAction(KeyEvent input){
 //        System.out.println("check col " + this.getCollidedBlock(input).getIcon());
         if(this.getCollidedBlock(input)==ZOMBIE){
-            this.setHP(this.getHP()-ZOMBIE.getATTACKDAMAGE()+this.getARMOR());
+            this.setHP(this.getHP()-ZOMBIE.getATTACKDAMAGE()+this.getARMOR()-10);
             hpProgressBar.setValue(JOHNNY.getHP());
             if(this.getHP()<=0){
-                if(LIVES>0){
+                if(LIVES>1){
                     LIVES--;
                     livesProgressBar.setValue(JOHNNY.getLives());
                     this.setHP(this.getTOTALHP());
                     hpProgressBar.setValue(JOHNNY.getHP());
                     this.setPosition(spawnX, spawnY);
                 } else {
+                    LIVES--;
+                    livesProgressBar.setValue(JOHNNY.getLives());
                     loseDialog lose = new loseDialog();
                     lose.start();
-                    try {
-                        wait();
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(Player.class.getName()).log(Level.SEVERE, null, ex);
-                    }
                 }
             }
         }
