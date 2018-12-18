@@ -190,6 +190,8 @@ public class Player extends Entity{
                     wait();
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Player.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalMonitorStateException e){
+                    
                 }
             } else {
                 winDialog win = new winDialog();

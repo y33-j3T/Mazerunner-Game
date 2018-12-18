@@ -4,14 +4,11 @@ import entities.Bullet;
 import entities.Mob;
 import static gamepack.Game.BULLETMAP;
 import static gamepack.Game.EXIT;
-import static gamepack.Game.HORIZONTALWALL;
 import static gamepack.Game.HORIZONTALWALLMAP;
 import static gamepack.Game.JOHNNY;
 import static gamepack.Game.MAPHEIGHT;
 import static gamepack.Game.MAPWIDTH;
-import static gamepack.Game.VERTICALWALL;
 import static gamepack.Game.VERTICALWALLMAP;
-import static gamepack.Game.ZOMBIE;
 import static gamepack.Game.ZOMBIEMAP;
 import java.awt.Font;
 import java.awt.event.KeyEvent;
@@ -80,12 +77,14 @@ public class gameFrame extends javax.swing.JFrame {
         mazePanel.setBorder(javax.swing.BorderFactory.createTitledBorder("GG MAZE"));
 
         mazeArea.setEditable(false);
+        mazeArea.setBackground(new java.awt.Color(0, 0, 0));
         mazeArea.setColumns(MAPWIDTH);
+        mazeArea.setForeground(new java.awt.Color(153, 153, 153));
         mazeArea.setRows(MAPHEIGHT);
         mazeArea.setText("");
         mazeArea.setToolTipText("");
         mazeArea.setPreferredSize(new java.awt.Dimension(41, 41));
-        mazeArea.setSelectedTextColor(new java.awt.Color(0, 0, 0));
+        mazeArea.setSelectedTextColor(new java.awt.Color(255, 255, 255));
         mazeArea.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 mazeAreaKeyPressed(evt);
@@ -536,7 +535,7 @@ public class gameFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_mazeAreaKeyPressed
     
     public void updateMaze(String input){
-        mazeArea.setFont(new Font("monospaced", Font.PLAIN, 9));
+        mazeArea.setFont(new Font("monospaced", Font.BOLD, 17));
         mazeArea.setText(input);
     }
     public void start() {
@@ -584,9 +583,9 @@ public class gameFrame extends javax.swing.JFrame {
                         while (true) {
                             synchronized( this ){
                                 MazerunnerGame.refresh();
-                                //mazeArea.setText(MazerunnerGame.toString());
+//                                mazeArea.setText(MazerunnerGame.toString());
                                 frame.updateMaze(MazerunnerGame.toString());
-                                //System.out.println(mazeArea.getText());
+//                                System.out.println(mazeArea.getText());
                             
                                 try {
                                     this.wait(70);
