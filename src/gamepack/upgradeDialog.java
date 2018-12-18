@@ -116,9 +116,9 @@ public class upgradeDialog extends javax.swing.JDialog {
     private void armorUpgradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_armorUpgradeActionPerformed
         if(JOHNNY.getARMOR()<5){
             JOHNNY.setARMOR(JOHNNY.getARMOR()+1);
-            JOHNNY.setGOLD_amount(0);
             armorProgressBar.setValue(JOHNNY.getARMOR());
         }
+        JOHNNY.setGOLD_amount(0);
         goldProgressBar.setValue(JOHNNY.getGoldAmount());
         dispose();
     }//GEN-LAST:event_armorUpgradeActionPerformed
@@ -126,9 +126,9 @@ public class upgradeDialog extends javax.swing.JDialog {
     private void visionUpgradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visionUpgradeActionPerformed
         if(JOHNNY.getVISION()<5){
             JOHNNY.setVISION(JOHNNY.getVISION()+1);
-            JOHNNY.setGOLD_amount(0);
             visionProgressBar.setValue(JOHNNY.getVISION());
         }
+        JOHNNY.setGOLD_amount(0);
         goldProgressBar.setValue(JOHNNY.getGoldAmount());
         dispose();
     }//GEN-LAST:event_visionUpgradeActionPerformed
@@ -136,9 +136,9 @@ public class upgradeDialog extends javax.swing.JDialog {
     private void attackDamageUpgradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_attackDamageUpgradeActionPerformed
         if(JOHNNY.getATTACKDAMAGE()<10){
             JOHNNY.setATTACKDAMAGE(JOHNNY.getATTACKDAMAGE()+1);
-            JOHNNY.setGOLD_amount(0);
             attackDamageProgressBar.setValue(JOHNNY.getATTACKDAMAGE());
         }
+        JOHNNY.setGOLD_amount(0);
         goldProgressBar.setValue(JOHNNY.getGoldAmount());
         dispose();
     }//GEN-LAST:event_attackDamageUpgradeActionPerformed
@@ -147,8 +147,8 @@ public class upgradeDialog extends javax.swing.JDialog {
         if(JOHNNY.getTOTALHP()<200){
             JOHNNY.setTOTALHP(JOHNNY.getTOTALHP()+20);
             JOHNNY.setHP(JOHNNY.getHP()+20);
-            JOHNNY.setGOLD_amount(0);
         }
+        JOHNNY.setGOLD_amount(0);
         goldProgressBar.setValue(JOHNNY.getGoldAmount());
         dispose();
     }//GEN-LAST:event_totalHPUpgradeActionPerformed
