@@ -30,6 +30,10 @@ public class Bullet extends Item implements Runnable{
         this.dir = dir;
     }
 
+    public Bullet() {
+        
+    }
+
     public int getDir() {
         return dir;
     }
@@ -43,41 +47,44 @@ public class Bullet extends Item implements Runnable{
         while (!BULLETMAP.isEmpty()){
             try {
                 synchronized( this ){
-                    for(int i=0 ; i<BULLETMAP.size() ; i++){
-                        int dir = BULLETMAP.get(i).getDir();
+                    try{
+                        for(int i=0 ; i<BULLETMAP.size() ; i++){
+                            int dir = BULLETMAP.get(i).getDir();
 
-                        if(BULLETMAP.get(i).getCollidedBlock(dir)==ZOMBIE){
-                            BULLETMAP.get(i).move(dir);
-                            for(int j=0 ; j<ZOMBIEMAP.size() ; j++){
-                                if(ZOMBIEMAP.get(j).getX()==BULLETMAP.get(i).getX() && ZOMBIEMAP.get(j).getY()==BULLETMAP.get(i).getY()){
-                                    ZOMBIEMAP.get(j).setHP(ZOMBIEMAP.get(j).getHP()-JOHNNY.getATTACKDAMAGE()+ZOMBIEMAP.get(j).getARMOR());
-                                    BULLETMAP.remove(i);
-                                } 
+                            if(BULLETMAP.get(i).getCollidedBlock(dir)==ZOMBIE){
+                                BULLETMAP.get(i).move(dir);
+                                for(int j=0 ; j<ZOMBIEMAP.size() ; j++){
+                                    if(ZOMBIEMAP.get(j).getX()==BULLETMAP.get(i).getX() && ZOMBIEMAP.get(j).getY()==BULLETMAP.get(i).getY()){
+                                        ZOMBIEMAP.get(j).setHP(ZOMBIEMAP.get(j).getHP()-JOHNNY.getATTACKDAMAGE()+ZOMBIEMAP.get(j).getARMOR());
+                                        BULLETMAP.remove(i);
+                                    } 
 
-                                if(ZOMBIEMAP.get(j).getHP()<=0){
-                                    ZOMBIEMAP.remove(j);
+                                    if(ZOMBIEMAP.get(j).getHP()<=0){
+                                        ZOMBIEMAP.remove(j);
+                                    }
                                 }
                             }
+                            else if(BULLETMAP.get(i).getCollidedBlock(dir)==VERTICALWALL){
+                                BULLETMAP.remove(i);
+                            }
+                            else if(BULLETMAP.get(i).getCollidedBlock(dir)==HORIZONTALWALL){
+                                BULLETMAP.remove(i);
+                            }
+                            else if(BULLETMAP.get(i).getCollidedBlock(dir)==EXIT){
+                                BULLETMAP.remove(i);
+                            }   
+                            else if(BULLETMAP.get(i).getCollidedBlock(dir)==FOG){
+                                BULLETMAP.remove(i);
+                            }
+                            else {
+                                BULLETMAP.get(i).move(dir);
+                            }
                         }
-                        else if(BULLETMAP.get(i).getCollidedBlock(dir)==VERTICALWALL){
-                            BULLETMAP.remove(i);
-                        }
-                        else if(BULLETMAP.get(i).getCollidedBlock(dir)==HORIZONTALWALL){
-                            BULLETMAP.remove(i);
-                        }
-                        else if(BULLETMAP.get(i).getCollidedBlock(dir)==EXIT){
-                            BULLETMAP.remove(i);
-                        }   
-                        else if(BULLETMAP.get(i).getCollidedBlock(dir)==FOG){
-                            BULLETMAP.remove(i);
-                        }
-                        else {
-                            BULLETMAP.get(i).move(dir);
-                        }
+                    } catch (IndexOutOfBoundsException e){
+                        
                     }
                     
                     this.wait(200);
-                    //sleep(200);
                 }
             } catch (InterruptedException ex) {
                 Logger.getLogger(Bullet.class.getName()).log(Level.SEVERE, null, ex);

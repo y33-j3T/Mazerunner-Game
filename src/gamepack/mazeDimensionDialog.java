@@ -1,6 +1,6 @@
 package gamepack;
 public class mazeDimensionDialog extends javax.swing.JDialog {
-
+    
     /**
      * Creates new form mazeDimensionDialog
      */

@@ -18,6 +18,7 @@ import static gamepack.Game.VERTICALWALL;
 import static gamepack.Game.VERTICALWALLMAP;
 import static gamepack.Game.ZOMBIE;
 import static gamepack.Game.ZOMBIEMAP;
+import static gamepack.gameFrame.hpProgressBar;
 import static java.lang.Thread.sleep;
 import java.util.Random;
 import java.util.logging.Level;
@@ -34,7 +35,7 @@ public class Mob extends Entity implements Runnable {
         this.ICON = ICON;
         HP = 5;
         TOTALHP = 5;
-        ATTACKDAMAGE = 5;
+        ATTACKDAMAGE = 10;
         ARMOR = 1;
         VISION = 5;
         this.x = x;
@@ -106,9 +107,12 @@ public class Mob extends Entity implements Runnable {
         else if(this.getCollidedBlock(a)==HORIZONTALWALL)
 //            this.executeCollisionAction(r.nextInt(4));
             this.executeCollisionAction(a+1);
-        else if(this.getCollidedBlock(a)==EXIT){
+        else if(this.getCollidedBlock(a)==EXIT)
 //            this.executeCollisionAction(r.nextInt(4));
             this.executeCollisionAction(a+1);
+        else if(this.getCollidedBlock(a)==JOHNNY){     
+            JOHNNY.setHP(JOHNNY.getHP()-ZOMBIE.getATTACKDAMAGE()+JOHNNY.getARMOR());
+            hpProgressBar.setValue(JOHNNY.getHP());
         } else {
             this.move(a);
         }

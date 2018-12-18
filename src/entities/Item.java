@@ -7,4 +7,8 @@ public class Item extends Entity {
         this.y = y;
         this.ICON = ICON;
     }
+    
+    public Item(){
+        
+    }
 }

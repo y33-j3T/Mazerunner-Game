@@ -71,8 +71,10 @@ public class pauseDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void unpauseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unpauseButtonActionPerformed
-        notifyAll();
         dispose();
+        synchronized(this){
+            notify();
+        }
     }//GEN-LAST:event_unpauseButtonActionPerformed
 
     /**
@@ -105,16 +107,26 @@ public class pauseDialog extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                pauseDialog dialog = new pauseDialog();
-                dialog.setLocationRelativeTo(null);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
+                    synchronized(this){
+                        pauseDialog dialog = new pauseDialog();
+                        dialog.setLocationRelativeTo(null);
+                        dialog.setVisible(true);
+                        
+                        
+                    try{
+                        dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                        @Override
+                        public void windowClosing(java.awt.event.WindowEvent e) {
+                            dispose();
+                            notifyAll();
+                        }
+                        });
+                    } catch (IllegalMonitorStateException e){
                         dispose();
-                        notify();
                     }
-                });
-                dialog.setVisible(true);
+                    }
+                    
+            
             }
         });
     }

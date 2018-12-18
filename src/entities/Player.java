@@ -120,7 +120,7 @@ public class Player extends Entity{
     public int getUpVisionRange(){
         int visionRange=1;
         while(visionRange<VISION){
-            if(VERTICALWALLMAP[this.getX()][this.getY()-visionRange]==true || HORIZONTALWALLMAP[this.getX()][this.getY()-visionRange]==true){
+            if(VERTICALWALLMAP[this.getX()][this.getY()-visionRange]==true || HORIZONTALWALLMAP[this.getX()][this.getY()-visionRange]==true || this.getY()-1==EXIT.getY()){
                 return visionRange;
             } else {
                 visionRange++;
@@ -131,7 +131,7 @@ public class Player extends Entity{
     public int getDownVisionRange(){
         int visionRange=1;
         while(visionRange<VISION){
-            if(VERTICALWALLMAP[this.getX()][this.getY()+visionRange]==true || HORIZONTALWALLMAP[this.getX()][this.getY()+visionRange]==true){
+            if(VERTICALWALLMAP[this.getX()][this.getY()+visionRange]==true || HORIZONTALWALLMAP[this.getX()][this.getY()+visionRange]==true || this.getY()+1==EXIT.getY()){
                 return visionRange;
             } else {
                 visionRange++;
@@ -142,7 +142,7 @@ public class Player extends Entity{
     public int getLeftVisionRange(){
         int visionRange=1;
         while(visionRange<VISION){
-            if(VERTICALWALLMAP[this.getX()-visionRange][this.getY()]==true || HORIZONTALWALLMAP[this.getX()-visionRange][this.getY()]==true){
+            if(VERTICALWALLMAP[this.getX()-visionRange][this.getY()]==true || HORIZONTALWALLMAP[this.getX()-visionRange][this.getY()]==true || this.getX()-1==EXIT.getX()){
                 return visionRange;
             } else {
                 visionRange++;
@@ -153,7 +153,7 @@ public class Player extends Entity{
     public int getRightVisionRange(){
     int visionRange=1;
     while(visionRange<VISION){
-        if(VERTICALWALLMAP[this.getX()+visionRange][this.getY()]==true || HORIZONTALWALLMAP[this.getX()+visionRange][this.getY()]==true){
+        if(VERTICALWALLMAP[this.getX()+visionRange][this.getY()]==true || HORIZONTALWALLMAP[this.getX()+visionRange][this.getY()]==true || this.getX()+1==EXIT.getX()){
             return visionRange;
         } else {
             visionRange++;

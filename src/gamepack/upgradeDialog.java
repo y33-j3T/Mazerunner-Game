@@ -8,6 +8,7 @@ package gamepack;
 import static gamepack.Game.JOHNNY;
 import static gamepack.gameFrame.armorProgressBar;
 import static gamepack.gameFrame.attackDamageProgressBar;
+import static gamepack.gameFrame.goldProgressBar;
 import static gamepack.gameFrame.visionProgressBar;
 
 /**
@@ -116,6 +117,7 @@ public class upgradeDialog extends javax.swing.JDialog {
         if(JOHNNY.getARMOR()<5){
             JOHNNY.setARMOR(JOHNNY.getARMOR()+1);
             JOHNNY.setGOLD_amount(0);
+            goldProgressBar.setValue(JOHNNY.getGoldAmount());
             armorProgressBar.setValue(JOHNNY.getARMOR());
         }
         dispose();
@@ -125,6 +127,7 @@ public class upgradeDialog extends javax.swing.JDialog {
         if(JOHNNY.getVISION()<5){
             JOHNNY.setVISION(JOHNNY.getVISION()+1);
             JOHNNY.setGOLD_amount(0);
+            goldProgressBar.setValue(JOHNNY.getGoldAmount());
             visionProgressBar.setValue(JOHNNY.getVISION());
         }
         dispose();
@@ -134,6 +137,7 @@ public class upgradeDialog extends javax.swing.JDialog {
         if(JOHNNY.getATTACKDAMAGE()<10){
             JOHNNY.setATTACKDAMAGE(JOHNNY.getATTACKDAMAGE()+1);
             JOHNNY.setGOLD_amount(0);
+            goldProgressBar.setValue(JOHNNY.getGoldAmount());
             attackDamageProgressBar.setValue(JOHNNY.getATTACKDAMAGE());
         }
         dispose();
@@ -144,6 +148,7 @@ public class upgradeDialog extends javax.swing.JDialog {
             JOHNNY.setTOTALHP(JOHNNY.getTOTALHP()+20);
             JOHNNY.setHP(JOHNNY.getHP()+20);
             JOHNNY.setGOLD_amount(0);
+            goldProgressBar.setValue(JOHNNY.getGoldAmount());
         }
         dispose();
     }//GEN-LAST:event_totalHPUpgradeActionPerformed

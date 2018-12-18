@@ -520,12 +520,16 @@ public class gameFrame extends javax.swing.JFrame {
                 JOHNNY.executeCollisionAction(evt);
                 break;   
             case KeyEvent.VK_P:
-                pauseDialog pause = new pauseDialog();
-                pause.start();
+                synchronized(this){
+                    pauseDialog pause = new pauseDialog();
+                    pause.start();
+                }
                 try {
                     wait();
                 } catch (InterruptedException ex) {
                     Logger.getLogger(gameFrame.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalMonitorStateException e){
+                    
                 }
                 break;
         }
@@ -584,8 +588,8 @@ public class gameFrame extends javax.swing.JFrame {
                                 System.out.println(mazeArea.getText());
                             
                                 try {
-                                    this.wait(80);
-//                                    this.wait(1000);
+                                    this.wait(70);
+//                                    this.wait(200);
                                 } catch (InterruptedException ex) {
                                     Logger.getLogger(gameFrame.class.getName()).log(Level.SEVERE, null, ex);
                                 }
@@ -596,7 +600,7 @@ public class gameFrame extends javax.swing.JFrame {
                 synchronized(this){
                     a.start();
                     (new Thread(new Mob())).start();
-                    (new Thread(new Bullet(" * ", 0, 0, 0))).start();
+//                    (new Thread(new Bullet())).start();
                 }   
             }
         });
