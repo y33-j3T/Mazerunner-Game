@@ -533,7 +533,10 @@ public class gameFrame extends javax.swing.JFrame {
     private void mazeAreaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_mazeAreaKeyPressed
         formKeyPressed(evt);
     }//GEN-LAST:event_mazeAreaKeyPressed
-
+    
+    public void updateMaze(String input){
+        mazeArea.setText(input);
+    }
     public void start() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -579,8 +582,9 @@ public class gameFrame extends javax.swing.JFrame {
                         while (true) {
                             synchronized( this ){
                                 MazerunnerGame.refresh();
-                                mazeArea.setText(MazerunnerGame.toString());
-                                System.out.println(mazeArea.getText());
+                                //mazeArea.setText(MazerunnerGame.toString());
+                                frame.updateMaze(MazerunnerGame.toString());
+                                //System.out.println(mazeArea.getText());
                             
                                 try {
                                     this.wait(70);
