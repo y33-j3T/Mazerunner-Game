@@ -18,7 +18,6 @@ import static gamepack.Game.VERTICALWALLMAP;
 import static gamepack.Game.ZOMBIE;
 import static gamepack.Game.ZOMBIEMAP;
 import gamepack.areYouSureDialog;
-import gamepack.gameFrame;
 import static gamepack.gameFrame.goldProgressBar;
 import static gamepack.gameFrame.hpProgressBar;
 import static gamepack.gameFrame.livesProgressBar;

@@ -93,7 +93,7 @@ public class areYouSureDialog extends javax.swing.JDialog {
 
     private void noButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noButtonActionPerformed
         dispose();
-        notifyAll();
+//        notifyAll();
     }//GEN-LAST:event_noButtonActionPerformed
 
     public void start() {

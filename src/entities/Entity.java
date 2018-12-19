@@ -1,7 +1,6 @@
 package entities;
 
 import static gamepack.Game.*;
-import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 public class Entity {

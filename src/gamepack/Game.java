@@ -263,7 +263,7 @@ public class Game  {
             Item lostitem = new Item(" @ ", 0, 0);
             lostitem.setPosition(posAdded.get(i).getX(), posAdded.get(i).getY());
             LOSTITEMMAP.add((Item) lostitem);
-            JOHNNY.setLOSTITEM_totalAmount(mapArea/12-mapArea/15-1);
+            JOHNNY.setLOSTITEM_totalAmount((mapArea/12)-(mapArea/15+1));
         }
         
         for(int i=mapArea/12+1 ; i<=mapArea*2/15 ; i++){

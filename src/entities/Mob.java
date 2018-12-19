@@ -1,6 +1,5 @@
 package entities;
 
-import gamepack.Game;
 import static gamepack.Game.BULLET;
 import static gamepack.Game.BULLETMAP;
 import static gamepack.Game.EXIT;
@@ -19,7 +18,6 @@ import static gamepack.Game.VERTICALWALLMAP;
 import static gamepack.Game.ZOMBIE;
 import static gamepack.Game.ZOMBIEMAP;
 import static gamepack.gameFrame.hpProgressBar;
-import static java.lang.Thread.sleep;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
