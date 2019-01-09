@@ -2,22 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/Yee%20Jet%20Tan/Documents/GitHub/Mazerunner-Game/src/gamepack/mazeDimensionDialog.java</file>
-            <file>file:/C:/Users/Yee%20Jet%20Tan/Documents/GitHub/Mazerunner-Game/src/entities/Mob.java</file>
-            <file>file:/C:/Users/Yee%20Jet%20Tan/Documents/GitHub/Mazerunner-Game/src/gamepack/winDialog.java</file>
-            <file>file:/C:/Users/Yee%20Jet%20Tan/Documents/GitHub/Mazerunner-Game/src/gamepack/loseDialog.java</file>
-            <file>file:/C:/Users/Yee%20Jet%20Tan/Documents/GitHub/Mazerunner-Game/src/entities/Bullet.java</file>
-            <file>file:/C:/Users/Yee%20Jet%20Tan/Documents/GitHub/Mazerunner-Game/src/entities/Item.java</file>
-            <file>file:/C:/Users/Yee%20Jet%20Tan/Documents/GitHub/Mazerunner-Game/src/entities/Player.java</file>
-            <file>file:/C:/Users/Yee%20Jet%20Tan/Documents/GitHub/Mazerunner-Game/src/gamepack/Main.java</file>
-            <file>file:/C:/Users/Yee%20Jet%20Tan/Documents/GitHub/Mazerunner-Game/src/gamepack/areYouSureDialog.java</file>
-            <file>file:/C:/Users/Yee%20Jet%20Tan/Documents/GitHub/Mazerunner-Game/src/entities/Entity.java</file>
-            <file>file:/C:/Users/Yee%20Jet%20Tan/Documents/GitHub/Mazerunner-Game/src/maze/MazeGenerator.java</file>
-            <file>file:/C:/Users/Yee%20Jet%20Tan/Documents/GitHub/Mazerunner-Game/src/gamepack/gameFrame.java</file>
-            <file>file:/C:/Users/Yee%20Jet%20Tan/Documents/GitHub/Mazerunner-Game/src/gamepack/upgradeDialog.java</file>
-            <file>file:/C:/Users/Yee%20Jet%20Tan/Documents/GitHub/Mazerunner-Game/src/gamepack/pauseDialog.java</file>
-            <file>file:/C:/Users/Yee%20Jet%20Tan/Documents/GitHub/Mazerunner-Game/src/gamepack/Game.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
