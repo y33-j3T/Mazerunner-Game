@@ -1,7 +1,6 @@
 # package gamepack
 Main.java - 
-
-Game.java - 
+\Game.java - 
 gameFrame.java - 
 winDialog.java - 
 loseDialog.java - 
