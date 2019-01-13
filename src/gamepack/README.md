@@ -1,6 +1,6 @@
 # package gamepack
 Main.java - 
-\Game.java - 
+\nGame.java - 
 gameFrame.java - 
 winDialog.java - 
 loseDialog.java - 
@@ -17,5 +17,4 @@ upgradeDialog.form -
 areYouSureDialog.form - 
 mazeDimensionDialog.form - 
 
-- [x] This is a complete item
-- [ ] This is an incomplete item
+
