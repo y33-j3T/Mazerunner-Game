@@ -1,7 +1,10 @@
 # package gamepack
 Main.java - 
-\nGame.java - 
+
+Game.java - 
+
 gameFrame.java - 
+
 winDialog.java - 
 loseDialog.java - 
 pauseDialog.java - 
