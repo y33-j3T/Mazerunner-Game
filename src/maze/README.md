@@ -1,2 +1,2 @@
-# maze package 
+# package maze 
 mazeGenerator - Generate a random maze using depth-first search algorithm
