@@ -16,3 +16,6 @@ pauseDialog.form -
 upgradeDialog.form - 
 areYouSureDialog.form - 
 mazeDimensionDialog.form - 
+
+- [x] This is a complete item
+- [ ] This is an incomplete item
