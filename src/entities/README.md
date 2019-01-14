@@ -1,6 +1,6 @@
 # package - entities
 
-**Entity.java** - This class acts as a base class for all objects in the game. They include Horizontal wall, Vertical wall, Exit, Johnny, Mob, Path, Bullet, Lost Item, HP Regen, Gold and Fog.
+* **Entity.java** - This class acts as a base class for all objects in the game. They include Horizontal wall, Vertical wall, Exit, Johnny, Mob, Path, Bullet, Lost Item, HP Regen, Gold and Fog.
 
 **Bullet.java** - This class extends Item Class and implements Runnable. It contains variables and functions for Bullets created. It updates all Bullet movements every 200 milliseconds.
 
