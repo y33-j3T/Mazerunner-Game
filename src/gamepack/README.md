@@ -10,7 +10,7 @@ one to update the automatic movement of zombie mobs every 1000 milliseconds; one
 
 * **loseDialog.java** - This class launches a JDialog when users click on “Yes” from the areYouSureDialog Class or dying after all of Johnny’s lives are used up. It indicates that the user has lost the game and exits the game after the “Quit” button is clicked on.
 
-* **pauseDialog.java** - 
+* **pauseDialog.java** - This class launches a JDialog when users press on the P key and pauses the game. The game will only continue after the "Continue" button is clicked on.
 
 * **upgradeDialog.java** - This class launches a JDialog when Johnny’s gold amount reaches 40. It will prompt the user to purchase an upgrade to level up Johnny’s attributes. It consists of 4 buttons for each of Johnny’s attributes, namely TotalHP, Armor, Vision and Attack Damage. After the user clicks on anyone of them, the attribute is upgraded, Johnny’s gold is deducted by 40 and the JDialog is disposed.
 
@@ -21,18 +21,19 @@ JSpinner. It will launch the game frame after users click on the “Done” butt
 
 ---
 
-* **gameFrame.form** - 
+* **gameFrame.form** - Form design. IDE generated.
 
-* **winDialog.form** -  
+* **winDialog.form** -  Form design. IDE generated.
 
-* **loseDialog.form** - 
+* **loseDialog.form** - Form design. IDE generated.
 
-* **pauseDialog.form** - 
+* **pauseDialog.form** - Form design. IDE generated.
 
-* **upgradeDialog.form** - 
+* **upgradeDialog.form** - Form design. IDE generated.
 
-* **areYouSureDialog.form** - 
+* **areYouSureDialog.form** - Form design. IDE generated.
 
-* **mazeDimensionDialog.form** - 
+* **mazeDimensionDialog.form** - Form design. IDE generated.
+
 
 
