@@ -1,5 +1,5 @@
 # Mazerunner Game
-*Action maze game with mob fighting and player upgrade mechanics made with vanilla Java*
+### *Action maze game with mob fighting and player upgrade mechanics made with vanilla Java*
 
 ## Game Background
 Johnny, a renowned Maze Runner is experienced in hunting for valuables. However, during his previous expedition, he was attacked by the scary Some Tribe in Some Island. The moment when he woke up, it is in the middle of a dark scary night. He has no idea where he is.
