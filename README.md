@@ -20,12 +20,12 @@ Judging from his intuition, Johnny believes that he is being trapped in the famo
 - Navigate Johnny to exit the maze.
 
 ### Game settings
-1. A maze of size 20 x 20.
-2. The maze will always have an exit <kbd>E</kbd> for Johnny to escape.
-3. Other than what is visible by Johnny, the maze must be blacked out with <kbd>#</kbd>. (Johnny cannot see through walls)
-4. Johnny should be able to move up, down, left and right in the maze depending on whether there are any obstacles or not.
-5. The lost items/valuables should be randomly scattered around the maze, represented by <kbd>@</kbd>.
-6. If Johnny leaves the maze without all the lost items, Johnny is considered a disgrace to the Maze Runner’s community.
+- A maze of size 20 x 20.
+- The maze will always have an exit <kbd>E</kbd> for Johnny to escape.
+- Other than what is visible by Johnny, the maze must be blacked out with <kbd>#</kbd>. (Johnny cannot see through walls)
+- Johnny should be able to move up, down, left and right in the maze depending on whether there are any obstacles or not.
+- The lost items/valuables should be randomly scattered around the maze, represented by <kbd>@</kbd>.
+- If Johnny leaves the maze without all the lost items, Johnny is considered a disgrace to the Maze Runner’s community.
 
 ### Approach taken 
 My approach was to create an action maze game that looked vintage like a console game, integrated within a simple user interface (UI). Every game component should only use keyboard characters. Features such as upgrades for Johnny, Zombies and Zombie shooting using Bullets are added as part of an action game.
