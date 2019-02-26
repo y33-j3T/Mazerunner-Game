@@ -2,20 +2,29 @@
 Action maze game with mob fighting and player upgrade mechanics made with vanilla Java
 
 ## Table of contents
+- [Introduction](#Introduction)
+- [Game story](#Game-story)
+- [Game objective](#Game-objective)
+- [Game settings](#Game-settings)
+- [Approach taken](#Approach-taken)
 
-### Game background
+### Introduction
+Mazerunner game is my assignment for a Java programming course.
+
+### Game story
 Johnny, a renowned Maze Runner is experienced in hunting for valuables. However, during his previous expedition, he was attacked by the scary Some Tribe in Some Island. The moment when he woke up, it is in the middle of a dark scary night. He has no idea where he is.
 Judging from his intuition, Johnny believes that he is being trapped in the famous GG Maze of Some Island. Johnny needs to escape Some Island as soon as possible but he needs to collect all the valuables that he has lost from GG Maze.
 
-### Assigned task
-To create a turn-based game to help Johnny collect all his lost items and navigate him to the exit.
+### Game objective
+- Navigate Johnny to collect all lost items.
+- Navigate Johnny to exit the maze.
 
-### Basic requirements
-1. Generate a maze of size 20 x 20.
-2. The maze will always have an exit, “E”, to escape the maze.
-3. You must display whole maze, other than what is visible by Johnny (2 units), all must be blacked out with “#”. (Johnny cannot see through walls)
-4. Johnny should be able to move in 4 directions, namely up, down, left, right in the maze depending on whether there are any obstacles or not.
-5. The lost items/ valuables should be randomly scattered around the maze, represented by “@”.
+### Game settings
+1. A maze of size 20 x 20.
+2. The maze will always have an exit, <kbd>E<kbd>, for Johnny to escape.
+3. Other than what is visible by Johnny, the maze must be blacked out with <kbd>#<kbd>. (Johnny cannot see through walls)
+4. Johnny should be able to move up, down, left and right in the maze depending on whether there are any obstacles or not.
+5. The lost items/valuables should be randomly scattered around the maze, represented by <kbd>@<kbd>.
 6. If Johnny leaves the maze without all the lost items, Johnny is considered a disgrace to the Maze Runner’s community.
 
 ### Approach taken 
