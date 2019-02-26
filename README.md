@@ -21,7 +21,7 @@ Judging from his intuition, Johnny believes that he is being trapped in the famo
 
 ### Game settings
 1. A maze of size 20 x 20.
-2. The maze will always have an exit, <kbd>E<kbd/>, for Johnny to escape.
+2. The maze will always have an exit, <kbd>E</kbd>, for Johnny to escape.
 3. Other than what is visible by Johnny, the maze must be blacked out with <kbd>#</kbd>. (Johnny cannot see through walls)
 4. Johnny should be able to move up, down, left and right in the maze depending on whether there are any obstacles or not.
 5. The lost items/valuables should be randomly scattered around the maze, represented by <kbd>@</kbd>.
