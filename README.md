@@ -16,8 +16,6 @@ Action maze game with mob fighting and player upgrade mechanics made with vanill
 - [Credits](#Credits)
 - [License](#License)
 
----
-
 ## Introduction
 Mazerunner game is my assignment for a Java programming course.
 
@@ -41,11 +39,20 @@ Judging from his intuition, Johnny believes that he is being trapped in the famo
 ### UI styling 
 My approach was to create an action maze game that looked vintage like a console game, integrated within a simple user interface (UI). Every game component should only use keyboard characters. Features such as upgrades for Johnny, Zombies and Zombie shooting using Bullets are added as part of an action game.
 
-The game should start by asking players to input the dimensions for the maze, which has a range from 20 x 20 to 100 x 100. It would then show the game window after players are done. In the window, players can control Johnny using W, A, S, D keys and use Johnny to shoot zombie mobs using Up, Down, Left, Right keys. The right side of the window should display Johnny’s stats, game explanations and instructions as well as an option to trigger game sound. Every time Johnny’s gold amount reaches 40, a pop-up would show for players to upgrade Johnny. As Johnny attempts to exit the maze, a pop-up would also show depending on Johnny’s current stats.
+ In the window, players can control Johnny using W, A, S, D keys and use Johnny to shoot zombie mobs using Up, Down, Left, Right keys. The right side of the window should display Johnny’s stats, game explanations and instructions as well as an option to trigger game sound. Every time Johnny’s gold amount reaches 40, a pop-up would show for players to upgrade Johnny. As Johnny attempts to exit the maze, a pop-up would also show depending on Johnny’s current stats.
 
 ### Flow
+The game starts by asking players to input the dimensions for the maze, which has a range from 20 x 20 to 100 x 100. It would then show the game window after players are done.
 
 ### Controls
+
+## Installation
+
+## Usage
+
+## Contributing
+
+## Credits
 
 ## License
 Mazerunner-Game is licensed under the [Apache License 2.0](./LICENSE)
