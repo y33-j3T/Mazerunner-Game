@@ -1,6 +1,8 @@
 # Mazerunner Game
 Action maze game with mob fighting and player upgrade mechanics made with vanilla Java.
 
+---
+
 ## Table of contents
 - [Introduction](#Introduction)
 - [Game details](#Game-details)
@@ -46,6 +48,8 @@ The game should start by asking players to input the dimensions for the maze, wh
 #### Game flow
 
 #### Game controls
+
+---
 
 ### License
 Mazerunner-Game is licensed under the [Apache License 2.0](./LICENSE)
