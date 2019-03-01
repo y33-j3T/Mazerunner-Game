@@ -16,6 +16,8 @@ Action maze game with mob fighting and player upgrade mechanics made with vanill
 - [Credits](#Credits)
 - [License](#License)
 
+---
+
 ### Introduction
 Mazerunner game is my assignment for a Java programming course.
 
