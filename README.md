@@ -1,7 +1,7 @@
 # Mazerunner Game
 Action maze game with mob fighting and player upgrade mechanics made with vanilla Java.
 
-## Table of contents
+## Contents
 - [Introduction](#Introduction)
 - [Game details](#Game-details)
   - [Story](#Story)
