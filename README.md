@@ -37,14 +37,13 @@ Judging from his intuition, Johnny believes that he is being trapped in the famo
 - If Johnny leaves the maze without all the lost items, Johnny is considered a disgrace to the Maze Runner’s community.
 
 ### UI styling 
-My approach was to create an action maze game that looked vintage like a console game, integrated within a simple user interface (UI). Every game component should only use keyboard characters. Features such as upgrades for Johnny, Zombies and Zombie shooting using Bullets are added as part of an action game.
-
- In the window, players can control Johnny using W, A, S, D keys and use Johnny to shoot zombie mobs using Up, Down, Left, Right keys. The right side of the window should display Johnny’s stats, game explanations and instructions as well as an option to trigger game sound. Every time Johnny’s gold amount reaches 40, a pop-up would show for players to upgrade Johnny. As Johnny attempts to exit the maze, a pop-up would also show depending on Johnny’s current stats.
+My approach was to create an action maze game that looked vintage like a console game, integrated within a simple user interface (UI). Every game component should only use keyboard characters. Features such as upgrades for Johnny, Zombies and Zombie shooting using Bullets are added as part of an action game.The right side of the window should display Johnny’s stats, game explanations and instructions as well as an option to trigger game sound. 
 
 ### Flow
-The game starts by asking players to input the dimensions for the maze, which has a range from 20 x 20 to 100 x 100. It would then show the game window after players are done.
+The game starts by asking players to input the dimensions for the maze, which has a range from 20 x 20 to 100 x 100. It would then show the game window after players are done. Every time Johnny’s gold amount reaches 40, a pop-up would show for players to upgrade Johnny. As Johnny attempts to exit the maze, a pop-up would also show depending on Johnny’s current stats.
 
 ### Controls
+In the window, players can control Johnny using W, A, S, D keys and use Johnny to shoot zombie mobs using Up, Down, Left, Right keys. 
 
 ## Installation
 
