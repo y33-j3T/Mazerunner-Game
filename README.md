@@ -26,7 +26,7 @@ Judging from his intuition, Johnny believes that he is being trapped in the famo
   
 
 <details>
-<summary> ### Objective </summary>
+### <summary> Objective </summary>
   
 - Collect all lost items.
 - Navigate to the exit after collecting all lost items.
