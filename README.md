@@ -25,7 +25,9 @@ Johnny, a renowned Maze Runner, is experienced in hunting for valuables. However
 Judging from his intuition, Johnny believes that he is being trapped in the famous GG Maze of Some Island. He needs to escape Some Island as soon as possible but needs to collect all his lost valueables in GG Maze. As the player, you are Johnny.
 
 <details>
-  <summary><h3>Objective</h3></summary>
+  <summary>
+    <h3>Objective</h3>
+  </summary>
   
   - Collect all lost items.
   - Navigate to the exit after collecting all lost items.
