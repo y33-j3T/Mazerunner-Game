@@ -20,17 +20,17 @@ Action maze game with mob fighting and player upgrade mechanics made with vanill
 Mazerunner game is my assignment for a Java programming course.
 
 ## Game details
-### Story
+### :runner: Story
 <details>
-<summary>	:runner:</summary>
+<summary>view</summary>
   
 Johnny, a renowned Maze Runner, is experienced in hunting for valuables. However, on his previous expedition, he was attacked by the scary Some Tribe in Some Island. When he woke up, he found himself in the middle of a dark scary night. He has no idea where he is. Judging from his intuition, Johnny believes that he is being trapped in the famous GG Maze of Some Island. He needs to escape Some Island as soon as possible but needs to collect all his lost valueables in GG Maze. As the player, you are Johnny.
 
 </details>
 
-### Objective
+### :dart: Objective
 <details>
-<summary>:dart:</summary>
+<summary>view</summary>
   
 - Collect all lost items.
 - Navigate to the exit after collecting all lost items.
@@ -38,9 +38,9 @@ Johnny, a renowned Maze Runner, is experienced in hunting for valuables. However
 
 </details>
 
-### Settings
+### :wrench: Settings
 <details>
-<summary>:wrench:</summary>
+<summary>view</summary>
   
 - A maze of size 20 x 20.
 - The maze will always have an exit <kbd>E</kbd> for Johnny to escape.
@@ -53,7 +53,7 @@ Johnny, a renowned Maze Runner, is experienced in hunting for valuables. However
 
 ### :computer: UI styling
 <details>
-<summary>Details</summary>
+<summary>view</summary>
   
 - Simple. 
 - Vintage.
@@ -65,7 +65,7 @@ Features such as upgrades for Johnny, Zombies and Zombie shooting using Bullets 
 
 ### :repeat: Flow
 <details>
-<summary>Details</summary>
+<summary>view</summary>
   
 1. Input the dimensions for the maze. (20 x 20 - 100 x 100). It would then show the game window after players are done. Every time Johnny’s gold amount reaches 40, a pop-up would show for players to upgrade Johnny. As Johnny attempts to exit the maze, a pop-up would also show depending on Johnny’s current stats.
 
@@ -73,7 +73,7 @@ Features such as upgrades for Johnny, Zombies and Zombie shooting using Bullets 
 
 ### :keyboard: Controls
 <details>
-<summary>Details</summary>
+<summary>view</summary>
   
 In the window, players can control Johnny using W, A, S, D keys and use Johnny to shoot zombie mobs using Up, Down, Left, Right keys. 
 
