@@ -17,7 +17,8 @@ Action maze game with mob fighting and player upgrade mechanics made with vanill
 - [License](#License)
 
 ## Introduction
-This game was originally 
+Mazerunner game was originally an assignment for a Java programming course :books:. My team and I decided to add some extra features which makes the game more fun and exciting :smirk:. It was our first time coding a game, very buggy, watch out! :laughing:
+
 
 ## Game Details
 ### :runner: Story
@@ -59,7 +60,8 @@ Johnny, a renowned Maze Runner, is experienced in hunting for valuables. However
 - Vintage.
 - Console game look-alike.
 - Every game component only uses keyboard characters. 
-Features such as upgrades for Johnny, Zombies and Zombie shooting using Bullets are added as part of an action game.The right side of the window should display Johnny’s stats, game explanations and instructions as well as an option to trigger game sound. 
+- Game screen on the left.
+- Game panel on the left.
 
 </details>
 
@@ -72,6 +74,7 @@ Features such as upgrades for Johnny, Zombies and Zombie shooting using Bullets 
 ### :ghost: Entities
 <details>
 <summary>Details</summary> 
+
 - <kbd>J</kbd> Johnny
 - <kbd>Z</kbd> Zombie
 - <kbd>*</kbd> Bullet
