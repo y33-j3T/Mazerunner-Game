@@ -24,8 +24,9 @@ Mazerunner game is my assignment for a Java programming course.
 Johnny, a renowned Maze Runner, is experienced in hunting for valuables. However, on his previous expedition, he was attacked by the scary Some Tribe in Some Island. When he woke up, he found himself in the middle of a dark scary night. He has no idea where he is.
 Judging from his intuition, Johnny believes that he is being trapped in the famous GG Maze of Some Island. He needs to escape Some Island as soon as possible but needs to collect all his lost valueables in GG Maze. As the player, you are Johnny.
   
-<summary> ### Objective </summary>
+
 <details>
+<summary> ### Objective </summary>
   
 - Collect all lost items.
 - Navigate to the exit after collecting all lost items.
