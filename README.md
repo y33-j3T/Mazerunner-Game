@@ -63,9 +63,9 @@ Features such as upgrades for Johnny, Zombies and Zombie shooting using Bullets 
 
 </details>
 
-### Flow
+### :repeat:
 <details>
-<summary>:repeat:</summary>
+<summary>Flow</summary>
   
 1. Input the dimensions for the maze. (20 x 20 - 100 x 100). It would then show the game window after players are done. Every time Johnny’s gold amount reaches 40, a pop-up would show for players to upgrade Johnny. As Johnny attempts to exit the maze, a pop-up would also show depending on Johnny’s current stats.
 
