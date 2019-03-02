@@ -51,9 +51,9 @@ Johnny, a renowned Maze Runner, is experienced in hunting for valuables. However
 
 </details>
 
-### UI styling
+### :computer: UI styling
 <details>
-<summary>:computer:</summary>
+<summary>Details</summary>
   
 - Simple. 
 - Vintage.
