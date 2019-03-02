@@ -95,8 +95,8 @@ Johnny, a renowned Maze Runner, is experienced in hunting for valuables. However
 </details>
 
 ## Installation
-- Not ready for installing yet.
-- For now, just download the entire repository.
+- Still working on the installation. :pensive:
+- Just download the entire repository for now. :innocent:
 
 ## Usage
 1. Open your IDE.
@@ -104,7 +104,7 @@ Johnny, a renowned Maze Runner, is experienced in hunting for valuables. However
 3. Build and run. 
 
 ## Contributing
-All contributions are very welcomed! Please refer to [CONTRIBUTE.md](./CONTRIBUTE.md) for details.
+All contributions are very welcomed! Please refer to [CONTRIBUTE.md](./CONTRIBUTE.md) for details. :heart_eyes:
 
 ## Credits
 
