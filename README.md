@@ -20,7 +20,7 @@ Action maze game with mob fighting and player upgrade mechanics made with vanill
 Mazerunner game was originally an assignment for a Java programming course. :books: My team and I decided to some action and all to the originally boring maze. :joy: Was our first time to ever code any games. :poop: A little buggy, watch out! :laughing:
 
 ## Game Details
-### :runner: Story
+### Story
 <details>
 <summary>Details</summary>
   
