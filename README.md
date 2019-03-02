@@ -4,7 +4,7 @@ Action maze game with mob fighting and player upgrade mechanics made with vanill
 ## Contents
 - [Introduction](#Introduction)
 - [Game details](#Game-Details)
-  - [Story](#\:runner\:-Story)
+  - [Story](#Story)
   - [Objective](#:dart:-Objective)
   - [Settings](#:hammer_and_wrench:-Settings)
   - [UI styling](#:computer:-UI-Styling)
