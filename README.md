@@ -3,11 +3,11 @@ Action maze game with mob fighting and player upgrade mechanics made with vanill
 
 ## Contents
 - [Introduction](#Introduction)
-- [Game details](#Game-details)
+- [Game details](#Game-Details)
   - [Story](#Story)
   - [Objective](#Objective)
   - [Settings](#Settings)
-  - [UI styling](#UI-styling)
+  - [UI styling](#UI-Styling)
   - [Flow](#Flow)
   - [Controls](#Controls)
 - [Installation](#Installation)
@@ -17,9 +17,9 @@ Action maze game with mob fighting and player upgrade mechanics made with vanill
 - [License](#License)
 
 ## Introduction
-Mazerunner game is my assignment for a Java programming course.
+This game was originally 
 
-## Game details
+## Game Details
 ### :runner: Story
 <details>
 <summary>Details</summary>
@@ -38,7 +38,7 @@ Johnny, a renowned Maze Runner, is experienced in hunting for valuables. However
 
 </details>
 
-### :wrench: Settings
+### :hammer_and_wrench: Settings
 <details>
 <summary>Details</summary>
   
@@ -51,7 +51,7 @@ Johnny, a renowned Maze Runner, is experienced in hunting for valuables. However
 
 </details>
 
-### :computer: UI styling
+### :computer: UI Styling
 <details>
 <summary>Details</summary>
   
@@ -66,26 +66,45 @@ Features such as upgrades for Johnny, Zombies and Zombie shooting using Bullets 
 ### :repeat: Flow
 <details>
 <summary>Details</summary>
-  
-1. Input the dimensions for the maze. (20 x 20 - 100 x 100). It would then show the game window after players are done. Every time Johnny’s gold amount reaches 40, a pop-up would show for players to upgrade Johnny. As Johnny attempts to exit the maze, a pop-up would also show depending on Johnny’s current stats.
 
+</details>
+
+### :ghost: Entities
+<details>
+<summary>Details</summary> 
+- <kbd>J</kbd> Johnny
+- <kbd>Z</kbd> Zombie
+- <kbd>*</kbd> Bullet
+- <kbd>#</kbd> Fog
+- <kbd> </kbd> Path
+- <kbd>E</kbd> Exit
+- <kbd>|</kbd> Vertical Wall
+- <kbd>---</kbd> Horizontal Wall
+- <kbd>@</kbd> +1 Lost Item
+- <kbd>$</kbd> +5 Gold
+- <kbd>+</kbd> +5 HP
+  
 </details>
 
 ### :keyboard: Controls
 <details>
-<summary>Details</summary>
-  
-In the window, players can control Johnny using W, A, S, D keys and use Johnny to shoot zombie mobs using Up, Down, Left, Right keys. 
+<summary>Details</summary> 
 
 </details>
 
 ## Installation
+- Not ready for installing yet.
+- For now, just download the entire repository.
 
 ## Usage
+1. Open your IDE.
+2. Open one of the `.java` files.
+3. Build and run. 
 
 ## Contributing
+All contributions are very welcomed! Please refer to [CONTRIBUTE.md](./CONTRIBUTE.md) for details.
 
 ## Credits
 
 ## License
-Mazerunner-Game is licensed under the [Apache License 2.0](./LICENSE)
+Mazerunner-Game is licensed under the [Apache License 2.0](./LICENSE).
