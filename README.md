@@ -71,13 +71,14 @@ Features such as upgrades for Johnny, Zombies and Zombie shooting using Bullets 
 
 </details>
 
-### Controls 
+### :keyboard:
 <details>
-<summary>:keyboard:</summary>
+<summary>Controls</summary>
   
 In the window, players can control Johnny using W, A, S, D keys and use Johnny to shoot zombie mobs using Up, Down, Left, Right keys. 
 
 </details>
+
 ## Installation
 
 ## Usage
