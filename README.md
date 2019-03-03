@@ -60,7 +60,7 @@ Johnny, a renowned Maze Runner, is experienced in hunting for valuables. However
 - Console game look-alike.
 - Every game component only uses keyboard characters. 
 - Game screen on the left.
-- Game panel on the left.
+- Game panel on the right.
 
 </details>
 
@@ -117,13 +117,13 @@ Johnny, a renowned Maze Runner, is experienced in hunting for valuables. However
 Please refer to [CONTRIBUTE.md](./CONTRIBUTE.md) for details. :heart_eyes:
 
 ## Credits
-A big shoutout to the people who made it all happen. :blush:
+A big shoutout to my seniors and friends who made it all happen. :blush:
 
-- 
 - Yeoh Choon Eung
 - Alvin Wong Guan Sheng
-- @tankianaun
-- @jiuntian
+- Tan Kian Aun [:octocat:@tankianaun](https://github.com/TANKIANAUN)
+- Xu Wai Xiong [:octocat: @waixiong](https://github.com/waixiong)
+- Hoe Jiun Tian [:octocat: @jiuntian](https://github.com/jiuntian)
 
 ## License
 Mazerunner-Game is licensed under the [Apache License 2.0](./LICENSE).
