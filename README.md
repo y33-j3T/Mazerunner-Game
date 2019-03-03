@@ -121,7 +121,7 @@ A big shoutout to my seniors and friends who made it all happen. :blush:
 
 - Yeoh Choon Eung
 - Alvin Wong Guan Sheng
-- Tan Kian Aun [:octocat:@tankianaun](https://github.com/TANKIANAUN)
+- Tan Kian Aun [:octocat: @tankianaun](https://github.com/TANKIANAUN)
 - Xu Wai Xiong [:octocat: @waixiong](https://github.com/waixiong)
 - Hoe Jiun Tian [:octocat: @jiuntian](https://github.com/jiuntian)
 
