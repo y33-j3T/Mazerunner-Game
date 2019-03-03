@@ -74,9 +74,9 @@ Johnny, a renowned Maze Runner, is experienced in hunting for valuables. However
 <details>
 <summary>Details</summary> 
 
-- <kbd> J </kbd> Johnny
+- <kbd white-space: nowrap;> J </kbd> Johnny
 - <kbd> Z </kbd> Zombie
-- <kbd> *&#32;</kbd> Bullet
+- <kbd> * </kbd> Bullet
 - <kbd> # </kbd> Fog
 - <kbd>   </kbd> Path
 - <kbd> E </kbd> Exit
