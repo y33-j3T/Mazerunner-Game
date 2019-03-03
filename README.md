@@ -68,7 +68,7 @@ Johnny, a renowned Maze Runner, is experienced in hunting for valuables. However
 <details>
 <summary>Details</summary>
 
-![Maze Runner Flow Chart](./Maze-Runner-Flow-Chart.jpg)
+![Maze Runner Flow Chart](./Maze%20Runner%20Flow%20Chart.jpg)
 
 </details>
 
