@@ -122,7 +122,7 @@ Please refer to [CONTRIBUTE.md](./CONTRIBUTE.md) for details. :heart_eyes:
 A big shoutout to my seniors and friends who made it all happen. :blush:
 
 - Yeoh Choon Eung [:octocat: @ceyeoh0428](https://github.com/ceyeoh0428)
-- Alvin Wong Guan Sheng
+- Alvin Wong Guan Sheng [:octocat: @alvinwong64](https://github.com/alvinwong64)
 - Tan Kian Aun [:octocat: @tankianaun](https://github.com/TANKIANAUN)
 - Xu Wai Xiong [:octocat: @waixiong](https://github.com/waixiong)
 - Hoe Jiun Tian [:octocat: @jiuntian](https://github.com/jiuntian)
