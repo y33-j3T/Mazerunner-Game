@@ -121,7 +121,7 @@ Please refer to [CONTRIBUTE.md](./CONTRIBUTE.md) for details. :heart_eyes:
 ## Credits
 A big shoutout to my seniors and friends who made it all happen. :blush:
 
-- Yeoh Choon Eung
+- Yeoh Choon Eung [:octocat: @ceyeoh0428](https://github.com/ceyeoh0428)
 - Alvin Wong Guan Sheng
 - Tan Kian Aun [:octocat: @tankianaun](https://github.com/TANKIANAUN)
 - Xu Wai Xiong [:octocat: @waixiong](https://github.com/waixiong)
