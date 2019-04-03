@@ -128,4 +128,4 @@ A big shoutout to my seniors and friends who made it all happen. :blush:
 - Hoe Jiun Tian [:octocat: @jiuntian](https://github.com/jiuntian)
 
 ## License
-Mazerunner Game is licensed under the [Apache License 2.0](./LICENSE).
+Mazerunner Game is released under the [Apache License 2.0](./LICENSE).
