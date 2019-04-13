@@ -108,6 +108,7 @@ Johnny, a renowned Maze Runner, is experienced in hunting for valuables. However
 
 ## Installation
 - [Java SE Development Kit 8 (JDK 8)](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+- [NetBeans IDE 8.0.1](https://netbeans.org/downloads/8.0.1/)
 
 ## Usage
 1. Download this repository in a zip file by clicking [here](https://github.com/y33-j3T/Mazerunner-Game/archive/master.zip) or execute this from the terminal:
