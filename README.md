@@ -115,9 +115,9 @@ Johnny, a renowned Maze Runner, is experienced in hunting for valuables. However
 ```
 git clone https://github.com/y33-j3T/Mazerunner-Game.git
 ```
-1. Open your IDE.
-2. Open one of the `.java` files.
-3. Build and run the file. 
+2. Open your IDE.
+3. Open the project with your IDE.
+4. Build and run. 
 
 ## Contributing
 Please refer to [CONTRIBUTE.md](./CONTRIBUTE.md) for details. :heart_eyes:
