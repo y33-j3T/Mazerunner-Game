@@ -107,13 +107,16 @@ Johnny, a renowned Maze Runner, is experienced in hunting for valuables. However
 </details>
 
 ## Installation
-- Still working on the installation. :pensive:
-- Just download the entire repository for now. :innocent:
+- [Java SE Development Kit 8 (JDK 8)](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 
 ## Usage
+1. Download this repository in a zip file by clicking [here](https://github.com/y33-j3T/Mazerunner-Game/archive/master.zip) or execute this from the terminal:
+```
+git clone https://github.com/y33-j3T/Mazerunner-Game.git
+```
 1. Open your IDE.
 2. Open one of the `.java` files.
-3. Build and run. 
+3. Build and run the file. 
 
 ## Contributing
 Please refer to [CONTRIBUTE.md](./CONTRIBUTE.md) for details. :heart_eyes:
@@ -121,11 +124,11 @@ Please refer to [CONTRIBUTE.md](./CONTRIBUTE.md) for details. :heart_eyes:
 ## Credits
 A big shoutout to my seniors and friends who made it all happen. :blush:
 
-- Yeoh Choon Eung [:octocat: @ceyeoh0428](https://github.com/ceyeoh0428)
-- Alvin Wong Guan Sheng [:octocat: @alvinwong64](https://github.com/alvinwong64)
-- Tan Kian Aun [:octocat: @tankianaun](https://github.com/TANKIANAUN)
-- Xu Wai Xiong [:octocat: @waixiong](https://github.com/waixiong)
-- Hoe Jiun Tian [:octocat: @jiuntian](https://github.com/jiuntian)
+- [:octocat: @ceyeoh0428](https://github.com/ceyeoh0428)
+- [:octocat: @alvinwong64](https://github.com/alvinwong64)
+- [:octocat: @tankianaun](https://github.com/TANKIANAUN)
+- [:octocat: @waixiong](https://github.com/waixiong)
+- [:octocat: @jiuntian](https://github.com/jiuntian)
 
 ## License
 Mazerunner Game is released under the [Apache License 2.0](./LICENSE).
