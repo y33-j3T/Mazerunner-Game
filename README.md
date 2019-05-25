@@ -3,7 +3,7 @@ Action maze game with mob fighting and player upgrade mechanics made with vanill
 
 ## Contents
 - [Introduction](#Introduction)
-- [Game details](#Game-Details)
+- [Program Description](#Program-Description)
   - [Story](#runner-Story)
   - [Objective](#dart-Objective)
   - [Settings](#hammer_and_wrench-Settings)
@@ -19,7 +19,7 @@ Action maze game with mob fighting and player upgrade mechanics made with vanill
 ## Introduction
 Mazerunner game was originally an assignment for a Java programming course. :books: My team and I decided to add some action and all to the originally boring maze. :joy: Was our first time to ever code any games. :poop: A little buggy, watch out! :laughing:
 
-## Game Details
+## Program Description
 ### :runner: Story
 <details>
 <summary>Details</summary>
