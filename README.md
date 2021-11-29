@@ -2,24 +2,27 @@
 Action maze game with mob fighting and player upgrade mechanics made with vanilla Java.
 
 ## Contents
-- [Introduction](#Introduction)
-- [Game details](#Game-Details)
-  - [Story](#runner-Story)
-  - [Objective](#dart-Objective)
-  - [Settings](#hammer_and_wrench-Settings)
-  - [UI styling](#computer-UI-Styling)
-  - [Flow](#repeat-Flow)
-  - [Controls](#keyboard-Controls)
-- [Installation](#Installation)
-- [Usage](#Usage)
-- [Contributing](#Contributing)
-- [Credits](#Credits)
-- [License](#License)
+- [Mazerunner Game](#mazerunner-game)
+  - [Contents](#contents)
+  - [Introduction](#introduction)
+  - [Program Description](#program-description)
+    - [:runner: Story](#runner-story)
+    - [:dart: Objective](#dart-objective)
+    - [:hammer_and_wrench: Settings](#hammer_and_wrench-settings)
+    - [:computer: UI Styling](#computer-ui-styling)
+    - [:repeat: Flow](#repeat-flow)
+    - [:ghost: Entities](#ghost-entities)
+    - [:keyboard: Controls](#keyboard-controls)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Contributing](#contributing)
+  - [Credits](#credits)
+  - [License](#license)
 
 ## Introduction
 Mazerunner game was originally an assignment for a Java programming course. :books: My team and I decided to add some action and all to the originally boring maze. :joy: Was our first time to ever code any games. :poop: A little buggy, watch out! :laughing:
 
-## Game Details
+## Program Description
 ### :runner: Story
 <details>
 <summary>Details</summary>
@@ -107,13 +110,17 @@ Johnny, a renowned Maze Runner, is experienced in hunting for valuables. However
 </details>
 
 ## Installation
-- Still working on the installation. :pensive:
-- Just download the entire repository for now. :innocent:
+- [Java SE Development Kit 8 (JDK 8)](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+- [NetBeans IDE 8.0.1](https://netbeans.org/downloads/8.0.1/)
 
 ## Usage
-1. Open your IDE.
-2. Open one of the `.java` files.
-3. Build and run. 
+1. Download this repository in a zip file by clicking [here](https://github.com/y33-j3T/Mazerunner-Game/archive/master.zip) or execute this from the terminal:
+```
+git clone https://github.com/y33-j3T/Mazerunner-Game.git
+```
+2. Open your IDE.
+3. Open the project with your IDE.
+4. Build and run. 
 
 ## Contributing
 Please refer to [CONTRIBUTE.md](./CONTRIBUTE.md) for details. :heart_eyes:
@@ -121,11 +128,11 @@ Please refer to [CONTRIBUTE.md](./CONTRIBUTE.md) for details. :heart_eyes:
 ## Credits
 A big shoutout to my seniors and friends who made it all happen. :blush:
 
-- Yeoh Choon Eung [:octocat: @ceyeoh0428](https://github.com/ceyeoh0428)
-- Alvin Wong Guan Sheng [:octocat: @alvinwong64](https://github.com/alvinwong64)
-- Tan Kian Aun [:octocat: @tankianaun](https://github.com/TANKIANAUN)
-- Xu Wai Xiong [:octocat: @waixiong](https://github.com/waixiong)
-- Hoe Jiun Tian [:octocat: @jiuntian](https://github.com/jiuntian)
+- [:octocat: @ceyeoh0428](https://github.com/ceyeoh0428)
+- [:octocat: @alvinwong64](https://github.com/alvinwong64)
+- [:octocat: @tankianaun](https://github.com/TANKIANAUN)
+- [:octocat: @waixiong](https://github.com/waixiong)
+- [:octocat: @jiuntian](https://github.com/jiuntian)
 
 ## License
-Mazerunner-Game is licensed under the [Apache License 2.0](./LICENSE).
+Mazerunner Game is released under the [Apache License 2.0](./LICENSE).
